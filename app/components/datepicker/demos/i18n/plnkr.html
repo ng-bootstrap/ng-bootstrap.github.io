@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <form id="mainForm" method="post" action="http://plnkr.co/edit/?p=preview">
+    <input type="hidden" name="description" value="Example usage of the datepicker widget from https://ng-bootstrap.github.io">
+    <input type="hidden" name="tags[0]" value="Angular">
+<input type="hidden" name="tags[1]" value="Bootstrap">
+<input type="hidden" name="tags[2]" value="ng-bootstrap">
+<input type="hidden" name="tags[3]" value="Datepicker">  
+    <input type="hidden" name="files[index.html]" value="&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html&#x3E;
+
+&#x3C;head&#x3E;
+  &#x3C;base href=&#x22;.&#x22; /&#x3E;
+  &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
+  &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css&#x22; /&#x3E;
+  &#x3C;script src=&#x22;https://unpkg.com/zone.js/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script src=&#x22;https://unpkg.com/zone.js/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@0.1.3/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script src=&#x22;https://unpkg.com/systemjs@0.19.31/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script&#x3E;
+    System.import(&#x27;app&#x27;).catch(console.error.bind(console));
+  &#x3C;/script&#x3E;
+&#x3C;/head&#x3E;
+
+&#x3C;body&#x3E;
+  &#x3C;my-app&#x3E;loading...&#x3C;/my-app&#x3E;
+&#x3C;/body&#x3E;
+
+&#x3C;/html&#x3E;
+">
+    <input type="hidden" name="files[config.js]" value="System.config({
+  //use typescript for compilation
+  transpiler: &#x27;typescript&#x27;,
+  //typescript compiler options
+  typescriptOptions: {
+    emitDecoratorMetadata: true
+  },
+  paths: {
+    &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
+  },
+  map: {
+
+    &#x27;app&#x27;: &#x27;./src&#x27;,
+
+    &#x27;@angular/core&#x27;: &#x27;npm:@angular/core/bundles/core.umd.js&#x27;,
+    &#x27;@angular/common&#x27;: &#x27;npm:@angular/common/bundles/common.umd.js&#x27;,
+    &#x27;@angular/compiler&#x27;: &#x27;npm:@angular/compiler/bundles/compiler.umd.js&#x27;,
+    &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser.umd.js&#x27;,
+    &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js&#x27;,
+    &#x27;@angular/http&#x27;: &#x27;npm:@angular/http/bundles/http.umd.js&#x27;,
+    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router/bundles/router.umd.js&#x27;,
+    &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms/bundles/forms.umd.js&#x27;,
+
+    &#x27;@angular/core/testing&#x27;: &#x27;npm:@angular/core/bundles/core-testing.umd.js&#x27;,
+    &#x27;@angular/common/testing&#x27;: &#x27;npm:@angular/common/bundles/common-testing.umd.js&#x27;,
+    &#x27;@angular/compiler/testing&#x27;: &#x27;npm:@angular/compiler/bundles/compiler-testing.umd.js&#x27;,
+    &#x27;@angular/platform-browser/testing&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser-testing.umd.js&#x27;,
+    &#x27;@angular/platform-browser-dynamic/testing&#x27;: &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js&#x27;,
+    &#x27;@angular/http/testing&#x27;: &#x27;npm:@angular/http/bundles/http-testing.umd.js&#x27;,
+    &#x27;@angular/router/testing&#x27;: &#x27;npm:@angular/router/bundles/router-testing.umd.js&#x27;,
+
+    &#x27;rxjs&#x27;: &#x27;npm:rxjs&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.2/lib/typescript.js&#x27;,
+
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js&#x27;
+  },
+  packages: {
+    app: {
+      main: &#x27;./main.ts&#x27;,
+      defaultExtension: &#x27;ts&#x27;
+    },
+    rxjs: {
+      defaultExtension: &#x27;js&#x27;
+    }
+  }
+});
+">
+    <input type="hidden" name="files[src/main.ts]" value="import {platformBrowserDynamic} from &#x27;@angular/platform-browser-dynamic&#x27;;
+import {AppModule} from &#x27;./app&#x27;;
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+">
+    <input type="hidden" name="files[src/app.ts]" value="
+import { Component, NgModule } from &#x27;@angular/core&#x27;;
+import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
+import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
+import { JsonpModule } from &#x27;@angular/http&#x27;;
+import { NgbModule } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { NgbdDatepickerI18n } from &#x27;./datepicker-i18n&#x27;;
+
+@Component({
+  selector: &#x27;my-app&#x27;,
+  template: &#x60;
+    &#x3C;div class=&#x22;container-fluid&#x22;&#x3E;
+    
+    &#x3C;hr&#x3E;
+    &#x3C;p&#x3E;
+      This is a demo plnkr forked from the &#x3C;strong&#x3E;ng-bootstrap&#x3C;/strong&#x3E; project: Angular 2 powered Bootstrap.
+      Visit &#x3C;a href=&#x22;https://ng-bootstrap.github.io/&#x22; target=&#x22;_blank&#x22;&#x3E;https://ng-bootstrap.github.io&#x3C;/a&#x3E; for more widgets and demos.
+    &#x3C;/p&#x3E;
+    &#x3C;hr&#x3E;
+
+    &#x3C;ngbd-datepicker-i18n&#x3E;&#x3C;/ngbd-datepicker-i18n&#x3E;
+  &#x3C;/div&#x3E;
+  &#x60;
+})
+export class App {
+}   
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, JsonpModule, NgbModule.forRoot()], 
+  declarations: [App, NgbdDatepickerI18n],
+  bootstrap: [App]
+}) 
+export class AppModule {}
+">
+    <input type="hidden" name="files[src/datepicker-i18n.ts]" value="import {Component, Injectable} from &#x27;@angular/core&#x27;;
+import {NgbDatepickerI18n} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+
+const I18N_VALUES = {
+  en: {
+    weekdays: [&#x27;Mo&#x27;, &#x27;Tu&#x27;, &#x27;We&#x27;, &#x27;Th&#x27;, &#x27;Fr&#x27;, &#x27;Sa&#x27;, &#x27;Su&#x27;],
+    months: [&#x27;Jan&#x27;, &#x27;Feb&#x27;, &#x27;Mar&#x27;, &#x27;Apr&#x27;, &#x27;May&#x27;, &#x27;Jun&#x27;, &#x27;Jul&#x27;, &#x27;Aug&#x27;, &#x27;Sep&#x27;, &#x27;Oct&#x27;, &#x27;Nov&#x27;, &#x27;Dec&#x27;],
+  },
+  fr: {
+    weekdays: [&#x27;Lu&#x27;, &#x27;Ma&#x27;, &#x27;Me&#x27;, &#x27;Je&#x27;, &#x27;Ve&#x27;, &#x27;Sa&#x27;, &#x27;Di&#x27;],
+    months: [&#x27;Jan&#x27;, &#x27;F&#xE9;v&#x27;, &#x27;Mar&#x27;, &#x27;Avr&#x27;, &#x27;Mai&#x27;, &#x27;Juin&#x27;, &#x27;Juil&#x27;, &#x27;Aou&#x27;, &#x27;Sep&#x27;, &#x27;Oct&#x27;, &#x27;Nov&#x27;, &#x27;D&#xE9;c&#x27;],
+  }
+};
+
+// Define a service holding the language. You probably already have one if your app is i18ned.
+@Injectable()
+export class I18n {
+  language = &#x27;en&#x27;;
+}
+
+// Define custom service providing the months and weekdays translations
+@Injectable()
+export class CustomDatepickerI18n extends NgbDatepickerI18n {
+
+  constructor(private _i18n: I18n) {
+    super();
+  }
+
+  getWeekdayName(weekday: number): string {
+    return I18N_VALUES[this._i18n.language].weekdays[weekday - 1];
+  }
+  getMonthName(month: number): string {
+    return I18N_VALUES[this._i18n.language].months[month - 1];
+  }
+}
+
+@Component({
+  selector: &#x27;ngbd-datepicker-i18n&#x27;,
+  templateUrl: &#x27;src/datepicker-i18n.html&#x27;,
+  providers: [I18n, {provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n}] // define custom NgbDatepickerI18n provider
+})
+export class NgbdDatepickerI18n {
+
+  model;
+
+  constructor(private _i18n: I18n) {}
+
+  set language(language: string) {
+    this._i18n.language = language;
+  }
+
+  get language() {
+    return this._i18n.language;
+  }
+}
+">
+    <input type="hidden" name="files[src/datepicker-i18n.html]" value="&#x3C;div [(ngModel)]=&#x22;language&#x22; ngbRadioGroup&#x3E;
+  &#x3C;label class=&#x22;btn btn-primary&#x22;&#x3E;
+    &#x3C;input type=&#x22;radio&#x22; value=&#x22;en&#x22;&#x3E; English
+  &#x3C;/label&#x3E;
+  &#x3C;label class=&#x22;btn btn-primary&#x22;&#x3E;
+    &#x3C;input type=&#x22;radio&#x22; value=&#x22;fr&#x22;&#x3E; Fran&#xE7;ais
+  &#x3C;/label&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;hr&#x3E;
+&#x3C;ngb-datepicker [(ngModel)]=&#x22;model&#x22;&#x3E;&#x3C;/ngb-datepicker&#x3E;
+
+">
+  </form>
+  <script>document.getElementById("mainForm").submit();</script>
+/body>
+</html>

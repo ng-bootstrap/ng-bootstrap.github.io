@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <form id="mainForm" method="post" action="http://plnkr.co/edit/?p=preview">
+    <input type="hidden" name="description" value="Example usage of the tabset widget from https://ng-bootstrap.github.io">
+    <input type="hidden" name="tags[0]" value="Angular">
+<input type="hidden" name="tags[1]" value="Bootstrap">
+<input type="hidden" name="tags[2]" value="ng-bootstrap">
+<input type="hidden" name="tags[3]" value="Tabset">  
+    <input type="hidden" name="files[index.html]" value="&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html&#x3E;
+
+&#x3C;head&#x3E;
+  &#x3C;base href=&#x22;.&#x22; /&#x3E;
+  &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
+  &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css&#x22; /&#x3E;
+  &#x3C;script src=&#x22;https://unpkg.com/zone.js/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script src=&#x22;https://unpkg.com/zone.js/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@0.1.3/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script src=&#x22;https://unpkg.com/systemjs@0.19.31/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
+  &#x3C;script&#x3E;
+    System.import(&#x27;app&#x27;).catch(console.error.bind(console));
+  &#x3C;/script&#x3E;
+&#x3C;/head&#x3E;
+
+&#x3C;body&#x3E;
+  &#x3C;my-app&#x3E;loading...&#x3C;/my-app&#x3E;
+&#x3C;/body&#x3E;
+
+&#x3C;/html&#x3E;
+">
+    <input type="hidden" name="files[config.js]" value="System.config({
+  //use typescript for compilation
+  transpiler: &#x27;typescript&#x27;,
+  //typescript compiler options
+  typescriptOptions: {
+    emitDecoratorMetadata: true
+  },
+  paths: {
+    &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
+  },
+  map: {
+
+    &#x27;app&#x27;: &#x27;./src&#x27;,
+
+    &#x27;@angular/core&#x27;: &#x27;npm:@angular/core/bundles/core.umd.js&#x27;,
+    &#x27;@angular/common&#x27;: &#x27;npm:@angular/common/bundles/common.umd.js&#x27;,
+    &#x27;@angular/compiler&#x27;: &#x27;npm:@angular/compiler/bundles/compiler.umd.js&#x27;,
+    &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser.umd.js&#x27;,
+    &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js&#x27;,
+    &#x27;@angular/http&#x27;: &#x27;npm:@angular/http/bundles/http.umd.js&#x27;,
+    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router/bundles/router.umd.js&#x27;,
+    &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms/bundles/forms.umd.js&#x27;,
+
+    &#x27;@angular/core/testing&#x27;: &#x27;npm:@angular/core/bundles/core-testing.umd.js&#x27;,
+    &#x27;@angular/common/testing&#x27;: &#x27;npm:@angular/common/bundles/common-testing.umd.js&#x27;,
+    &#x27;@angular/compiler/testing&#x27;: &#x27;npm:@angular/compiler/bundles/compiler-testing.umd.js&#x27;,
+    &#x27;@angular/platform-browser/testing&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser-testing.umd.js&#x27;,
+    &#x27;@angular/platform-browser-dynamic/testing&#x27;: &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js&#x27;,
+    &#x27;@angular/http/testing&#x27;: &#x27;npm:@angular/http/bundles/http-testing.umd.js&#x27;,
+    &#x27;@angular/router/testing&#x27;: &#x27;npm:@angular/router/bundles/router-testing.umd.js&#x27;,
+
+    &#x27;rxjs&#x27;: &#x27;npm:rxjs&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.2/lib/typescript.js&#x27;,
+
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js&#x27;
+  },
+  packages: {
+    app: {
+      main: &#x27;./main.ts&#x27;,
+      defaultExtension: &#x27;ts&#x27;
+    },
+    rxjs: {
+      defaultExtension: &#x27;js&#x27;
+    }
+  }
+});
+">
+    <input type="hidden" name="files[src/main.ts]" value="import {platformBrowserDynamic} from &#x27;@angular/platform-browser-dynamic&#x27;;
+import {AppModule} from &#x27;./app&#x27;;
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+">
+    <input type="hidden" name="files[src/app.ts]" value="
+import { Component, NgModule } from &#x27;@angular/core&#x27;;
+import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
+import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
+import { JsonpModule } from &#x27;@angular/http&#x27;;
+import { NgbModule } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { NgbdTabsetBasic } from &#x27;./tabset-basic&#x27;;
+
+@Component({
+  selector: &#x27;my-app&#x27;,
+  template: &#x60;
+    &#x3C;div class=&#x22;container-fluid&#x22;&#x3E;
+    
+    &#x3C;hr&#x3E;
+    &#x3C;p&#x3E;
+      This is a demo plnkr forked from the &#x3C;strong&#x3E;ng-bootstrap&#x3C;/strong&#x3E; project: Angular 2 powered Bootstrap.
+      Visit &#x3C;a href=&#x22;https://ng-bootstrap.github.io/&#x22; target=&#x22;_blank&#x22;&#x3E;https://ng-bootstrap.github.io&#x3C;/a&#x3E; for more widgets and demos.
+    &#x3C;/p&#x3E;
+    &#x3C;hr&#x3E;
+
+    &#x3C;ngbd-tabset-basic&#x3E;&#x3C;/ngbd-tabset-basic&#x3E;
+  &#x3C;/div&#x3E;
+  &#x60;
+})
+export class App {
+}   
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, JsonpModule, NgbModule.forRoot()], 
+  declarations: [App, NgbdTabsetBasic],
+  bootstrap: [App]
+}) 
+export class AppModule {}
+">
+    <input type="hidden" name="files[src/tabset-basic.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
+
+@Component({
+  selector: &#x27;ngbd-tabset-basic&#x27;,
+  templateUrl: &#x27;src/tabset-basic.html&#x27;
+})
+export class NgbdTabsetBasic { }
+">
+    <input type="hidden" name="files[src/tabset-basic.html]" value="&#x3C;ngb-tabset&#x3E;
+  &#x3C;ngb-tab title=&#x22;Simple&#x22;&#x3E;
+    &#x3C;template ngbTabContent&#x3E;
+      &#x3C;p&#x3E;Raw denim you probably haven&#x27;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+      master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
+      dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+      iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.&#x3C;/p&#x3E;
+    &#x3C;/template&#x3E;
+  &#x3C;/ngb-tab&#x3E;
+  &#x3C;ngb-tab&#x3E;
+    &#x3C;template ngbTabTitle&#x3E;&#x3C;b&#x3E;Fancy&#x3C;/b&#x3E; title&#x3C;/template&#x3E;
+    &#x3C;template ngbTabContent&#x3E;Food truck fixie locavore, accusamus mcsweeney&#x27;s marfa nulla single-origin coffee squid.
+      &#x3C;p&#x3E;Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+      craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl
+      cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
+      yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
+      shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero
+      sint qui sapiente accusamus tattooed echo park.&#x3C;/p&#x3E;
+    &#x3C;/template&#x3E;
+  &#x3C;/ngb-tab&#x3E;
+  &#x3C;ngb-tab title=&#x22;Disabled&#x22; [disabled]=&#x22;true&#x22;&#x3E;
+    &#x3C;template ngbTabContent&#x3E;
+      &#x3C;p&#x3E;Raw denim you probably haven&#x27;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+      master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
+      dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+      iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.&#x3C;/p&#x3E;
+    &#x3C;/template&#x3E;
+  &#x3C;/ngb-tab&#x3E;
+&#x3C;/ngb-tabset&#x3E;
+">
+  </form>
+  <script>document.getElementById("mainForm").submit();</script>
+/body>
+</html>
