@@ -4,9 +4,9 @@
   <form id="mainForm" method="post" action="http://plnkr.co/edit/?p=preview">
     <input type="hidden" name="description" value="Example usage of the rating widget from https://ng-bootstrap.github.io">
     <input type="hidden" name="tags[0]" value="Angular">
-<input type="hidden" name="tags[1]" value="Bootstrap">
-<input type="hidden" name="tags[2]" value="ng-bootstrap">
-<input type="hidden" name="tags[3]" value="Rating">  
+    <input type="hidden" name="tags[1]" value="Bootstrap">
+    <input type="hidden" name="tags[2]" value="ng-bootstrap">
+    <input type="hidden" name="tags[3]" value="Rating">  
     <input type="hidden" name="files[index.html]" value="&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html&#x3E;
 
@@ -111,7 +111,7 @@ export class App {
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, JsonpModule, NgbModule.forRoot()], 
-  declarations: [App, NgbdRatingEvents],
+  declarations: [App, NgbdRatingEvents]
   bootstrap: [App]
 }) 
 export class AppModule {}

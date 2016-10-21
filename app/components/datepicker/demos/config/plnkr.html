@@ -4,9 +4,9 @@
   <form id="mainForm" method="post" action="http://plnkr.co/edit/?p=preview">
     <input type="hidden" name="description" value="Example usage of the datepicker widget from https://ng-bootstrap.github.io">
     <input type="hidden" name="tags[0]" value="Angular">
-<input type="hidden" name="tags[1]" value="Bootstrap">
-<input type="hidden" name="tags[2]" value="ng-bootstrap">
-<input type="hidden" name="tags[3]" value="Datepicker">  
+    <input type="hidden" name="tags[1]" value="Bootstrap">
+    <input type="hidden" name="tags[2]" value="ng-bootstrap">
+    <input type="hidden" name="tags[3]" value="Datepicker">  
     <input type="hidden" name="files[index.html]" value="&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html&#x3E;
 
@@ -111,7 +111,7 @@ export class App {
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, JsonpModule, NgbModule.forRoot()], 
-  declarations: [App, NgbdDatepickerConfig],
+  declarations: [App, NgbdDatepickerConfig]
   bootstrap: [App]
 }) 
 export class AppModule {}
@@ -132,6 +132,9 @@ export class NgbdDatepickerConfig {
     // customize default values of datepickers used by this component tree
     config.minDate = {year: 1900, month: 1, day: 1};
     config.maxDate = {year: 2099, month: 12, day: 31};
+
+    // days that don&#x27;t belong to current month are not visible
+    config.outsideDays = &#x27;hidden&#x27;;
 
     // weekends are disabled
     config.markDisabled = (date: NgbDateStruct) =&#x3E; {
