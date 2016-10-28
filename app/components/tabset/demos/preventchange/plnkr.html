@@ -10,26 +10,25 @@
     <input type="hidden" name="files[index.html]" value="&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html&#x3E;
 
-&#x3C;head&#x3E;
+  &#x3C;head&#x3E;
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
-  &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
-  &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css&#x22; /&#x3E;
-  &#x3C;script src=&#x22;https://unpkg.com/zone.js/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-  &#x3C;script src=&#x22;https://unpkg.com/zone.js/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-  &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@0.1.3/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
-  &#x3C;script src=&#x22;https://unpkg.com/systemjs@0.19.31/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
-  &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
-  &#x3C;script&#x3E;
+    &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.6.23/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.6.23/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.31/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script&#x3E;
     System.import(&#x27;app&#x27;).catch(console.error.bind(console));
-  &#x3C;/script&#x3E;
-&#x3C;/head&#x3E;
+&#x3C;/script&#x3E;
+  &#x3C;/head&#x3E;
 
-&#x3C;body&#x3E;
+  &#x3C;body&#x3E;
   &#x3C;my-app&#x3E;loading...&#x3C;/my-app&#x3E;
-&#x3C;/body&#x3E;
+  &#x3C;/body&#x3E;
 
-&#x3C;/html&#x3E;
-">
+&#x3C;/html&#x3E;">
     <input type="hidden" name="files[config.js]" value="System.config({
   //use typescript for compilation
   transpiler: &#x27;typescript&#x27;,
@@ -44,27 +43,27 @@
 
     &#x27;app&#x27;: &#x27;./src&#x27;,
 
-    &#x27;@angular/core&#x27;: &#x27;npm:@angular/core/bundles/core.umd.js&#x27;,
-    &#x27;@angular/common&#x27;: &#x27;npm:@angular/common/bundles/common.umd.js&#x27;,
-    &#x27;@angular/compiler&#x27;: &#x27;npm:@angular/compiler/bundles/compiler.umd.js&#x27;,
-    &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser.umd.js&#x27;,
-    &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js&#x27;,
-    &#x27;@angular/http&#x27;: &#x27;npm:@angular/http/bundles/http.umd.js&#x27;,
-    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router/bundles/router.umd.js&#x27;,
-    &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms/bundles/forms.umd.js&#x27;,
+    &#x27;@angular/core&#x27;: &#x27;npm:@angular/core@2.0.0/bundles/core.umd.js&#x27;,
+    &#x27;@angular/common&#x27;: &#x27;npm:@angular/common@2.0.0/bundles/common.umd.js&#x27;,
+    &#x27;@angular/compiler&#x27;: &#x27;npm:@angular/compiler@2.0.0/bundles/compiler.umd.js&#x27;,
+    &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser@2.0.0/bundles/platform-browser.umd.js&#x27;,
+    &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic@2.0.0/bundles/platform-browser-dynamic.umd.js&#x27;,
+    &#x27;@angular/http&#x27;: &#x27;npm:@angular/http@2.0.0/bundles/http.umd.js&#x27;,
+    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@3.0.0/bundles/router.umd.js&#x27;,
+    &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@2.0.0/bundles/forms.umd.js&#x27;,
 
-    &#x27;@angular/core/testing&#x27;: &#x27;npm:@angular/core/bundles/core-testing.umd.js&#x27;,
-    &#x27;@angular/common/testing&#x27;: &#x27;npm:@angular/common/bundles/common-testing.umd.js&#x27;,
-    &#x27;@angular/compiler/testing&#x27;: &#x27;npm:@angular/compiler/bundles/compiler-testing.umd.js&#x27;,
-    &#x27;@angular/platform-browser/testing&#x27;: &#x27;npm:@angular/platform-browser/bundles/platform-browser-testing.umd.js&#x27;,
-    &#x27;@angular/platform-browser-dynamic/testing&#x27;: &#x27;npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js&#x27;,
-    &#x27;@angular/http/testing&#x27;: &#x27;npm:@angular/http/bundles/http-testing.umd.js&#x27;,
-    &#x27;@angular/router/testing&#x27;: &#x27;npm:@angular/router/bundles/router-testing.umd.js&#x27;,
+    &#x27;@angular/core/testing&#x27;: &#x27;npm:@angular/core@2.0.0/bundles/core-testing.umd.js&#x27;,
+    &#x27;@angular/common/testing&#x27;: &#x27;npm:@angular/common@2.0.0/bundles/common-testing.umd.js&#x27;,
+    &#x27;@angular/compiler/testing&#x27;: &#x27;npm:@angular/compiler@2.0.0/bundles/compiler-testing.umd.js&#x27;,
+    &#x27;@angular/platform-browser/testing&#x27;: &#x27;npm:@angular/platform-browser@2.0.0/bundles/platform-browser-testing.umd.js&#x27;,
+    &#x27;@angular/platform-browser-dynamic/testing&#x27;: &#x27;npm:@angular/platform-browser-dynamic@2.0.0/bundles/platform-browser-dynamic-testing.umd.js&#x27;,
+    &#x27;@angular/http/testing&#x27;: &#x27;npm:@angular/http@2.0.0/bundles/http-testing.umd.js&#x27;,
+    &#x27;@angular/router/testing&#x27;: &#x27;npm:@angular/router@3.0.0/bundles/router-testing.umd.js&#x27;,
 
-    &#x27;rxjs&#x27;: &#x27;npm:rxjs&#x27;,
-    &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.2/lib/typescript.js&#x27;,
+    &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-beta.12&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@^2.0.3/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.10/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -80,7 +79,7 @@
     <input type="hidden" name="files[src/main.ts]" value="import {platformBrowserDynamic} from &#x27;@angular/platform-browser-dynamic&#x27;;
 import {AppModule} from &#x27;./app&#x27;;
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic().bootstrapModule(AppModule);
 ">
     <input type="hidden" name="files[src/app.ts]" value="
 import { Component, NgModule } from &#x27;@angular/core&#x27;;
@@ -162,5 +161,5 @@ export class NgbdTabsetPreventchange {
 ">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
-/body>
+</body>
 </html>
