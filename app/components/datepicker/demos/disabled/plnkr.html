@@ -17,7 +17,7 @@
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.6.23/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.6.23/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.31/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.40/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script&#x3E;
     System.import(&#x27;app&#x27;).catch(console.error.bind(console));
@@ -61,9 +61,9 @@
     &#x27;@angular/router/testing&#x27;: &#x27;npm:@angular/router@3.0.0/bundles/router-testing.umd.js&#x27;,
 
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-beta.12&#x27;,
-    &#x27;typescript&#x27;: &#x27;npm:typescript@^2.0.3/lib/typescript.js&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@^2.0.6/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.10/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.11/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -126,7 +126,7 @@ const now = new Date();
 })
 export class NgbdDatepickerDisabled {
 
-  model: NgbDateStruct = {year: now.getFullYear(), month: now.getMonth(), day: now.getDate()};
+  model: NgbDateStruct = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
   disabled = true;
 }
 ">
