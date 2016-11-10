@@ -63,7 +63,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-beta.12&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@^2.0.6/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.11/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.12/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -127,6 +127,7 @@ const now = new Date();
 export class NgbdDatepickerBasic {
 
   model: NgbDateStruct;
+  date: {year: number, month: number};
 
   selectToday() {
     this.model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
@@ -135,7 +136,7 @@ export class NgbdDatepickerBasic {
 ">
     <input type="hidden" name="files[src/datepicker-basic.html]" value="&#x3C;p&#x3E;Simple datepicker&#x3C;/p&#x3E;
 
-&#x3C;ngb-datepicker #dp [(ngModel)]=&#x22;model&#x22;&#x3E;&#x3C;/ngb-datepicker&#x3E;
+&#x3C;ngb-datepicker #dp [(ngModel)]=&#x22;model&#x22; (navigate)=&#x22;date = $event.next&#x22;&#x3E;&#x3C;/ngb-datepicker&#x3E;
 
 &#x3C;hr/&#x3E;
 
@@ -145,6 +146,7 @@ export class NgbdDatepickerBasic {
 
 &#x3C;hr/&#x3E;
 
+&#x3C;pre&#x3E;Month: {{ date.month }}.{{ date.year }}&#x3C;/pre&#x3E;
 &#x3C;pre&#x3E;Model: {{ model | json }}&#x3C;/pre&#x3E;
 ">
   </form>
