@@ -61,9 +61,9 @@
     &#x27;@angular/router/testing&#x27;: &#x27;npm:@angular/router@3.0.0/bundles/router-testing.umd.js&#x27;,
 
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-beta.12&#x27;,
-    &#x27;typescript&#x27;: &#x27;npm:typescript@^2.0.6/lib/typescript.js&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.10/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.14/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.15/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -126,9 +126,12 @@ export class NgbdCollapseBasic {
 }
 ">
     <input type="hidden" name="files[src/collapse-basic.html]" value="&#x3C;p&#x3E;
-  &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-primary&#x22; (click)=&#x22;isCollapsed = !isCollapsed&#x22;&#x3E;Toggle&#x3C;/button&#x3E;
+  &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-primary&#x22; (click)=&#x22;isCollapsed = !isCollapsed&#x22;
+          [attr.aria-expanded]=&#x22;!isCollapsed&#x22; aria-controls=&#x22;collapseExample&#x22;&#x3E;
+    Toggle
+  &#x3C;/button&#x3E;
 &#x3C;/p&#x3E;
-&#x3C;div [ngbCollapse]=&#x22;isCollapsed&#x22;&#x3E;
+&#x3C;div id=&#x22;collapseExample&#x22; [ngbCollapse]=&#x22;isCollapsed&#x22;&#x3E;
   &#x3C;div class=&#x22;card&#x22;&#x3E;
     &#x3C;div class=&#x22;card-block&#x22;&#x3E;
       You can collapse this card by clicking Toggle
