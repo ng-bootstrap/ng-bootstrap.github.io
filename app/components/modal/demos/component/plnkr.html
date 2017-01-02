@@ -29,7 +29,12 @@
   &#x3C;/body&#x3E;
 
 &#x3C;/html&#x3E;">
-    <input type="hidden" name="files[config.js]" value="System.config({
+    <input type="hidden" name="files[config.js]" value="var ver = {
+    ng: &#x27;2.0.0&#x27;,
+    ngRouter: &#x27;3.0.0&#x27;
+  };
+  
+  System.config({
   //use typescript for compilation
   transpiler: &#x27;typescript&#x27;,
   //typescript compiler options
@@ -43,27 +48,19 @@
 
     &#x27;app&#x27;: &#x27;./src&#x27;,
 
-    &#x27;@angular/core&#x27;: &#x27;npm:@angular/core@2.0.0/bundles/core.umd.js&#x27;,
-    &#x27;@angular/common&#x27;: &#x27;npm:@angular/common@2.0.0/bundles/common.umd.js&#x27;,
-    &#x27;@angular/compiler&#x27;: &#x27;npm:@angular/compiler@2.0.0/bundles/compiler.umd.js&#x27;,
-    &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser@2.0.0/bundles/platform-browser.umd.js&#x27;,
-    &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic@2.0.0/bundles/platform-browser-dynamic.umd.js&#x27;,
-    &#x27;@angular/http&#x27;: &#x27;npm:@angular/http@2.0.0/bundles/http.umd.js&#x27;,
-    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@3.0.0/bundles/router.umd.js&#x27;,
-    &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@2.0.0/bundles/forms.umd.js&#x27;,
-
-    &#x27;@angular/core/testing&#x27;: &#x27;npm:@angular/core@2.0.0/bundles/core-testing.umd.js&#x27;,
-    &#x27;@angular/common/testing&#x27;: &#x27;npm:@angular/common@2.0.0/bundles/common-testing.umd.js&#x27;,
-    &#x27;@angular/compiler/testing&#x27;: &#x27;npm:@angular/compiler@2.0.0/bundles/compiler-testing.umd.js&#x27;,
-    &#x27;@angular/platform-browser/testing&#x27;: &#x27;npm:@angular/platform-browser@2.0.0/bundles/platform-browser-testing.umd.js&#x27;,
-    &#x27;@angular/platform-browser-dynamic/testing&#x27;: &#x27;npm:@angular/platform-browser-dynamic@2.0.0/bundles/platform-browser-dynamic-testing.umd.js&#x27;,
-    &#x27;@angular/http/testing&#x27;: &#x27;npm:@angular/http@2.0.0/bundles/http-testing.umd.js&#x27;,
-    &#x27;@angular/router/testing&#x27;: &#x27;npm:@angular/router@3.0.0/bundles/router-testing.umd.js&#x27;,
+    &#x27;@angular/core&#x27;: &#x27;npm:@angular/core@&#x27; + ver.ng + &#x27;/bundles/core.umd.js&#x27;,
+    &#x27;@angular/common&#x27;: &#x27;npm:@angular/common@&#x27; + ver.ng + &#x27;/bundles/common.umd.js&#x27;,
+    &#x27;@angular/compiler&#x27;: &#x27;npm:@angular/compiler@&#x27; + ver.ng + &#x27;/bundles/compiler.umd.js&#x27;,
+    &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser@&#x27; + ver.ng + &#x27;/bundles/platform-browser.umd.js&#x27;,
+    &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic@&#x27; + ver.ng + &#x27;/bundles/platform-browser-dynamic.umd.js&#x27;,
+    &#x27;@angular/http&#x27;: &#x27;npm:@angular/http@&#x27; + ver.ng + &#x27;/bundles/http.umd.js&#x27;,
+    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@&#x27; + ver.ngRouter + &#x27;/bundles/router.umd.js&#x27;,
+    &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@&#x27; + ver.ng + &#x27;/bundles/forms.umd.js&#x27;,
 
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-beta.12&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.10/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.15/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.16/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
