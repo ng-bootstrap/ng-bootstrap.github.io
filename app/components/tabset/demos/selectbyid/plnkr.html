@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-rc.4&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.10/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.22/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.23/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -122,7 +122,7 @@ export class NgbdTabsetSelectbyid {
 }
 ">
     <input type="hidden" name="files[src/tabset-selectbyid.html]" value="&#x3C;ngb-tabset #t=&#x22;ngbTabset&#x22;&#x3E;
-  &#x3C;ngb-tab title=&#x22;Simple&#x22; id=&#x22;foo&#x22;&#x3E;
+  &#x3C;ngb-tab id=&#x22;tab-selectbyid1&#x22; title=&#x22;Simple&#x22;&#x3E;
     &#x3C;template ngbTabContent&#x3E;
       &#x3C;p&#x3E;Raw denim you probably haven&#x27;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
       master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
@@ -130,7 +130,7 @@ export class NgbdTabsetSelectbyid {
       iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.&#x3C;/p&#x3E;
     &#x3C;/template&#x3E;
   &#x3C;/ngb-tab&#x3E;
-  &#x3C;ngb-tab id=&#x22;bar&#x22;&#x3E;
+  &#x3C;ngb-tab id=&#x22;tab-selectbyid2&#x22;&#x3E;
     &#x3C;template ngbTabTitle&#x3E;&#x3C;b&#x3E;Fancy&#x3C;/b&#x3E; title&#x3C;/template&#x3E;
     &#x3C;template ngbTabContent&#x3E;Food truck fixie locavore, accusamus mcsweeney&#x27;s marfa nulla single-origin coffee squid.
       &#x3C;p&#x3E;Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
@@ -144,7 +144,7 @@ export class NgbdTabsetSelectbyid {
 &#x3C;/ngb-tabset&#x3E;
 
 &#x3C;p&#x3E;
-  &#x3C;button class=&#x22;btn btn-outline-primary&#x22; (click)=&#x22;t.select(&#x27;bar&#x27;)&#x22;&#x3E;Selected tab with &#x22;bar&#x22; id&#x3C;/button&#x3E;
+  &#x3C;button class=&#x22;btn btn-outline-primary&#x22; (click)=&#x22;t.select(&#x27;tab-selectbyid2&#x27;)&#x22;&#x3E;Selected tab with &#x22;tab-selectbyid2&#x22; id&#x3C;/button&#x3E;
 &#x3C;/p&#x3E;
 ">
   </form>

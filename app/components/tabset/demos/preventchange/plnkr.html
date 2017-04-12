@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-rc.4&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.10/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.22/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.23/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -121,14 +121,14 @@ import {NgbTabChangeEvent} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 })
 export class NgbdTabsetPreventchange {
     public beforeChange($event: NgbTabChangeEvent) {
-      if ($event.nextId === &#x27;bar&#x27;) {
+      if ($event.nextId === &#x27;tab-preventchange2&#x27;) {
         $event.preventDefault();
       }
     };
 }
 ">
     <input type="hidden" name="files[src/tabset-preventchange.html]" value="&#x3C;ngb-tabset  (tabChange)=&#x22;beforeChange($event)&#x22;&#x3E;
-  &#x3C;ngb-tab title=&#x22;Simple&#x22; id=&#x22;foo&#x22;&#x3E;
+  &#x3C;ngb-tab id=&#x22;tab-preventchange1&#x22; title=&#x22;Simple&#x22;&#x3E;
     &#x3C;template ngbTabContent&#x3E;
       &#x3C;p&#x3E;Raw denim you probably haven&#x27;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
       master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
@@ -136,7 +136,7 @@ export class NgbdTabsetPreventchange {
       iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.&#x3C;/p&#x3E;
     &#x3C;/template&#x3E;
   &#x3C;/ngb-tab&#x3E;
-  &#x3C;ngb-tab id=&#x22;bar&#x22; title=&#x22;I can&#x27;t be selected...&#x22;&#x3E;
+  &#x3C;ngb-tab id=&#x22;tab-preventchange2&#x22; title=&#x22;I can&#x27;t be selected...&#x22;&#x3E;
     &#x3C;template ngbTabContent&#x3E;Food truck fixie locavore, accusamus mcsweeney&#x27;s marfa nulla single-origin coffee squid.
       &#x3C;p&#x3E;Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
       craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl

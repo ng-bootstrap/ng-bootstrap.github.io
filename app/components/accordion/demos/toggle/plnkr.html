@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-rc.4&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.10/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.22/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.23/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -122,7 +122,7 @@ export class NgbdAccordionToggle {
 }
 ">
     <input type="hidden" name="files[src/accordion-toggle.html]" value="&#x3C;ngb-accordion #acc=&#x22;ngbAccordion&#x22;&#x3E;
-  &#x3C;ngb-panel id=&#x22;1&#x22; title=&#x22;First panel&#x22;&#x3E;
+  &#x3C;ngb-panel id=&#x22;toggle-1&#x22; title=&#x22;First panel&#x22;&#x3E;
     &#x3C;template ngbPanelContent&#x3E;
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
       aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
@@ -132,7 +132,7 @@ export class NgbdAccordionToggle {
       labore sustainable VHS.
     &#x3C;/template&#x3E;
   &#x3C;/ngb-panel&#x3E;
-  &#x3C;ngb-panel id=&#x22;2&#x22; title=&#x22;Second&#x22;&#x3E;
+  &#x3C;ngb-panel id=&#x22;toggle-2&#x22; title=&#x22;Second&#x22;&#x3E;
     &#x3C;template ngbPanelContent&#x3E;
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
       aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
@@ -145,8 +145,8 @@ export class NgbdAccordionToggle {
 &#x3C;/ngb-accordion&#x3E;
 
 &#x3C;p&#x3E;
-  &#x3C;button class=&#x22;btn btn-sm btn-outline-primary&#x22; (click)=&#x22;acc.toggle(&#x27;1&#x27;)&#x22;&#x3E;Toggle first&#x3C;/button&#x3E;
-  &#x3C;button class=&#x22;btn btn-sm btn-outline-primary&#x22; (click)=&#x22;acc.toggle(&#x27;2&#x27;)&#x22;&#x3E;Toggle second&#x3C;/button&#x3E;
+  &#x3C;button class=&#x22;btn btn-sm btn-outline-primary&#x22; (click)=&#x22;acc.toggle(&#x27;toggle-1&#x27;)&#x22;&#x3E;Toggle first&#x3C;/button&#x3E;
+  &#x3C;button class=&#x22;btn btn-sm btn-outline-primary&#x22; (click)=&#x22;acc.toggle(&#x27;toggle-2&#x27;)&#x22;&#x3E;Toggle second&#x3C;/button&#x3E;
 &#x3C;/p&#x3E;
 ">
   </form>

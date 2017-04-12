@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-rc.4&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.10/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.22/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.23/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -126,21 +126,21 @@ export class NgbdTimepickerSteps {
   secondStep = 30;
 }
 ">
-    <input type="hidden" name="files[src/timepicker-steps.html]" value="&#x3C;ngb-timepicker [(ngModel)]=&#x22;time&#x22; [seconds]=&#x22;true&#x22; 
+    <input type="hidden" name="files[src/timepicker-steps.html]" value="&#x3C;ngb-timepicker [(ngModel)]=&#x22;time&#x22; [seconds]=&#x22;true&#x22;
     [hourStep]=&#x22;hourStep&#x22; [minuteStep]=&#x22;minuteStep&#x22; [secondStep]=&#x22;secondStep&#x22;&#x3E;&#x3C;/ngb-timepicker&#x3E;
 
 &#x3C;div class=&#x22;row&#x22;&#x3E;
     &#x3C;div class=&#x22;col-sm-3&#x22;&#x3E;
         &#x3C;label for=&#x22;changeHourStep&#x22;&#x3E;Hour Step&#x3C;/label&#x3E;
-        &#x3C;input type=&#x22;number&#x22; class=&#x22;form-control form-control-sm&#x22; [(ngModel)]=&#x22;hourStep&#x22; /&#x3E;
-    &#x3C;/div&#x3E;    
+        &#x3C;input id=&#x22;changeHourStep&#x22; type=&#x22;number&#x22; class=&#x22;form-control form-control-sm&#x22; [(ngModel)]=&#x22;hourStep&#x22; /&#x3E;
+    &#x3C;/div&#x3E;
     &#x3C;div class=&#x22;col-sm-3&#x22;&#x3E;
         &#x3C;label for=&#x22;changeMinuteStep&#x22;&#x3E;Minute Step&#x3C;/label&#x3E;
-        &#x3C;input type=&#x22;number&#x22; class=&#x22;form-control form-control-sm&#x22; [(ngModel)]=&#x22;minuteStep&#x22; /&#x3E;
+        &#x3C;input id=&#x22;changeMinuteStep&#x22; type=&#x22;number&#x22; class=&#x22;form-control form-control-sm&#x22; [(ngModel)]=&#x22;minuteStep&#x22; /&#x3E;
     &#x3C;/div&#x3E;
     &#x3C;div class=&#x22;col-sm-3&#x22;&#x3E;
         &#x3C;label for=&#x22;changeSecondStep&#x22;&#x3E;Second Step&#x3C;/label&#x3E;
-        &#x3C;input type=&#x22;number&#x22; class=&#x22;form-control form-control-sm&#x22; [(ngModel)]=&#x22;secondStep&#x22; /&#x3E;
+        &#x3C;input id=&#x22;changeSecondStep&#x22; type=&#x22;number&#x22; class=&#x22;form-control form-control-sm&#x22; [(ngModel)]=&#x22;secondStep&#x22; /&#x3E;
     &#x3C;/div&#x3E;
 &#x3C;/div&#x3E;
 &#x3C;hr&#x3E;
