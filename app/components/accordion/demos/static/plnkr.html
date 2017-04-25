@@ -14,8 +14,8 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&#x22; /&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.7.2/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.7.2/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.7/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.7/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.40/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -30,8 +30,7 @@
 
 &#x3C;/html&#x3E;">
     <input type="hidden" name="files[config.js]" value="var ver = {
-    ng: &#x27;2.3.1&#x27;,
-    ngRouter: &#x27;3.3.1&#x27;
+    ng: &#x27;4.0.3&#x27;
   };
   
   System.config({
@@ -54,13 +53,13 @@
     &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser@&#x27; + ver.ng + &#x27;/bundles/platform-browser.umd.js&#x27;,
     &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic@&#x27; + ver.ng + &#x27;/bundles/platform-browser-dynamic.umd.js&#x27;,
     &#x27;@angular/http&#x27;: &#x27;npm:@angular/http@&#x27; + ver.ng + &#x27;/bundles/http.umd.js&#x27;,
-    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@&#x27; + ver.ngRouter + &#x27;/bundles/router.umd.js&#x27;,
+    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@&#x27; + ver.ng + &#x27;/bundles/router.umd.js&#x27;,
     &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@&#x27; + ver.ng + &#x27;/bundles/forms.umd.js&#x27;,
 
-    &#x27;rxjs&#x27;: &#x27;npm:rxjs@5.0.0-rc.4&#x27;,
-    &#x27;typescript&#x27;: &#x27;npm:typescript@2.0.10/lib/typescript.js&#x27;,
+    &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.24/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.25/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -123,37 +122,37 @@ export class NgbdAccordionStatic {
 ">
     <input type="hidden" name="files[src/accordion-static.html]" value="&#x3C;ngb-accordion [closeOthers]=&#x22;true&#x22; activeIds=&#x22;static-1&#x22;&#x3E;
   &#x3C;ngb-panel id=&#x22;static-1&#x22; title=&#x22;Simple&#x22;&#x3E;
-    &#x3C;template ngbPanelContent&#x3E;
+    &#x3C;ng-template ngbPanelContent&#x3E;
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
       aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
       sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
       craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
       occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#x27;t heard of them accusamus
       labore sustainable VHS.
-    &#x3C;/template&#x3E;
+    &#x3C;/ng-template&#x3E;
   &#x3C;/ngb-panel&#x3E;
   &#x3C;ngb-panel id=&#x22;static-2&#x22;&#x3E;
-    &#x3C;template ngbPanelTitle&#x3E;
+    &#x3C;ng-template ngbPanelTitle&#x3E;
       &#x3C;span&#x3E;&#x26;#9733; &#x3C;b&#x3E;Fancy&#x3C;/b&#x3E; title &#x26;#9733;&#x3C;/span&#x3E;
-    &#x3C;/template&#x3E;
-    &#x3C;template ngbPanelContent&#x3E;
+    &#x3C;/ng-template&#x3E;
+    &#x3C;ng-template ngbPanelContent&#x3E;
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
       aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
       sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
       craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
       occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#x27;t heard of them accusamus
       labore sustainable VHS.
-    &#x3C;/template&#x3E;
+    &#x3C;/ng-template&#x3E;
   &#x3C;/ngb-panel&#x3E;
   &#x3C;ngb-panel id=&#x22;static-3&#x22; title=&#x22;Disabled&#x22; [disabled]=&#x22;true&#x22;&#x3E;
-    &#x3C;template ngbPanelContent&#x3E;
+    &#x3C;ng-template ngbPanelContent&#x3E;
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
       aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
       sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
       craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
       occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#x27;t heard of them accusamus
       labore sustainable VHS.
-    &#x3C;/template&#x3E;
+    &#x3C;/ng-template&#x3E;
   &#x3C;/ngb-panel&#x3E;
 &#x3C;/ngb-accordion&#x3E;
 ">
