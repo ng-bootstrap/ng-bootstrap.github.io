@@ -14,8 +14,8 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&#x22; /&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.7/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.7/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.40/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -59,7 +59,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.25/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.26/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -139,7 +139,8 @@ export class NgbdTypeaheadBasic {
       .debounceTime(200)
       .distinctUntilChanged()
       .map(term =&#x3E; term.length &#x3C; 2 ? []
-        : states.filter(v =&#x3E; new RegExp(term, &#x27;gi&#x27;).test(v)).splice(0, 10));
+        : states.filter(v =&#x3E; v.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1).slice(0, 10));
+
 }
 ">
     <input type="hidden" name="files[src/typeahead-basic.html]" value="A typeahead example that gets values from a static &#x3C;code&#x3E;string[]&#x3C;/code&#x3E;

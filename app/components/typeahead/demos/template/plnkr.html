@@ -14,8 +14,8 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&#x22; /&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.7/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.7/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.40/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -59,7 +59,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.25/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.26/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -126,7 +126,10 @@ const statesWithFlags = [
   {&#x27;name&#x27;: &#x27;Connecticut&#x27;, &#x27;flag&#x27;: &#x27;9/96/Flag_of_Connecticut.svg/39px-Flag_of_Connecticut.svg.png&#x27;},
   {&#x27;name&#x27;: &#x27;Delaware&#x27;, &#x27;flag&#x27;: &#x27;c/c6/Flag_of_Delaware.svg/45px-Flag_of_Delaware.svg.png&#x27;},
   {&#x27;name&#x27;: &#x27;Florida&#x27;, &#x27;flag&#x27;: &#x27;f/f7/Flag_of_Florida.svg/45px-Flag_of_Florida.svg.png&#x27;},
-  {&#x27;name&#x27;: &#x27;Georgia&#x27;, &#x27;flag&#x27;: &#x27;5/54/Flag_of_Georgia_%28U.S._state%29.svg/46px-Flag_of_Georgia_%28U.S._state%29.svg.png&#x27;},
+  {
+    &#x27;name&#x27;: &#x27;Georgia&#x27;,
+    &#x27;flag&#x27;: &#x27;5/54/Flag_of_Georgia_%28U.S._state%29.svg/46px-Flag_of_Georgia_%28U.S._state%29.svg.png&#x27;
+  },
   {&#x27;name&#x27;: &#x27;Hawaii&#x27;, &#x27;flag&#x27;: &#x27;e/ef/Flag_of_Hawaii.svg/46px-Flag_of_Hawaii.svg.png&#x27;},
   {&#x27;name&#x27;: &#x27;Idaho&#x27;, &#x27;flag&#x27;: &#x27;a/a4/Flag_of_Idaho.svg/38px-Flag_of_Idaho.svg.png&#x27;},
   {&#x27;name&#x27;: &#x27;Illinois&#x27;, &#x27;flag&#x27;: &#x27;0/01/Flag_of_Illinois.svg/46px-Flag_of_Illinois.svg.png&#x27;},
@@ -181,9 +184,10 @@ export class NgbdTypeaheadTemplate {
     text$
       .debounceTime(200)
       .map(term =&#x3E; term === &#x27;&#x27; ? []
-        : statesWithFlags.filter(v =&#x3E; new RegExp(term, &#x27;gi&#x27;).test(v.name)).slice(0, 10));
+        : statesWithFlags.filter(v =&#x3E; v.name.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1).slice(0, 10));
 
   formatter = (x: {name: string}) =&#x3E; x.name;
+
 }
 ">
     <input type="hidden" name="files[src/typeahead-template.html]" value="&#x3C;p&#x3E;A typeahead example that uses custom template for results display and uses object as a model&#x3C;/p&#x3E;
