@@ -14,6 +14,7 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -59,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.26/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.27/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -115,11 +116,11 @@ export class AppModule {}
 import {NgbDatepickerI18n} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
 const I18N_VALUES = {
-  en: {
+  &#x27;en&#x27;: {
     weekdays: [&#x27;Mo&#x27;, &#x27;Tu&#x27;, &#x27;We&#x27;, &#x27;Th&#x27;, &#x27;Fr&#x27;, &#x27;Sa&#x27;, &#x27;Su&#x27;],
     months: [&#x27;Jan&#x27;, &#x27;Feb&#x27;, &#x27;Mar&#x27;, &#x27;Apr&#x27;, &#x27;May&#x27;, &#x27;Jun&#x27;, &#x27;Jul&#x27;, &#x27;Aug&#x27;, &#x27;Sep&#x27;, &#x27;Oct&#x27;, &#x27;Nov&#x27;, &#x27;Dec&#x27;],
   },
-  fr: {
+  &#x27;fr&#x27;: {
     weekdays: [&#x27;Lu&#x27;, &#x27;Ma&#x27;, &#x27;Me&#x27;, &#x27;Je&#x27;, &#x27;Ve&#x27;, &#x27;Sa&#x27;, &#x27;Di&#x27;],
     months: [&#x27;Jan&#x27;, &#x27;F&#xE9;v&#x27;, &#x27;Mar&#x27;, &#x27;Avr&#x27;, &#x27;Mai&#x27;, &#x27;Juin&#x27;, &#x27;Juil&#x27;, &#x27;Aou&#x27;, &#x27;Sep&#x27;, &#x27;Oct&#x27;, &#x27;Nov&#x27;, &#x27;D&#xE9;c&#x27;],
   }

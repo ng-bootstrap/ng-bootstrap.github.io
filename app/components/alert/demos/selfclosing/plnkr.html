@@ -14,6 +14,7 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -59,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.26/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.27/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -113,7 +114,7 @@ export class AppModule {}
 ">
     <input type="hidden" name="files[src/alert-selfclosing.ts]" value="import {Component, OnInit} from &#x27;@angular/core&#x27;;
 import {Subject} from &#x27;rxjs/Subject&#x27;;
-import &#x27;rxjs/add/operator/debounceTime&#x27;;
+import {debounceTime} from &#x27;rxjs/operator/debounceTime&#x27;;
 
 @Component({
   selector: &#x27;ngbd-alert-selfclosing&#x27;,
@@ -129,7 +130,7 @@ export class NgbdAlertSelfclosing implements OnInit {
     setTimeout(() =&#x3E; this.staticAlertClosed = true, 20000);
 
     this._success.subscribe((message) =&#x3E; this.successMessage = message);
-    this._success.debounceTime(5000).subscribe(() =&#x3E; this.successMessage = null);
+    debounceTime.call(this._success, 5000).subscribe(() =&#x3E; this.successMessage = null);
   }
 
   public changeSuccessMessage() {

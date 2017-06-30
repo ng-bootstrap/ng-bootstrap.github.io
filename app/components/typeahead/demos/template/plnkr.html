@@ -14,6 +14,7 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -59,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.26/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.27/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -113,8 +114,8 @@ export class AppModule {}
 ">
     <input type="hidden" name="files[src/typeahead-template.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
 import {Observable} from &#x27;rxjs/Observable&#x27;;
-import &#x27;rxjs/add/operator/debounceTime&#x27;;
-import &#x27;rxjs/add/operator/map&#x27;;
+import {map} from &#x27;rxjs/operator/map&#x27;;
+import {debounceTime} from &#x27;rxjs/operator/debounceTime&#x27;;
 
 const statesWithFlags = [
   {&#x27;name&#x27;: &#x27;Alabama&#x27;, &#x27;flag&#x27;: &#x27;5/5c/Flag_of_Alabama.svg/45px-Flag_of_Alabama.svg.png&#x27;},
@@ -181,10 +182,8 @@ export class NgbdTypeaheadTemplate {
   public model: any;
 
   search = (text$: Observable&#x3C;string&#x3E;) =&#x3E;
-    text$
-      .debounceTime(200)
-      .map(term =&#x3E; term === &#x27;&#x27; ? []
-        : statesWithFlags.filter(v =&#x3E; v.name.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1).slice(0, 10));
+    map.call(debounceTime.call(text$, 200),
+      term =&#x3E; term === &#x27;&#x27; ? [] : statesWithFlags.filter(v =&#x3E; v.name.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1).slice(0, 10));
 
   formatter = (x: {name: string}) =&#x3E; x.name;
 
@@ -193,7 +192,7 @@ export class NgbdTypeaheadTemplate {
     <input type="hidden" name="files[src/typeahead-template.html]" value="&#x3C;p&#x3E;A typeahead example that uses custom template for results display and uses object as a model&#x3C;/p&#x3E;
 
 &#x3C;ng-template #rt let-r=&#x22;result&#x22; let-t=&#x22;term&#x22;&#x3E;
-  &#x3C;img [src]=&#x22;&#x27;https://upload.wikimedia.org/wikipedia/commons/thumb/&#x27; + r.flag&#x22; width=&#x22;16&#x22;&#x3E;
+  &#x3C;img [src]=&#x22;&#x27;https://upload.wikimedia.org/wikipedia/commons/thumb/&#x27; + r[&#x27;flag&#x27;]&#x22; width=&#x22;16&#x22;&#x3E;
   {{ r.name}}
 &#x3C;/ng-template&#x3E;
 

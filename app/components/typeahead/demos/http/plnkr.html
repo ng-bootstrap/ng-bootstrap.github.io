@@ -14,6 +14,7 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -59,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.26/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.27/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -114,13 +115,14 @@ export class AppModule {}
     <input type="hidden" name="files[src/typeahead-http.ts]" value="import {Component, Injectable} from &#x27;@angular/core&#x27;;
 import {Jsonp, URLSearchParams} from &#x27;@angular/http&#x27;;
 import {Observable} from &#x27;rxjs/Observable&#x27;;
-import &#x27;rxjs/add/observable/of&#x27;;
-import &#x27;rxjs/add/operator/catch&#x27;;
-import &#x27;rxjs/add/operator/debounceTime&#x27;;
-import &#x27;rxjs/add/operator/distinctUntilChanged&#x27;;
-import &#x27;rxjs/add/operator/do&#x27;;
-import &#x27;rxjs/add/operator/map&#x27;;
-import &#x27;rxjs/add/operator/switchMap&#x27;;
+import {map} from &#x27;rxjs/operator/map&#x27;;
+import {debounceTime} from &#x27;rxjs/operator/debounceTime&#x27;;
+import {distinctUntilChanged} from &#x27;rxjs/operator/distinctUntilChanged&#x27;;
+import {_catch} from &#x27;rxjs/operator/catch&#x27;;
+import {_do} from &#x27;rxjs/operator/do&#x27;;
+import {switchMap} from &#x27;rxjs/operator/switchMap&#x27;;
+import {of} from &#x27;rxjs/observable/of&#x27;;
+
 
 @Injectable()
 export class WikipediaService {
@@ -128,7 +130,7 @@ export class WikipediaService {
 
   search(term: string) {
     if (term === &#x27;&#x27;) {
-      return Observable.of([]);
+      return of.call([]);
     }
 
     let wikiUrl = &#x27;https://en.wikipedia.org/w/api.php&#x27;;
@@ -138,9 +140,8 @@ export class WikipediaService {
     params.set(&#x27;format&#x27;, &#x27;json&#x27;);
     params.set(&#x27;callback&#x27;, &#x27;JSONP_CALLBACK&#x27;);
 
-    return this._jsonp
-      .get(wikiUrl, {search: params})
-      .map(response =&#x3E; &#x3C;string[]&#x3E; response.json()[1]);
+    return map.call(this._jsonp.get(wikiUrl, {search: params}),
+      response =&#x3E; &#x3C;string[]&#x3E; response.json()[1]);
   }
 }
 
@@ -158,18 +159,22 @@ export class NgbdTypeaheadHttp {
   constructor(private _service: WikipediaService) {}
 
   search = (text$: Observable&#x3C;string&#x3E;) =&#x3E;
-    text$
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .do(() =&#x3E; this.searching = true)
-      .switchMap(term =&#x3E;
-        this._service.search(term)
-            .do(() =&#x3E; this.searchFailed = false)
-            .catch(() =&#x3E; {
+    _do.call(
+      switchMap.call(
+        _do.call(
+          distinctUntilChanged.call(
+            debounceTime.call(text$, 300)),
+          () =&#x3E; this.searching = true),
+        term =&#x3E;
+          _catch.call(
+            _do.call(this._service.search(term), () =&#x3E; this.searchFailed = false),
+            () =&#x3E; {
               this.searchFailed = true;
-              return Observable.of([]);
-            }))
-      .do(() =&#x3E; this.searching = false);
+              return of.call([]);
+            }
+          )
+      ),
+      () =&#x3E; this.searching = false);
 }
 ">
     <input type="hidden" name="files[src/typeahead-http.html]" value="A typeahead example that gets values from the &#x3C;code&#x3E;WikipediaService&#x3C;/code&#x3E;
