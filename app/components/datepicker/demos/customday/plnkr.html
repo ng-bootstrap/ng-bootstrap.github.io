@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.27/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.28/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -126,7 +126,7 @@ import {NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
       display: inline-block;
       width: 2rem;
     }
-    .custom-day:hover {
+    .custom-day:hover, .custom-day.focused {
       background-color: #e6e6e6;
     }
     .weekend {
@@ -166,8 +166,8 @@ export class NgbdDatepickerCustomday {
   &#x3C;/div&#x3E;
 &#x3C;/form&#x3E;
 
-&#x3C;ng-template #customDay let-date=&#x22;date&#x22; let-currentMonth=&#x22;currentMonth&#x22; let-selected=&#x22;selected&#x22; let-disabled=&#x22;disabled&#x22;&#x3E;
-  &#x3C;span class=&#x22;custom-day&#x22; [class.weekend]=&#x22;isWeekend(date)&#x22;
+&#x3C;ng-template #customDay let-date=&#x22;date&#x22; let-currentMonth=&#x22;currentMonth&#x22; let-selected=&#x22;selected&#x22; let-disabled=&#x22;disabled&#x22; let-focused=&#x22;focused&#x22;&#x3E;
+  &#x3C;span class=&#x22;custom-day&#x22; [class.weekend]=&#x22;isWeekend(date)&#x22; [class.focused]=&#x22;focused&#x22;
         [class.bg-primary]=&#x22;selected&#x22; [class.hidden]=&#x22;date.month !== currentMonth&#x22; [class.text-muted]=&#x22;disabled&#x22;&#x3E;
     {{ date.day }}
   &#x3C;/span&#x3E;
