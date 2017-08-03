@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.29/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.30/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -114,9 +114,9 @@ export class AppModule {}
 ">
     <input type="hidden" name="files[src/typeahead-format.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
 import {Observable} from &#x27;rxjs/Observable&#x27;;
-import {map} from &#x27;rxjs/operator/map&#x27;;
-import {debounceTime} from &#x27;rxjs/operator/debounceTime&#x27;;
-import {distinctUntilChanged} from &#x27;rxjs/operator/distinctUntilChanged&#x27;;
+import &#x27;rxjs/add/operator/map&#x27;;
+import &#x27;rxjs/add/operator/debounceTime&#x27;;
+import &#x27;rxjs/add/operator/distinctUntilChanged&#x27;;
 
 const states = [&#x27;Alabama&#x27;, &#x27;Alaska&#x27;, &#x27;American Samoa&#x27;, &#x27;Arizona&#x27;, &#x27;Arkansas&#x27;, &#x27;California&#x27;, &#x27;Colorado&#x27;,
   &#x27;Connecticut&#x27;, &#x27;Delaware&#x27;, &#x27;District Of Columbia&#x27;, &#x27;Federated States Of Micronesia&#x27;, &#x27;Florida&#x27;, &#x27;Georgia&#x27;,
@@ -138,8 +138,12 @@ export class NgbdTypeaheadFormat {
   formatter = (result: string) =&#x3E; result.toUpperCase();
 
   search = (text$: Observable&#x3C;string&#x3E;) =&#x3E;
-    map.call(distinctUntilChanged.call(debounceTime.call(text$, 200)),
-      term =&#x3E; term === &#x27;&#x27; ? [] : states.filter(v =&#x3E; v.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1).slice(0, 10));
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term =&#x3E; term === &#x27;&#x27; ? []
+        : states.filter(v =&#x3E; v.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1).slice(0, 10));
+
 }
 ">
     <input type="hidden" name="files[src/typeahead-format.html]" value="&#x3C;p&#x3E;A typeahead example that uses a formatter function for string results&#x3C;/p&#x3E;

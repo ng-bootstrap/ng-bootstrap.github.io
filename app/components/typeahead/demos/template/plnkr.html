@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.29/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.30/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -114,8 +114,8 @@ export class AppModule {}
 ">
     <input type="hidden" name="files[src/typeahead-template.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
 import {Observable} from &#x27;rxjs/Observable&#x27;;
-import {map} from &#x27;rxjs/operator/map&#x27;;
-import {debounceTime} from &#x27;rxjs/operator/debounceTime&#x27;;
+import &#x27;rxjs/add/operator/debounceTime&#x27;;
+import &#x27;rxjs/add/operator/map&#x27;;
 
 const statesWithFlags = [
   {&#x27;name&#x27;: &#x27;Alabama&#x27;, &#x27;flag&#x27;: &#x27;5/5c/Flag_of_Alabama.svg/45px-Flag_of_Alabama.svg.png&#x27;},
@@ -182,8 +182,10 @@ export class NgbdTypeaheadTemplate {
   public model: any;
 
   search = (text$: Observable&#x3C;string&#x3E;) =&#x3E;
-    map.call(debounceTime.call(text$, 200),
-      term =&#x3E; term === &#x27;&#x27; ? [] : statesWithFlags.filter(v =&#x3E; v.name.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1).slice(0, 10));
+    text$
+      .debounceTime(200)
+      .map(term =&#x3E; term === &#x27;&#x27; ? []
+        : statesWithFlags.filter(v =&#x3E; v.name.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1).slice(0, 10));
 
   formatter = (x: {name: string}) =&#x3E; x.name;
 

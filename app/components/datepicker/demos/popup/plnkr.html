@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.29/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.30/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -127,9 +127,9 @@ export class NgbdDatepickerPopup {
     &#x3C;div class=&#x22;input-group&#x22;&#x3E;
       &#x3C;input class=&#x22;form-control&#x22; placeholder=&#x22;yyyy-mm-dd&#x22;
              name=&#x22;dp&#x22; [(ngModel)]=&#x22;model&#x22; ngbDatepicker #d=&#x22;ngbDatepicker&#x22;&#x3E;
-      &#x3C;div class=&#x22;input-group-addon&#x22; (click)=&#x22;d.toggle()&#x22; &#x3E;
+      &#x3C;button class=&#x22;input-group-addon&#x22; (click)=&#x22;d.toggle()&#x22; type=&#x22;button&#x22;&#x3E;
         &#x3C;img src=&#x22;img/calendar-icon.svg&#x22; style=&#x22;width: 1.2rem; height: 1rem; cursor: pointer;&#x22;/&#x3E;
-      &#x3C;/div&#x3E;
+      &#x3C;/button&#x3E;
     &#x3C;/div&#x3E;
   &#x3C;/div&#x3E;
 &#x3C;/form&#x3E;
