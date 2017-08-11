@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.30/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.31/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -122,6 +122,7 @@ import &#x27;rxjs/add/operator/distinctUntilChanged&#x27;;
 import &#x27;rxjs/add/operator/do&#x27;;
 import &#x27;rxjs/add/operator/map&#x27;;
 import &#x27;rxjs/add/operator/switchMap&#x27;;
+import &#x27;rxjs/add/operator/merge&#x27;;
 
 @Injectable()
 export class WikipediaService {
@@ -155,6 +156,7 @@ export class NgbdTypeaheadHttp {
   model: any;
   searching = false;
   searchFailed = false;
+  hideSearchingWhenUnsubscribed = new Observable(() =&#x3E; () =&#x3E; this.searching = false);
 
   constructor(private _service: WikipediaService) {}
 
@@ -170,7 +172,8 @@ export class NgbdTypeaheadHttp {
             this.searchFailed = true;
             return Observable.of([]);
           }))
-      .do(() =&#x3E; this.searching = false);
+      .do(() =&#x3E; this.searching = false)
+      .merge(this.hideSearchingWhenUnsubscribed);
 }
 ">
     <input type="hidden" name="files[src/typeahead-http.html]" value="A typeahead example that gets values from the &#x3C;code&#x3E;WikipediaService&#x3C;/code&#x3E;
