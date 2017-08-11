@@ -13,7 +13,7 @@
   &#x3C;head&#x3E;
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
-    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css&#x22; /&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-alpha.31/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.1/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -186,11 +186,11 @@ export class NgbdTypeaheadHttp {
   &#x3C;li&#x3E;&#x3C;code&#x3E;catch&#x3C;/code&#x3E; operator to display an error message in case of connectivity issue&#x3C;/li&#x3E;
 &#x3C;/ul&#x3E;
 
-&#x3C;div class=&#x22;form-group&#x22; [class.has-danger]=&#x22;searchFailed&#x22;&#x3E;
+&#x3C;div class=&#x22;form-group&#x22;&#x3E;
   &#x3C;label for=&#x22;typeahead-http&#x22;&#x3E;Search for a wiki page:&#x3C;/label&#x3E;
-  &#x3C;input id=&#x22;typeahead-http&#x22; type=&#x22;text&#x22; class=&#x22;form-control&#x22; [(ngModel)]=&#x22;model&#x22; [ngbTypeahead]=&#x22;search&#x22; placeholder=&#x22;Wikipedia search&#x22; /&#x3E;
+  &#x3C;input id=&#x22;typeahead-http&#x22; type=&#x22;text&#x22; class=&#x22;form-control&#x22; [class.is-invalid]=&#x22;searchFailed&#x22; [(ngModel)]=&#x22;model&#x22; [ngbTypeahead]=&#x22;search&#x22; placeholder=&#x22;Wikipedia search&#x22; /&#x3E;
   &#x3C;span *ngIf=&#x22;searching&#x22;&#x3E;searching...&#x3C;/span&#x3E;
-  &#x3C;div class=&#x22;form-control-feedback&#x22; *ngIf=&#x22;searchFailed&#x22;&#x3E;Sorry, suggestions could not be loaded.&#x3C;/div&#x3E;
+  &#x3C;div class=&#x22;invalid-feedback&#x22; *ngIf=&#x22;searchFailed&#x22;&#x3E;Sorry, suggestions could not be loaded.&#x3C;/div&#x3E;
 &#x3C;/div&#x3E;
 
 &#x3C;hr&#x3E;
