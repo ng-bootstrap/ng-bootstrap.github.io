@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.1/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.2/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -123,7 +123,7 @@ import {NgbDropdownConfig} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 export class NgbdDropdownConfig {
   constructor(config: NgbDropdownConfig) {
     // customize default values of dropdowns used by this component tree
-    config.up = true;
+    config.placement = &#x27;top-left&#x27;;
     config.autoClose = false;
   }
 }
