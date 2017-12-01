@@ -13,7 +13,7 @@
   &#x3C;head&#x3E;
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
-    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css&#x22; /&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.5/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.6/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -125,6 +125,12 @@ export class AppModule {}
     .filled {
       color: #1e90ff;
     }
+    .bad {
+      color: #deb0b0;
+    }
+    .filled.bad {
+      color: #ff1e1e;
+    }
   &#x60;]
 })
 export class NgbdRatingTemplate {
@@ -134,8 +140,8 @@ export class NgbdRatingTemplate {
     <input type="hidden" name="files[src/rating-template.html]" value="&#x3C;p&#x3E;Custom rating template provided as child element&#x3C;/p&#x3E;
 
 &#x3C;ngb-rating [(rate)]=&#x22;currentRate&#x22;&#x3E;
-  &#x3C;ng-template let-fill=&#x22;fill&#x22;&#x3E;
-    &#x3C;span class=&#x22;star&#x22; [class.filled]=&#x22;fill === 100&#x22;&#x3E;&#x26;#9733;&#x3C;/span&#x3E;
+  &#x3C;ng-template let-fill=&#x22;fill&#x22; let-index=&#x22;index&#x22;&#x3E;
+    &#x3C;span class=&#x22;star&#x22; [class.filled]=&#x22;fill === 100&#x22; [class.bad]=&#x22;index &#x3C; 3&#x22;&#x3E;&#x26;#9733;&#x3C;/span&#x3E;
   &#x3C;/ng-template&#x3E;
 &#x3C;/ngb-rating&#x3E;
 &#x3C;hr&#x3E;

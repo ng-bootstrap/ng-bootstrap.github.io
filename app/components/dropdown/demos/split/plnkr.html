@@ -13,7 +13,7 @@
   &#x3C;head&#x3E;
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
-    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css&#x22; /&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -60,7 +60,7 @@
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.5/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.6/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -123,24 +123,46 @@ export class NgbdDropdownSplit {
 ">
     <input type="hidden" name="files[src/dropdown-split.html]" value="&#x3C;p&#x3E;Bootstrap split buttons and dropdowns on button groups are supported with the existing dropdown directives.&#x3C;/p&#x3E;
 
-&#x3C;div class=&#x22;btn-group&#x22; ngbDropdown&#x3E;
+&#x3C;div class=&#x22;btn-group&#x22;&#x3E;
   &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-success&#x22;&#x3E;Plain ol&#x27; button&#x3C;/button&#x3E;
-  &#x3C;button class=&#x22;btn btn-outline-primary&#x22; ngbDropdownToggle&#x3E;Drop me&#x3C;/button&#x3E;
-  &#x3C;div class=&#x22;dropdown-menu&#x22; ngbDropdownMenu&#x3E;
-    &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;One&#x3C;/button&#x3E;
-    &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Two&#x3C;/button&#x3E;
-    &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Four!&#x3C;/button&#x3E;
+  &#x3C;div class=&#x22;btn-group&#x22; ngbDropdown role=&#x22;group&#x22; aria-label=&#x22;Button group with nested dropdown&#x22;&#x3E;
+    &#x3C;button class=&#x22;btn btn-outline-primary&#x22; ngbDropdownToggle&#x3E;Drop me&#x3C;/button&#x3E;
+    &#x3C;div class=&#x22;dropdown-menu&#x22; ngbDropdownMenu&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;One&#x3C;/button&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Two&#x3C;/button&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Four!&#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
   &#x3C;/div&#x3E;
 &#x3C;/div&#x3E;
 
-
-&#x3C;div class=&#x22;btn-group&#x22; ngbDropdown&#x3E;
+&#x3C;div class=&#x22;btn-group&#x22;&#x3E;
   &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-primary&#x22;&#x3E;Split me&#x3C;/button&#x3E;
-  &#x3C;button class=&#x22;btn btn-primary dropdown-toggle-split&#x22; ngbDropdownToggle&#x3E;&#x3C;/button&#x3E;
-  &#x3C;div class=&#x22;dropdown-menu&#x22; ngbDropdownMenu&#x3E;
-    &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;One&#x3C;/button&#x3E;
-    &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Two&#x3C;/button&#x3E;
-    &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Four!&#x3C;/button&#x3E;
+  &#x3C;div class=&#x22;btn-group&#x22; ngbDropdown role=&#x22;group&#x22; aria-label=&#x22;Button group with nested dropdown&#x22;&#x3E;
+    &#x3C;button class=&#x22;btn btn-primary dropdown-toggle-split&#x22; ngbDropdownToggle&#x3E;&#x3C;/button&#x3E;
+    &#x3C;div class=&#x22;dropdown-menu&#x22; ngbDropdownMenu&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;One&#x3C;/button&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Two&#x3C;/button&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Four!&#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+
+&#x3C;div class=&#x22;btn-group&#x22;&#x3E;
+  &#x3C;div class=&#x22;btn-group&#x22; ngbDropdown role=&#x22;group&#x22; aria-label=&#x22;Button group with nested dropdown&#x22;&#x3E;
+    &#x3C;button class=&#x22;btn btn-outline-danger dropdown-toggle-split&#x22; ngbDropdownToggle&#x3E;Select me&#x3C;/button&#x3E;
+    &#x3C;div class=&#x22;dropdown-menu&#x22; ngbDropdownMenu&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;One&#x3C;/button&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Two&#x3C;/button&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Four!&#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+  &#x3C;div class=&#x22;btn-group&#x22; ngbDropdown role=&#x22;group&#x22; aria-label=&#x22;Button group with nested dropdown&#x22;&#x3E;
+    &#x3C;button class=&#x22;btn btn-outline-success dropdown-toggle-split&#x22; ngbDropdownToggle&#x3E;Or me&#x3C;/button&#x3E;
+    &#x3C;div class=&#x22;dropdown-menu&#x22; ngbDropdownMenu&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;One&#x3C;/button&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Two&#x3C;/button&#x3E;
+      &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Four!&#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
   &#x3C;/div&#x3E;
 &#x3C;/div&#x3E;
 ">
