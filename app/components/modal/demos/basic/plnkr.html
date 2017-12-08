@@ -41,6 +41,11 @@
   typescriptOptions: {
     emitDecoratorMetadata: true
   },
+  meta: {
+    &#x27;typescript&#x27;: {
+      &#x22;exports&#x22;: &#x22;ts&#x22;
+    }
+  },  
   paths: {
     &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
   },
@@ -50,6 +55,7 @@
 
     &#x27;@angular/core&#x27;: &#x27;npm:@angular/core@&#x27; + ver.ng + &#x27;/bundles/core.umd.js&#x27;,
     &#x27;@angular/common&#x27;: &#x27;npm:@angular/common@&#x27; + ver.ng + &#x27;/bundles/common.umd.js&#x27;,
+    &#x27;@angular/common/http&#x27;: &#x27;npm:@angular/common@&#x27; + ver.ng + &#x27;/bundles/common-http.umd.js&#x27;,
     &#x27;@angular/compiler&#x27;: &#x27;npm:@angular/compiler@&#x27; + ver.ng + &#x27;/bundles/compiler.umd.js&#x27;,
     &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser@&#x27; + ver.ng + &#x27;/bundles/platform-browser.umd.js&#x27;,
     &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic@&#x27; + ver.ng + &#x27;/bundles/platform-browser-dynamic.umd.js&#x27;,
@@ -58,6 +64,8 @@
     &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@&#x27; + ver.ng + &#x27;/bundles/forms.umd.js&#x27;,
 
     &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.5.2&#x27;,
+    &#x27;rxjs/operators&#x27;: &#x27;npm:rxjs@^5.5.2/operators/index.js&#x27;,
+    &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
 
     &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.7/bundles/ng-bootstrap.js&#x27;
@@ -82,7 +90,7 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 import { Component, NgModule } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
 import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
-import { JsonpModule } from &#x27;@angular/http&#x27;;
+import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 import { NgbModule } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 import { NgbdModalBasic } from &#x27;./modal-basic&#x27;;
 
@@ -106,7 +114,7 @@ export class App {
 }   
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, JsonpModule, NgbModule.forRoot()], 
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule.forRoot()], 
   declarations: [App, NgbdModalBasic]
   bootstrap: [App]
 }) 
