@@ -31,7 +31,7 @@
 
 &#x3C;/html&#x3E;">
     <input type="hidden" name="files[config.js]" value="var ver = {
-    ng: &#x27;4.0.3&#x27;
+    ng: &#x27;5.0.2&#x27;
   };
   
   System.config({
@@ -57,10 +57,10 @@
     &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@&#x27; + ver.ng + &#x27;/bundles/router.umd.js&#x27;,
     &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@&#x27; + ver.ng + &#x27;/bundles/forms.umd.js&#x27;,
 
-    &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.0.1&#x27;,
-    &#x27;typescript&#x27;: &#x27;npm:typescript@2.1.5/lib/typescript.js&#x27;,
+    &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.5.2&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.6/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.7/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -113,7 +113,7 @@ export class App {
 export class AppModule {}
 ">
     <input type="hidden" name="files[src/typeahead-http.ts]" value="import {Component, Injectable} from &#x27;@angular/core&#x27;;
-import {Jsonp, URLSearchParams} from &#x27;@angular/http&#x27;;
+import {HttpClient, HttpParams} from &#x27;@angular/common/http&#x27;;
 import {Observable} from &#x27;rxjs/Observable&#x27;;
 import &#x27;rxjs/add/observable/of&#x27;;
 import &#x27;rxjs/add/operator/catch&#x27;;
@@ -124,25 +124,27 @@ import &#x27;rxjs/add/operator/map&#x27;;
 import &#x27;rxjs/add/operator/switchMap&#x27;;
 import &#x27;rxjs/add/operator/merge&#x27;;
 
+const WIKI_URL = &#x27;https://en.wikipedia.org/w/api.php&#x27;;
+const PARAMS = new HttpParams({
+  fromObject: {
+    action: &#x27;opensearch&#x27;,
+    format: &#x27;json&#x27;,
+    origin: &#x27;*&#x27;
+  }
+});
+
 @Injectable()
 export class WikipediaService {
-  constructor(private _jsonp: Jsonp) {}
+  constructor(private http: HttpClient) {}
 
   search(term: string) {
     if (term === &#x27;&#x27;) {
       return Observable.of([]);
     }
 
-    let wikiUrl = &#x27;https://en.wikipedia.org/w/api.php&#x27;;
-    let params = new URLSearchParams();
-    params.set(&#x27;search&#x27;, term);
-    params.set(&#x27;action&#x27;, &#x27;opensearch&#x27;);
-    params.set(&#x27;format&#x27;, &#x27;json&#x27;);
-    params.set(&#x27;callback&#x27;, &#x27;JSONP_CALLBACK&#x27;);
-
-    return this._jsonp
-      .get(wikiUrl, {search: params})
-      .map(response =&#x3E; &#x3C;string[]&#x3E; response.json()[1]);
+    return this.http
+      .get(WIKI_URL, {params: PARAMS.set(&#x27;search&#x27;, term)})
+      .map(response =&#x3E; response[1]);
   }
 }
 
