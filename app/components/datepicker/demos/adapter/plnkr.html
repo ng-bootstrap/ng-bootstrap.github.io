@@ -68,7 +68,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.7/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.8/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -123,21 +123,19 @@ export class AppModule {}
     <input type="hidden" name="files[src/datepicker-adapter.ts]" value="import {Component, Injectable} from &#x27;@angular/core&#x27;;
 import {NgbDateAdapter, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
-const now = new Date();
-
 /**
  * Example of a Native Date adapter
  */
 @Injectable()
 export class NgbDateNativeAdapter extends NgbDateAdapter&#x3C;Date&#x3E; {
 
-    fromModel(date: Date): NgbDateStruct {
-        return date ? {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate() || 1} : null;
-    }
+  fromModel(date: Date): NgbDateStruct {
+    return (date &#x26;&#x26; date.getFullYear) ? {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()} : null;
+  }
 
-    toModel(date: NgbDateStruct): Date {
-        return date ? new Date(date.year, date.month - 1, date.day, 0, 0, 0) : null;
-    }
+  toModel(date: NgbDateStruct): Date {
+    return date ? new Date(Date.UTC(date.year, date.month - 1, date.day)) : null;
+  }
 }
 
 @Component({
@@ -150,29 +148,52 @@ export class NgbDateNativeAdapter extends NgbDateAdapter&#x3C;Date&#x3E; {
 })
 export class NgbdDatepickerAdapter {
 
-  model: Date;
-  date: {year: number, month: number};
+  model1: Date;
+  model2: Date;
 
-  selectToday() {
-    this.model = now;
+  get today() {
+    return new Date();
   }
 }
 ">
-    <input type="hidden" name="files[src/datepicker-adapter.html]" value="&#x3C;p&#x3E;This datepicker uses a custom Date adapter that let you use your own model implementation.
-In the example we are converting from and to a JS native Date object&#x3C;/p&#x3E;
+    <input type="hidden" name="files[src/datepicker-adapter.html]" value="&#x3C;p&#x3E;These datepickers use custom Date adapter that lets you use your own model implementation.
+In this example we are converting from and to a JS native Date object&#x3C;/p&#x3E;
 
-&#x3C;ngb-datepicker #dp [(ngModel)]=&#x22;model&#x22; (navigate)=&#x22;date = $event.next&#x22;&#x3E;&#x3C;/ngb-datepicker&#x3E;
+&#x3C;div class=&#x22;row&#x22;&#x3E;
+  &#x3C;div class=&#x22;col-6&#x22;&#x3E;
+    &#x3C;ngb-datepicker #d1 [(ngModel)]=&#x22;model1&#x22; #c1=&#x22;ngModel&#x22;&#x3E;&#x3C;/ngb-datepicker&#x3E;
 
-&#x3C;hr/&#x3E;
+    &#x3C;hr/&#x3E;
+    &#x3C;button class=&#x22;btn btn-sm btn-outline-primary&#x22; (click)=&#x22;model1 = today&#x22;&#x3E;Select Today&#x3C;/button&#x3E;
+    &#x3C;hr/&#x3E;
 
-&#x3C;button class=&#x22;btn btn-sm btn-outline-primary&#x22; (click)=&#x22;selectToday()&#x22;&#x3E;Select Today&#x3C;/button&#x3E;
-&#x3C;button class=&#x22;btn btn-sm btn-outline-primary&#x22; (click)=&#x22;dp.navigateTo()&#x22;&#x3E;To current month&#x3C;/button&#x3E;
-&#x3C;button class=&#x22;btn btn-sm btn-outline-primary&#x22; (click)=&#x22;dp.navigateTo({year: 2013, month: 2})&#x22;&#x3E;To Feb 2013&#x3C;/button&#x3E;
+    &#x3C;pre&#x3E;Model: {{ model1 | json }}&#x3C;/pre&#x3E;
+    &#x3C;pre&#x3E;State: {{ c1.status }}&#x3C;/pre&#x3E;
+  &#x3C;/div&#x3E;
 
-&#x3C;hr/&#x3E;
+  &#x3C;div class=&#x22;col-6&#x22;&#x3E;
+    &#x3C;form class=&#x22;form-inline&#x22;&#x3E;
+      &#x3C;div class=&#x22;form-group&#x22;&#x3E;
+        &#x3C;div class=&#x22;input-group&#x22;&#x3E;
+          &#x3C;input class=&#x22;form-control&#x22; placeholder=&#x22;yyyy-mm-dd&#x22;
+                 name=&#x22;d2&#x22; #c2=&#x22;ngModel&#x22; [(ngModel)]=&#x22;model2&#x22; ngbDatepicker #d2=&#x22;ngbDatepicker&#x22;&#x3E;
+          &#x3C;button class=&#x22;input-group-addon&#x22; (click)=&#x22;d2.toggle()&#x22; type=&#x22;button&#x22;&#x3E;
+            &#x3C;img src=&#x22;img/calendar-icon.svg&#x22; style=&#x22;width: 1.2rem; height: 1rem; cursor: pointer;&#x22;/&#x3E;
+          &#x3C;/button&#x3E;
+        &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+    &#x3C;/form&#x3E;
 
-&#x3C;pre&#x3E;Month: {{ date.month }}.{{ date.year }}&#x3C;/pre&#x3E;
-&#x3C;pre&#x3E;Model: {{ model?.toString() }}&#x3C;/pre&#x3E;
+    &#x3C;hr/&#x3E;
+    &#x3C;button class=&#x22;btn btn-sm btn-outline-primary&#x22; (click)=&#x22;model2 = today&#x22;&#x3E;Select Today&#x3C;/button&#x3E;
+    &#x3C;hr/&#x3E;
+
+
+    &#x3C;pre&#x3E;Model: {{ model2 | json }}&#x3C;/pre&#x3E;
+    &#x3C;pre&#x3E;State: {{ c2.status }}&#x3C;/pre&#x3E;
+  &#x3C;/div&#x3E;
+
+&#x3C;/div&#x3E;
 ">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
