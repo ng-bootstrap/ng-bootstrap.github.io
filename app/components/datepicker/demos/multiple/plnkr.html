@@ -13,7 +13,7 @@
   &#x3C;head&#x3E;
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
-    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&#x22; /&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -68,7 +68,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0-beta.9/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.0/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -124,16 +124,24 @@ export class AppModule {}
 
 @Component({
   selector: &#x27;ngbd-datepicker-multiple&#x27;,
-  templateUrl: &#x27;src/datepicker-multiple.html&#x27;
+  templateUrl: &#x27;src/datepicker-multiple.html&#x27;,
+  styles: [&#x60;
+    select.custom-select {
+      margin-right: 0.5rem;
+      width: auto;
+    }
+  &#x60;]
 })
 export class NgbdDatepickerMultiple {
 
   displayMonths = 2;
   navigation = &#x27;select&#x27;;
+  showWeekNumbers = false;
 }
 ">
     <input type="hidden" name="files[src/datepicker-multiple.html]" value="
-&#x3C;ngb-datepicker [displayMonths]=&#x22;displayMonths&#x22; [navigation]=&#x22;navigation&#x22;&#x3E;&#x3C;/ngb-datepicker&#x3E;
+&#x3C;ngb-datepicker [displayMonths]=&#x22;displayMonths&#x22; [navigation]=&#x22;navigation&#x22; [showWeekNumbers]=&#x22;showWeekNumbers&#x22;&#x3E;
+&#x3C;/ngb-datepicker&#x3E;
 
 &#x3C;hr/&#x3E;
 
@@ -141,7 +149,8 @@ export class NgbdDatepickerMultiple {
   &#x3C;div class=&#x22;form-group&#x22;&#x3E;
     &#x3C;div class=&#x22;input-group&#x22;&#x3E;
       &#x3C;input class=&#x22;form-control&#x22; placeholder=&#x22;yyyy-mm-dd&#x22;
-            name=&#x22;dp&#x22; [displayMonths]=&#x22;displayMonths&#x22; [navigation]=&#x22;navigation&#x22; ngbDatepicker #d=&#x22;ngbDatepicker&#x22;&#x3E;
+             name=&#x22;dp&#x22; [displayMonths]=&#x22;displayMonths&#x22; [navigation]=&#x22;navigation&#x22;
+             [showWeekNumbers]=&#x22;showWeekNumbers&#x22; ngbDatepicker #d=&#x22;ngbDatepicker&#x22;&#x3E;
       &#x3C;div class=&#x22;input-group-append&#x22;&#x3E;
         &#x3C;button class=&#x22;btn btn-outline-secondary&#x22; (click)=&#x22;d.toggle()&#x22; type=&#x22;button&#x22;&#x3E;
           &#x3C;img src=&#x22;img/calendar-icon.svg&#x22; style=&#x22;width: 1.2rem; height: 1rem; cursor: pointer;&#x22;/&#x3E;
@@ -153,17 +162,24 @@ export class NgbdDatepickerMultiple {
 
 &#x3C;hr/&#x3E;
 
-&#x3C;select class=&#x22;custom-select&#x22; [(ngModel)]=&#x22;displayMonths&#x22;&#x3E;
-  &#x3C;option [ngValue]=&#x22;1&#x22;&#x3E;One month&#x3C;/option&#x3E;
-  &#x3C;option [ngValue]=&#x22;2&#x22;&#x3E;Two months&#x3C;/option&#x3E;
-  &#x3C;option [ngValue]=&#x22;3&#x22;&#x3E;Three months&#x3C;/option&#x3E;
-&#x3C;/select&#x3E;
+&#x3C;div class=&#x22;d-flex&#x22;&#x3E;
+  &#x3C;select class=&#x22;custom-select&#x22; [(ngModel)]=&#x22;displayMonths&#x22;&#x3E;
+    &#x3C;option [ngValue]=&#x22;1&#x22;&#x3E;One month&#x3C;/option&#x3E;
+    &#x3C;option [ngValue]=&#x22;2&#x22;&#x3E;Two months&#x3C;/option&#x3E;
+    &#x3C;option [ngValue]=&#x22;3&#x22;&#x3E;Three months&#x3C;/option&#x3E;
+  &#x3C;/select&#x3E;
 
-&#x3C;select class=&#x22;custom-select&#x22; [(ngModel)]=&#x22;navigation&#x22;&#x3E;
-  &#x3C;option value=&#x22;none&#x22;&#x3E;Without navigation&#x3C;/option&#x3E;
-  &#x3C;option value=&#x22;select&#x22;&#x3E;With select boxes&#x3C;/option&#x3E;
-  &#x3C;option value=&#x22;arrows&#x22;&#x3E;Without select boxes&#x3C;/option&#x3E;
-&#x3C;/select&#x3E;
+  &#x3C;select class=&#x22;custom-select&#x22; [(ngModel)]=&#x22;navigation&#x22;&#x3E;
+    &#x3C;option value=&#x22;none&#x22;&#x3E;Without navigation&#x3C;/option&#x3E;
+    &#x3C;option value=&#x22;select&#x22;&#x3E;With select boxes&#x3C;/option&#x3E;
+    &#x3C;option value=&#x22;arrows&#x22;&#x3E;Without select boxes&#x3C;/option&#x3E;
+  &#x3C;/select&#x3E;
+
+  &#x3C;select class=&#x22;custom-select&#x22; [(ngModel)]=&#x22;showWeekNumbers&#x22;&#x3E;
+    &#x3C;option [ngValue]=&#x22;true&#x22;&#x3E;Week numbers&#x3C;/option&#x3E;
+    &#x3C;option [ngValue]=&#x22;false&#x22;&#x3E;No week numbers&#x3C;/option&#x3E;
+  &#x3C;/select&#x3E;
+&#x3C;/div&#x3E;
 
 ">
   </form>
