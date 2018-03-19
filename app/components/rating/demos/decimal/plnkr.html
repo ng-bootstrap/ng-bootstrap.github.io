@@ -68,7 +68,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.1/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.2/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -115,7 +115,7 @@ export class App {
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule.forRoot()], 
-  declarations: [App, NgbdRatingDecimal]
+  declarations: [App, NgbdRatingDecimal],
   bootstrap: [App]
 }) 
 export class AppModule {}
@@ -150,9 +150,7 @@ export class NgbdRatingDecimal {
     <input type="hidden" name="files[src/rating-decimal.html]" value="&#x3C;p&#x3E;Custom rating template provided via a variable. Shows fine-grained rating display&#x3C;/p&#x3E;
 
 &#x3C;ng-template #t let-fill=&#x22;fill&#x22;&#x3E;
-  &#x3C;span *ngIf=&#x22;fill === 100&#x22; class=&#x22;star full&#x22;&#x3E;&#x26;hearts;&#x3C;/span&#x3E;
-  &#x3C;span *ngIf=&#x22;fill === 0&#x22; class=&#x22;star&#x22;&#x3E;&#x26;hearts;&#x3C;/span&#x3E;
-  &#x3C;span *ngIf=&#x22;fill &#x3C; 100 &#x26;&#x26; fill &#x3E; 0&#x22; class=&#x22;star&#x22;&#x3E;
+  &#x3C;span class=&#x22;star&#x22; [class.full]=&#x22;fill === 100&#x22;&#x3E;
     &#x3C;span class=&#x22;half&#x22; [style.width.%]=&#x22;fill&#x22;&#x3E;&#x26;hearts;&#x3C;/span&#x3E;&#x26;hearts;
   &#x3C;/span&#x3E;
 &#x3C;/ng-template&#x3E;

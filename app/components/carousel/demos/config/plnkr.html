@@ -68,7 +68,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.1/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.2/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -115,45 +115,62 @@ export class App {
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule.forRoot()], 
-  declarations: [App, NgbdCarouselConfig]
+  declarations: [App, NgbdCarouselConfig],
   bootstrap: [App]
 }) 
 export class AppModule {}
 ">
-    <input type="hidden" name="files[src/carousel-config.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
+    <input type="hidden" name="files[src/carousel-config.ts]" value="import {Component, OnInit} from &#x27;@angular/core&#x27;;
 import {NgbCarouselConfig} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import {map} from &#x27;rxjs/operators&#x27;;
+import {HttpClient} from &#x27;@angular/common/http&#x27;;
 
 @Component({
   selector: &#x27;ngbd-carousel-config&#x27;,
   templateUrl: &#x27;src/carousel-config.html&#x27;,
-  providers: [NgbCarouselConfig] // add NgbCarouselConfig to the component providers
+  providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
 })
-export class NgbdCarouselConfig {
-  constructor(config: NgbCarouselConfig) {
+export class NgbdCarouselConfig implements OnInit {
+  images: Array&#x3C;string&#x3E;;
+
+  constructor(config: NgbCarouselConfig, private _http: HttpClient) {
     // customize default values of carousels used by this component tree
     config.interval = 10000;
     config.wrap = false;
     config.keyboard = false;
   }
+
+  ngOnInit() {
+    this._http.get(&#x27;https://picsum.photos/list&#x27;)
+        .pipe(map((images: Array&#x3C;{id: number}&#x3E;) =&#x3E; this._randomImageUrls(images)))
+        .subscribe(images =&#x3E; this.images = images);
+  }
+
+  private _randomImageUrls(images: Array&#x3C;{id: number}&#x3E;): Array&#x3C;string&#x3E; {
+    return [1, 2, 3].map(() =&#x3E; {
+      const randomId = images[Math.floor(Math.random() * images.length)].id;
+      return &#x60;https://picsum.photos/900/500?image=${randomId}&#x60;;
+    });
+  }
 }
 ">
-    <input type="hidden" name="files[src/carousel-config.html]" value="&#x3C;ngb-carousel&#x3E;
+    <input type="hidden" name="files[src/carousel-config.html]" value="&#x3C;ngb-carousel *ngIf=&#x22;images&#x22;&#x3E;
   &#x3C;ng-template ngbSlide&#x3E;
-    &#x3C;img src=&#x22;https://lorempixel.com/900/500?r=4&#x22; alt=&#x22;Random first slide&#x22;&#x3E;
+    &#x3C;img [src]=&#x22;images[0]&#x22; alt=&#x22;Random first slide&#x22;&#x3E;
     &#x3C;div class=&#x22;carousel-caption&#x22;&#x3E;
       &#x3C;h3&#x3E;10 seconds between slides...&#x3C;/h3&#x3E;
       &#x3C;p&#x3E;This carousel uses customized default values.&#x3C;/p&#x3E;
     &#x3C;/div&#x3E;
   &#x3C;/ng-template&#x3E;
   &#x3C;ng-template ngbSlide&#x3E;
-    &#x3C;img src=&#x22;https://lorempixel.com/900/500?r=5&#x22;  alt=&#x22;Random second slide&#x22;&#x3E;
+    &#x3C;img [src]=&#x22;images[1]&#x22;  alt=&#x22;Random second slide&#x22;&#x3E;
     &#x3C;div class=&#x22;carousel-caption&#x22;&#x3E;
       &#x3C;h3&#x3E;No keyboard...&#x3C;/h3&#x3E;
       &#x3C;p&#x3E;This carousel uses customized default values.&#x3C;/p&#x3E;
     &#x3C;/div&#x3E;
   &#x3C;/ng-template&#x3E;
   &#x3C;ng-template ngbSlide&#x3E;
-    &#x3C;img src=&#x22;https://lorempixel.com/900/500?r=6&#x22; alt=&#x22;Random third slide&#x22;&#x3E;
+    &#x3C;img [src]=&#x22;images[2]&#x22; alt=&#x22;Random third slide&#x22;&#x3E;
     &#x3C;div class=&#x22;carousel-caption&#x22;&#x3E;
       &#x3C;h3&#x3E;And no wrap after last slide.&#x3C;/h3&#x3E;
       &#x3C;p&#x3E;This carousel uses customized default values.&#x3C;/p&#x3E;
