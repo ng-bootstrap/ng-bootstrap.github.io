@@ -68,7 +68,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.4/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.1.0/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -169,7 +169,7 @@ export class NgbdDatepickerRange {
     this.toDate = calendar.getNext(calendar.getToday(), &#x27;d&#x27;, 10);
   }
 
-  onDateChange(date: NgbDateStruct) {
+  onDateSelection(date: NgbDateStruct) {
     if (!this.fromDate &#x26;&#x26; !this.toDate) {
       this.fromDate = date;
     } else if (this.fromDate &#x26;&#x26; !this.toDate &#x26;&#x26; after(date, this.fromDate)) {
@@ -188,7 +188,7 @@ export class NgbdDatepickerRange {
 ">
     <input type="hidden" name="files[src/datepicker-range.html]" value="&#x3C;p&#x3E;Example of the range selection&#x3C;/p&#x3E;
 
-&#x3C;ngb-datepicker #dp ngModel (ngModelChange)=&#x22;onDateChange($event)&#x22; [displayMonths]=&#x22;2&#x22; [dayTemplate]=&#x22;t&#x22;&#x3E;
+&#x3C;ngb-datepicker #dp (select)=&#x22;onDateSelection($event)&#x22; [displayMonths]=&#x22;2&#x22; [dayTemplate]=&#x22;t&#x22;&#x3E;
 &#x3C;/ngb-datepicker&#x3E;
 
 &#x3C;ng-template #t let-date=&#x22;date&#x22; let-focused=&#x22;focused&#x22;&#x3E;

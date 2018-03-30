@@ -68,7 +68,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.0.4/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.1.0/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -132,7 +132,7 @@ export class NgbdDropdownManual {
     <input type="hidden" name="files[src/dropdown-manual.html]" value="&#x3C;p&#x3E;You can easily control dropdowns programmatically using the exported dropdown instance.&#x3C;/p&#x3E;
 
 &#x3C;div class=&#x22;d-inline-block&#x22; ngbDropdown #myDrop=&#x22;ngbDropdown&#x22;&#x3E;
-  &#x3C;button class=&#x22;btn btn-outline-primary&#x22; id=&#x22;dropdownManual&#x22; ngbDropdownToggle&#x3E;Toggle dropdown&#x3C;/button&#x3E;
+  &#x3C;button class=&#x22;btn btn-outline-primary&#x22; id=&#x22;dropdownManual&#x22; ngbDropdownAnchor (focus)=&#x22;myDrop.open()&#x22;&#x3E;Toggle dropdown&#x3C;/button&#x3E;
   &#x3C;div ngbDropdownMenu aria-labelledby=&#x22;dropdownManual&#x22;&#x3E;
     &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Action - 1&#x3C;/button&#x3E;
     &#x3C;button class=&#x22;dropdown-item&#x22;&#x3E;Another Action&#x3C;/button&#x3E;
