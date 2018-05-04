@@ -6,7 +6,7 @@
     <input type="hidden" name="tags[0]" value="Angular">
     <input type="hidden" name="tags[1]" value="Bootstrap">
     <input type="hidden" name="tags[2]" value="ng-bootstrap">
-    <input type="hidden" name="tags[3]" value="Popover">  
+    <input type="hidden" name="tags[3]" value="Popover">
     <input type="hidden" name="files[index.html]" value="&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html&#x3E;
 
@@ -15,8 +15,8 @@
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&#x22; /&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.25/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.25/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.40/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -31,7 +31,7 @@
 
 &#x3C;/html&#x3E;">
     <input type="hidden" name="files[config.js]" value="var ver = {
-    ng: &#x27;5.0.2&#x27;
+    ng: &#x27;6.0.0&#x27;
   };
   
   System.config({
@@ -45,7 +45,7 @@
     &#x27;typescript&#x27;: {
       &#x22;exports&#x22;: &#x22;ts&#x22;
     }
-  },  
+  },
   paths: {
     &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
   },
@@ -63,12 +63,11 @@
     &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@&#x27; + ver.ng + &#x27;/bundles/router.umd.js&#x27;,
     &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@&#x27; + ver.ng + &#x27;/bundles/forms.umd.js&#x27;,
 
-    &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.5.2&#x27;,
-    &#x27;rxjs/operators&#x27;: &#x27;npm:rxjs@^5.5.2/operators/index.js&#x27;,
+    &#x27;rxjs&#x27;: &#x27;npm:rxjs@6.0.0&#x27;,
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
-    &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@1.1.2/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.0.0/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -76,6 +75,11 @@
       defaultExtension: &#x27;ts&#x27;
     },
     rxjs: {
+      main: &#x27;index.js&#x27;,
+      defaultExtension: &#x27;js&#x27;
+    },
+    &#x27;rxjs/operators&#x27;: {
+      main: &#x27;index.js&#x27;,
       defaultExtension: &#x27;js&#x27;
     }
   }
@@ -111,13 +115,13 @@ import { NgbdPopoverContainer } from &#x27;./popover-container&#x27;;
   &#x60;
 })
 export class App {
-}   
+}
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule.forRoot()], 
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule.forRoot()],
   declarations: [App, NgbdPopoverContainer],
   bootstrap: [App]
-}) 
+})
 export class AppModule {}
 ">
     <input type="hidden" name="files[src/popover-container.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
@@ -125,7 +129,7 @@ export class AppModule {}
 @Component({
   selector: &#x27;ngbd-popover-container&#x27;,
   templateUrl: &#x27;src/popover-container.html&#x27;,
-  styles: [&#x27;.card { padding: 50px 0; text-align: center; overflow:hidden }&#x27;]
+  styles: [&#x27;.card { overflow: hidden }&#x27;]
 })
 export class NgbdPopoverContainer {
 }
@@ -134,9 +138,9 @@ export class NgbdPopoverContainer {
 &#x9;Set the &#x3C;code&#x3E;container&#x3C;/code&#x3E; property to &#x22;body&#x22; to have the popover be appended to the body instead of the triggering element&#x27;s parent. This option is useful if the element triggering the popover is inside an element that clips its contents (i.e. &#x3C;code&#x3E;overflow: hidden&#x3C;/code&#x3E;).
 &#x3C;/p&#x3E;
 
-&#x3C;div class=&#x27;row&#x27;&#x3E;
-&#x9;&#x3C;div class=&#x27;card&#x27;&#x3E;
-&#x9;&#x9;&#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary&#x22;
+&#x3C;div class=&#x22;row&#x22;&#x3E;
+&#x9;&#x3C;div class=&#x22;card px-1 py-5&#x22;&#x3E;
+&#x9;&#x9;&#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mb-2&#x22;
 &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;ngbPopover=&#x22;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&#x22;&#x3E;
 &#x9;&#x9;&#x9;Default popover
 &#x9;&#x9;&#x3C;/button&#x3E;
