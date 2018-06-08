@@ -67,7 +67,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.0.0/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.1.0/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -125,22 +125,7 @@ export class App {
 export class AppModule {}
 ">
     <input type="hidden" name="files[src/datepicker-adapter.ts]" value="import {Component, Injectable} from &#x27;@angular/core&#x27;;
-import {NgbDateAdapter, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
-
-/**
- * Example of a Native Date adapter
- */
-@Injectable()
-export class NgbDateNativeAdapter extends NgbDateAdapter&#x3C;Date&#x3E; {
-
-  fromModel(date: Date): NgbDateStruct {
-    return (date &#x26;&#x26; date.getFullYear) ? {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()} : null;
-  }
-
-  toModel(date: NgbDateStruct): Date {
-    return date ? new Date(date.year, date.month - 1, date.day) : null;
-  }
-}
+import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
 @Component({
   selector: &#x27;ngbd-datepicker-adapter&#x27;,

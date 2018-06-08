@@ -188,16 +188,28 @@ export class NgbdModalBasic {
 ">
     <input type="hidden" name="files[app/modal-basic.html]" value="&#x3C;ng-template #content let-c=&#x22;close&#x22; let-d=&#x22;dismiss&#x22;&#x3E;
   &#x3C;div class=&#x22;modal-header&#x22;&#x3E;
-    &#x3C;h4 class=&#x22;modal-title&#x22;&#x3E;Modal title&#x3C;/h4&#x3E;
+    &#x3C;h4 class=&#x22;modal-title&#x22;&#x3E;Profile update&#x3C;/h4&#x3E;
     &#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; aria-label=&#x22;Close&#x22; (click)=&#x22;d(&#x27;Cross click&#x27;)&#x22;&#x3E;
       &#x3C;span aria-hidden=&#x22;true&#x22;&#x3E;&#x26;times;&#x3C;/span&#x3E;
     &#x3C;/button&#x3E;
   &#x3C;/div&#x3E;
   &#x3C;div class=&#x22;modal-body&#x22;&#x3E;
-    &#x3C;p&#x3E;One fine body&#x26;hellip;&#x3C;/p&#x3E;
+    &#x3C;form&#x3E;
+      &#x3C;div class=&#x22;form-group&#x22;&#x3E;
+        &#x3C;label for=&#x22;dateOfBirth&#x22;&#x3E;Date of birth&#x3C;/label&#x3E;
+        &#x3C;div class=&#x22;input-group&#x22;&#x3E;
+          &#x3C;input id=&#x22;dateOfBirth&#x22; class=&#x22;form-control&#x22; placeholder=&#x22;yyyy-mm-dd&#x22; name=&#x22;dp&#x22; ngbDatepicker #dp=&#x22;ngbDatepicker&#x22;&#x3E;
+          &#x3C;div class=&#x22;input-group-append&#x22;&#x3E;
+            &#x3C;button class=&#x22;btn btn-outline-secondary&#x22; (click)=&#x22;dp.toggle()&#x22; type=&#x22;button&#x22;&#x3E;
+              &#x3C;img src=&#x22;img/calendar-icon.svg&#x22; style=&#x22;width: 1.2rem; height: 1rem; cursor: pointer;&#x22;/&#x3E;
+            &#x3C;/button&#x3E;
+          &#x3C;/div&#x3E;
+        &#x3C;/div&#x3E;
+      &#x3C;/div&#x3E;
+    &#x3C;/form&#x3E;
   &#x3C;/div&#x3E;
   &#x3C;div class=&#x22;modal-footer&#x22;&#x3E;
-    &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-dark&#x22; (click)=&#x22;c(&#x27;Close click&#x27;)&#x22;&#x3E;Close&#x3C;/button&#x3E;
+    &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-dark&#x22; (click)=&#x22;c(&#x27;Save click&#x27;)&#x22;&#x3E;Save&#x3C;/button&#x3E;
   &#x3C;/div&#x3E;
 &#x3C;/ng-template&#x3E;
 
@@ -208,7 +220,7 @@ export class NgbdModalBasic {
 &#x3C;pre&#x3E;{{closeResult}}&#x3C;/pre&#x3E;
 ">
     
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.1.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>

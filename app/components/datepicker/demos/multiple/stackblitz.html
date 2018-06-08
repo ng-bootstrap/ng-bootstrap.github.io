@@ -161,7 +161,7 @@ export class AppComponent {
   templateUrl: &#x27;./datepicker-multiple.html&#x27;,
   styles: [&#x60;
     select.custom-select {
-      margin-right: 0.5rem;
+      margin: 0.5rem 0.5rem 0 0;
       width: auto;
     }
   &#x60;]
@@ -171,10 +171,12 @@ export class NgbdDatepickerMultiple {
   displayMonths = 2;
   navigation = &#x27;select&#x27;;
   showWeekNumbers = false;
+  outsideDays = &#x27;visible&#x27;;
 }
 ">
     <input type="hidden" name="files[app/datepicker-multiple.html]" value="
-&#x3C;ngb-datepicker [displayMonths]=&#x22;displayMonths&#x22; [navigation]=&#x22;navigation&#x22; [showWeekNumbers]=&#x22;showWeekNumbers&#x22;&#x3E;
+&#x3C;ngb-datepicker [displayMonths]=&#x22;displayMonths&#x22; [navigation]=&#x22;navigation&#x22;
+                [showWeekNumbers]=&#x22;showWeekNumbers&#x22; [outsideDays]=&#x22;outsideDays&#x22;&#x3E;
 &#x3C;/ngb-datepicker&#x3E;
 
 &#x3C;hr/&#x3E;
@@ -183,7 +185,7 @@ export class NgbdDatepickerMultiple {
   &#x3C;div class=&#x22;form-group&#x22;&#x3E;
     &#x3C;div class=&#x22;input-group&#x22;&#x3E;
       &#x3C;input class=&#x22;form-control&#x22; placeholder=&#x22;yyyy-mm-dd&#x22;
-             name=&#x22;dp&#x22; [displayMonths]=&#x22;displayMonths&#x22; [navigation]=&#x22;navigation&#x22;
+             name=&#x22;dp&#x22; [displayMonths]=&#x22;displayMonths&#x22; [navigation]=&#x22;navigation&#x22; [outsideDays]=&#x22;outsideDays&#x22;
              [showWeekNumbers]=&#x22;showWeekNumbers&#x22; ngbDatepicker #d=&#x22;ngbDatepicker&#x22;&#x3E;
       &#x3C;div class=&#x22;input-group-append&#x22;&#x3E;
         &#x3C;button class=&#x22;btn btn-outline-secondary&#x22; (click)=&#x22;d.toggle()&#x22; type=&#x22;button&#x22;&#x3E;
@@ -196,7 +198,7 @@ export class NgbdDatepickerMultiple {
 
 &#x3C;hr/&#x3E;
 
-&#x3C;div class=&#x22;d-flex&#x22;&#x3E;
+&#x3C;div class=&#x22;d-flex flex-wrap align-content-between p-2&#x22;&#x3E;
   &#x3C;select class=&#x22;custom-select&#x22; [(ngModel)]=&#x22;displayMonths&#x22;&#x3E;
     &#x3C;option [ngValue]=&#x22;1&#x22;&#x3E;One month&#x3C;/option&#x3E;
     &#x3C;option [ngValue]=&#x22;2&#x22;&#x3E;Two months&#x3C;/option&#x3E;
@@ -213,11 +215,17 @@ export class NgbdDatepickerMultiple {
     &#x3C;option [ngValue]=&#x22;true&#x22;&#x3E;Week numbers&#x3C;/option&#x3E;
     &#x3C;option [ngValue]=&#x22;false&#x22;&#x3E;No week numbers&#x3C;/option&#x3E;
   &#x3C;/select&#x3E;
+
+  &#x3C;select class=&#x22;custom-select&#x22; [(ngModel)]=&#x22;outsideDays&#x22;&#x3E;
+    &#x3C;option value=&#x22;visible&#x22;&#x3E;Visible outside days&#x3C;/option&#x3E;
+    &#x3C;option value=&#x22;hidden&#x22;&#x3E;Hidden outside days&#x3C;/option&#x3E;
+    &#x3C;option value=&#x22;collapsed&#x22;&#x3E;Collapsed outside days&#x3C;/option&#x3E;
+  &#x3C;/select&#x3E;
 &#x3C;/div&#x3E;
 
 ">
     
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.1.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>
