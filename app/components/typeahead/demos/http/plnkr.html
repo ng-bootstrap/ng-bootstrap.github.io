@@ -67,7 +67,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.1.0/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.1.1/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -127,7 +127,7 @@ export class AppModule {}
     <input type="hidden" name="files[src/typeahead-http.ts]" value="import {Component, Injectable} from &#x27;@angular/core&#x27;;
 import {HttpClient, HttpParams} from &#x27;@angular/common/http&#x27;;
 import {Observable, of} from &#x27;rxjs&#x27;;
-import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, merge} from &#x27;rxjs/operators&#x27;;
+import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap} from &#x27;rxjs/operators&#x27;;
 
 const WIKI_URL = &#x27;https://en.wikipedia.org/w/api.php&#x27;;
 const PARAMS = new HttpParams({
@@ -164,7 +164,6 @@ export class NgbdTypeaheadHttp {
   model: any;
   searching = false;
   searchFailed = false;
-  hideSearchingWhenUnsubscribed = new Observable(() =&#x3E; () =&#x3E; this.searching = false);
 
   constructor(private _service: WikipediaService) {}
 
@@ -181,8 +180,7 @@ export class NgbdTypeaheadHttp {
             return of([]);
           }))
       ),
-      tap(() =&#x3E; this.searching = false),
-      merge(this.hideSearchingWhenUnsubscribed)
+      tap(() =&#x3E; this.searching = false)
     );
 }
 ">

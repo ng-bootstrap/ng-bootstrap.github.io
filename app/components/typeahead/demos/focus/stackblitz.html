@@ -156,8 +156,8 @@ export class AppComponent {
 ">
     <input type="hidden" name="files[app/typeahead-focus.ts]" value="import {Component, ViewChild} from &#x27;@angular/core&#x27;;
 import {NgbTypeahead} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
-import {Observable, Subject} from &#x27;rxjs&#x27;;
-import {debounceTime, distinctUntilChanged, filter, map, merge} from &#x27;rxjs/operators&#x27;;
+import {Observable, Subject, merge} from &#x27;rxjs&#x27;;
+import {debounceTime, distinctUntilChanged, filter, map} from &#x27;rxjs/operators&#x27;;
 
 const states = [&#x27;Alabama&#x27;, &#x27;Alaska&#x27;, &#x27;American Samoa&#x27;, &#x27;Arizona&#x27;, &#x27;Arkansas&#x27;, &#x27;California&#x27;, &#x27;Colorado&#x27;,
   &#x27;Connecticut&#x27;, &#x27;Delaware&#x27;, &#x27;District Of Columbia&#x27;, &#x27;Federated States Of Micronesia&#x27;, &#x27;Florida&#x27;, &#x27;Georgia&#x27;,
@@ -180,15 +180,16 @@ export class NgbdTypeaheadFocus {
   focus$ = new Subject&#x3C;string&#x3E;();
   click$ = new Subject&#x3C;string&#x3E;();
 
-  search = (text$: Observable&#x3C;string&#x3E;) =&#x3E;
-    text$.pipe(
-      debounceTime(200),
-      distinctUntilChanged(),
-      merge(this.focus$),
-      merge(this.click$.pipe(filter(() =&#x3E; !this.instance.isPopupOpen()))),
+  search = (text$: Observable&#x3C;string&#x3E;) =&#x3E; {
+    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
+    const clicksWithClosedPopup$ = this.click$.pipe(filter(() =&#x3E; !this.instance.isPopupOpen()));
+    const inputFocus$ = this.focus$;
+
+    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
       map(term =&#x3E; (term === &#x27;&#x27; ? states
         : states.filter(v =&#x3E; v.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1)).slice(0, 10))
     );
+  }
 }
 ">
     <input type="hidden" name="files[app/typeahead-focus.html]" value="It is possible to get the focus events with the current input value to emit results on focus with a great flexibility.
@@ -216,7 +217,7 @@ In this simple example, a search is done no matter the content of the input:
 &#x3C;pre&#x3E;Model: {{ model | json }}&#x3C;/pre&#x3E;
 ">
     
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.1.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.1.1&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>

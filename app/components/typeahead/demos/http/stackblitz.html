@@ -157,7 +157,7 @@ export class AppComponent {
     <input type="hidden" name="files[app/typeahead-http.ts]" value="import {Component, Injectable} from &#x27;@angular/core&#x27;;
 import {HttpClient, HttpParams} from &#x27;@angular/common/http&#x27;;
 import {Observable, of} from &#x27;rxjs&#x27;;
-import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap, merge} from &#x27;rxjs/operators&#x27;;
+import {catchError, debounceTime, distinctUntilChanged, map, tap, switchMap} from &#x27;rxjs/operators&#x27;;
 
 const WIKI_URL = &#x27;https://en.wikipedia.org/w/api.php&#x27;;
 const PARAMS = new HttpParams({
@@ -194,7 +194,6 @@ export class NgbdTypeaheadHttp {
   model: any;
   searching = false;
   searchFailed = false;
-  hideSearchingWhenUnsubscribed = new Observable(() =&#x3E; () =&#x3E; this.searching = false);
 
   constructor(private _service: WikipediaService) {}
 
@@ -211,8 +210,7 @@ export class NgbdTypeaheadHttp {
             return of([]);
           }))
       ),
-      tap(() =&#x3E; this.searching = false),
-      merge(this.hideSearchingWhenUnsubscribed)
+      tap(() =&#x3E; this.searching = false)
     );
 }
 ">
@@ -237,7 +235,7 @@ export class NgbdTypeaheadHttp {
 &#x3C;pre&#x3E;Model: {{ model | json }}&#x3C;/pre&#x3E;
 ">
     
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.1.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.1.1&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>
