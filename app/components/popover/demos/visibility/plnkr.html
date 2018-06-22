@@ -67,7 +67,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.1.1/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.1.2/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -131,20 +131,31 @@ export class AppModule {}
   templateUrl: &#x27;src/popover-visibility.html&#x27;
 })
 export class NgbdPopoverVisibility {
+  lastShown: Date;
+  lastHidden: Date;
 
+  recordShown() {
+    this.lastShown = new Date();
+  }
+
+  recordHidden() {
+    this.lastHidden = new Date();
+  }
 }
 ">
     <input type="hidden" name="files[src/popover-visibility.html]" value="&#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary&#x22; placement=&#x22;top&#x22;
         ngbPopover=&#x22;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&#x22; popoverTitle=&#x22;Popover on top&#x22;
-        #popover=&#x22;ngbPopover&#x22;&#x3E;
+        #popover=&#x22;ngbPopover&#x22; (shown)=&#x22;recordShown()&#x22; (hidden)=&#x22;recordHidden()&#x22;&#x3E;
   Open Popover
 &#x3C;/button&#x3E;
 
-&#x3C;hr /&#x3E;
+&#x3C;hr&#x3E;
 
-&#x3C;p&#x3E;
-  Popover is currently: &#x3C;code&#x3E;{{ popover.isOpen() ? &#x27;open&#x27; : &#x27;closed&#x27; }}&#x3C;/code&#x3E;
-&#x3C;/p&#x3E;
+&#x3C;ul&#x3E;
+  &#x3C;li&#x3E;Popover is currently: &#x3C;code&#x3E;{{ popover.isOpen() ? &#x27;open&#x27; : &#x27;closed&#x27; }}&#x3C;/code&#x3E;&#x3C;/li&#x3E;
+  &#x3C;li&#x3E;Last shown at: &#x3C;code&#x3E;{{lastShown | date:&#x27;h:mm:ss&#x27;}}&#x3C;/code&#x3E;&#x3C;/li&#x3E;
+  &#x3C;li&#x3E;Last hidden at: &#x3C;code&#x3E;{{lastHidden | date:&#x27;h:mm:ss&#x27;}}&#x3C;/code&#x3E;&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
 ">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
