@@ -67,7 +67,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.1.2/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.2.0/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -142,6 +142,7 @@ export class NgbdCarouselConfig implements OnInit {
     config.interval = 10000;
     config.wrap = false;
     config.keyboard = false;
+    config.pauseOnHover = false;
   }
 
   ngOnInit() {
@@ -151,7 +152,7 @@ export class NgbdCarouselConfig implements OnInit {
   }
 
   private _randomImageUrls(images: Array&#x3C;{id: number}&#x3E;): Array&#x3C;string&#x3E; {
-    return [1, 2, 3].map(() =&#x3E; {
+    return [1, 2, 3, 4].map(() =&#x3E; {
       const randomId = images[Math.floor(Math.random() * images.length)].id;
       return &#x60;https://picsum.photos/900/500?image=${randomId}&#x60;;
     });
@@ -167,14 +168,21 @@ export class NgbdCarouselConfig implements OnInit {
     &#x3C;/div&#x3E;
   &#x3C;/ng-template&#x3E;
   &#x3C;ng-template ngbSlide&#x3E;
-    &#x3C;img [src]=&#x22;images[1]&#x22;  alt=&#x22;Random second slide&#x22;&#x3E;
+    &#x3C;img [src]=&#x22;images[1]&#x22; alt=&#x22;Random second slide&#x22;&#x3E;
+    &#x3C;div class=&#x22;carousel-caption&#x22;&#x3E;
+      &#x3C;h3&#x3E;No mouse events...&#x3C;/h3&#x3E;
+      &#x3C;p&#x3E;This carousel doesn&#x27;t pause or resume on mouse events&#x3C;/p&#x3E;
+    &#x3C;/div&#x3E;
+  &#x3C;/ng-template&#x3E;
+  &#x3C;ng-template ngbSlide&#x3E;
+    &#x3C;img [src]=&#x22;images[2]&#x22;  alt=&#x22;Random third slide&#x22;&#x3E;
     &#x3C;div class=&#x22;carousel-caption&#x22;&#x3E;
       &#x3C;h3&#x3E;No keyboard...&#x3C;/h3&#x3E;
       &#x3C;p&#x3E;This carousel uses customized default values.&#x3C;/p&#x3E;
     &#x3C;/div&#x3E;
   &#x3C;/ng-template&#x3E;
   &#x3C;ng-template ngbSlide&#x3E;
-    &#x3C;img [src]=&#x22;images[2]&#x22; alt=&#x22;Random third slide&#x22;&#x3E;
+    &#x3C;img [src]=&#x22;images[3]&#x22; alt=&#x22;Random fourth slide&#x22;&#x3E;
     &#x3C;div class=&#x22;carousel-caption&#x22;&#x3E;
       &#x3C;h3&#x3E;And no wrap after last slide.&#x3C;/h3&#x3E;
       &#x3C;p&#x3E;This carousel uses customized default values.&#x3C;/p&#x3E;

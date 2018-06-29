@@ -67,7 +67,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.1.2/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.2.0/bundles/ng-bootstrap.js&#x27;
   },
   packages: {
     app: {
@@ -132,7 +132,6 @@ import {FormControl} from &#x27;@angular/forms&#x27;;
   templateUrl: &#x27;src/timepicker-validation.html&#x27;
 })
 export class NgbdTimepickerValidation {
-  time;
 
   ctrl = new FormControl(&#x27;&#x27;, (control: FormControl) =&#x3E; {
     const value = control.value;
@@ -155,7 +154,7 @@ export class NgbdTimepickerValidation {
     <input type="hidden" name="files[src/timepicker-validation.html]" value="&#x3C;p&#x3E;Illustrates custom validation, you have to select time between 12:00 and 13:59&#x3C;/p&#x3E;
 
 &#x3C;div class=&#x22;form-group&#x22;&#x3E;
-  &#x3C;ngb-timepicker [(ngModel)]=&#x22;time&#x22; [formControl]=&#x22;ctrl&#x22; required&#x3E;&#x3C;/ngb-timepicker&#x3E;
+  &#x3C;ngb-timepicker [formControl]=&#x22;ctrl&#x22; required&#x3E;&#x3C;/ngb-timepicker&#x3E;
   &#x3C;div *ngIf=&#x22;ctrl.valid&#x22; class=&#x22;small form-text text-success&#x22;&#x3E;Great choice&#x3C;/div&#x3E;
   &#x3C;div class=&#x22;small form-text text-danger&#x22; *ngIf=&#x22;!ctrl.valid&#x22;&#x3E;
     &#x3C;div *ngIf=&#x22;ctrl.errors[&#x27;required&#x27;]&#x22;&#x3E;Select some time during lunchtime&#x3C;/div&#x3E;
@@ -165,7 +164,7 @@ export class NgbdTimepickerValidation {
 &#x3C;/div&#x3E;
 
 &#x3C;hr&#x3E;
-&#x3C;pre&#x3E;Selected time: {{time | json}}&#x3C;/pre&#x3E;
+&#x3C;pre&#x3E;Selected time: {{ctrl.value | json}}&#x3C;/pre&#x3E;
 ">
   </form>
   <script>document.getElementById("mainForm").submit();</script>

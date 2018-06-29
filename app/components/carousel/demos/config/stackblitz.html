@@ -172,6 +172,7 @@ export class NgbdCarouselConfig implements OnInit {
     config.interval = 10000;
     config.wrap = false;
     config.keyboard = false;
+    config.pauseOnHover = false;
   }
 
   ngOnInit() {
@@ -181,7 +182,7 @@ export class NgbdCarouselConfig implements OnInit {
   }
 
   private _randomImageUrls(images: Array&#x3C;{id: number}&#x3E;): Array&#x3C;string&#x3E; {
-    return [1, 2, 3].map(() =&#x3E; {
+    return [1, 2, 3, 4].map(() =&#x3E; {
       const randomId = images[Math.floor(Math.random() * images.length)].id;
       return &#x60;https://picsum.photos/900/500?image=${randomId}&#x60;;
     });
@@ -197,14 +198,21 @@ export class NgbdCarouselConfig implements OnInit {
     &#x3C;/div&#x3E;
   &#x3C;/ng-template&#x3E;
   &#x3C;ng-template ngbSlide&#x3E;
-    &#x3C;img [src]=&#x22;images[1]&#x22;  alt=&#x22;Random second slide&#x22;&#x3E;
+    &#x3C;img [src]=&#x22;images[1]&#x22; alt=&#x22;Random second slide&#x22;&#x3E;
+    &#x3C;div class=&#x22;carousel-caption&#x22;&#x3E;
+      &#x3C;h3&#x3E;No mouse events...&#x3C;/h3&#x3E;
+      &#x3C;p&#x3E;This carousel doesn&#x27;t pause or resume on mouse events&#x3C;/p&#x3E;
+    &#x3C;/div&#x3E;
+  &#x3C;/ng-template&#x3E;
+  &#x3C;ng-template ngbSlide&#x3E;
+    &#x3C;img [src]=&#x22;images[2]&#x22;  alt=&#x22;Random third slide&#x22;&#x3E;
     &#x3C;div class=&#x22;carousel-caption&#x22;&#x3E;
       &#x3C;h3&#x3E;No keyboard...&#x3C;/h3&#x3E;
       &#x3C;p&#x3E;This carousel uses customized default values.&#x3C;/p&#x3E;
     &#x3C;/div&#x3E;
   &#x3C;/ng-template&#x3E;
   &#x3C;ng-template ngbSlide&#x3E;
-    &#x3C;img [src]=&#x22;images[2]&#x22; alt=&#x22;Random third slide&#x22;&#x3E;
+    &#x3C;img [src]=&#x22;images[3]&#x22; alt=&#x22;Random fourth slide&#x22;&#x3E;
     &#x3C;div class=&#x22;carousel-caption&#x22;&#x3E;
       &#x3C;h3&#x3E;And no wrap after last slide.&#x3C;/h3&#x3E;
       &#x3C;p&#x3E;This carousel uses customized default values.&#x3C;/p&#x3E;
@@ -213,7 +221,7 @@ export class NgbdCarouselConfig implements OnInit {
 &#x3C;/ngb-carousel&#x3E;
 ">
     
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.1.2&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.2.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>

@@ -162,7 +162,6 @@ import {FormControl} from &#x27;@angular/forms&#x27;;
   templateUrl: &#x27;./timepicker-validation.html&#x27;
 })
 export class NgbdTimepickerValidation {
-  time;
 
   ctrl = new FormControl(&#x27;&#x27;, (control: FormControl) =&#x3E; {
     const value = control.value;
@@ -185,7 +184,7 @@ export class NgbdTimepickerValidation {
     <input type="hidden" name="files[app/timepicker-validation.html]" value="&#x3C;p&#x3E;Illustrates custom validation, you have to select time between 12:00 and 13:59&#x3C;/p&#x3E;
 
 &#x3C;div class=&#x22;form-group&#x22;&#x3E;
-  &#x3C;ngb-timepicker [(ngModel)]=&#x22;time&#x22; [formControl]=&#x22;ctrl&#x22; required&#x3E;&#x3C;/ngb-timepicker&#x3E;
+  &#x3C;ngb-timepicker [formControl]=&#x22;ctrl&#x22; required&#x3E;&#x3C;/ngb-timepicker&#x3E;
   &#x3C;div *ngIf=&#x22;ctrl.valid&#x22; class=&#x22;small form-text text-success&#x22;&#x3E;Great choice&#x3C;/div&#x3E;
   &#x3C;div class=&#x22;small form-text text-danger&#x22; *ngIf=&#x22;!ctrl.valid&#x22;&#x3E;
     &#x3C;div *ngIf=&#x22;ctrl.errors[&#x27;required&#x27;]&#x22;&#x3E;Select some time during lunchtime&#x3C;/div&#x3E;
@@ -195,10 +194,10 @@ export class NgbdTimepickerValidation {
 &#x3C;/div&#x3E;
 
 &#x3C;hr&#x3E;
-&#x3C;pre&#x3E;Selected time: {{time | json}}&#x3C;/pre&#x3E;
+&#x3C;pre&#x3E;Selected time: {{ctrl.value | json}}&#x3C;/pre&#x3E;
 ">
     
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.1.2&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.2.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>
