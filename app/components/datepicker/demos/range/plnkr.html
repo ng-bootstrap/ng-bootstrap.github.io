@@ -14,10 +14,10 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&#x22; /&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.25/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.25/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.5.4/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.26/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.26/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.2/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.40/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script&#x3E;
@@ -31,9 +31,9 @@
 
 &#x3C;/html&#x3E;">
     <input type="hidden" name="files[config.js]" value="var ver = {
-    ng: &#x27;6.0.0&#x27;
+    ng: &#x27;6.1.0&#x27;
   };
-  
+
   System.config({
   //use typescript for compilation
   transpiler: &#x27;typescript&#x27;,
@@ -67,7 +67,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.2.2/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.0.0/bundles/ng-bootstrap.umd.js&#x27;
   },
   packages: {
     app: {
@@ -102,7 +102,7 @@ import { NgbdDatepickerRange } from &#x27;./datepicker-range&#x27;;
   selector: &#x27;my-app&#x27;,
   template: &#x60;
     &#x3C;div class=&#x22;container-fluid&#x22;&#x3E;
-    
+
     &#x3C;hr&#x3E;
     &#x3C;p&#x3E;
       This is a demo plnkr forked from the &#x3C;strong&#x3E;ng-bootstrap&#x3C;/strong&#x3E; project: Angular powered Bootstrap.
@@ -125,18 +125,7 @@ export class App {
 export class AppModule {}
 ">
     <input type="hidden" name="files[src/datepicker-range.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
-import {NgbDateStruct, NgbCalendar} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
-
-const equals = (one: NgbDateStruct, two: NgbDateStruct) =&#x3E;
-  one &#x26;&#x26; two &#x26;&#x26; two.year === one.year &#x26;&#x26; two.month === one.month &#x26;&#x26; two.day === one.day;
-
-const before = (one: NgbDateStruct, two: NgbDateStruct) =&#x3E;
-  !one || !two ? false : one.year === two.year ? one.month === two.month ? one.day === two.day
-    ? false : one.day &#x3C; two.day : one.month &#x3C; two.month : one.year &#x3C; two.year;
-
-const after = (one: NgbDateStruct, two: NgbDateStruct) =&#x3E;
-  !one || !two ? false : one.year === two.year ? one.month === two.month ? one.day === two.day
-    ? false : one.day &#x3E; two.day : one.month &#x3E; two.month : one.year &#x3E; two.year;
+import {NgbDate, NgbCalendar} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
 @Component({
   selector: &#x27;ngbd-datepicker-range&#x27;,
@@ -163,20 +152,20 @@ const after = (one: NgbDateStruct, two: NgbDateStruct) =&#x3E;
 })
 export class NgbdDatepickerRange {
 
-  hoveredDate: NgbDateStruct;
+  hoveredDate: NgbDate;
 
-  fromDate: NgbDateStruct;
-  toDate: NgbDateStruct;
+  fromDate: NgbDate;
+  toDate: NgbDate;
 
   constructor(calendar: NgbCalendar) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), &#x27;d&#x27;, 10);
   }
 
-  onDateSelection(date: NgbDateStruct) {
+  onDateSelection(date: NgbDate) {
     if (!this.fromDate &#x26;&#x26; !this.toDate) {
       this.fromDate = date;
-    } else if (this.fromDate &#x26;&#x26; !this.toDate &#x26;&#x26; after(date, this.fromDate)) {
+    } else if (this.fromDate &#x26;&#x26; !this.toDate &#x26;&#x26; date.after(this.fromDate)) {
       this.toDate = date;
     } else {
       this.toDate = null;
@@ -184,10 +173,9 @@ export class NgbdDatepickerRange {
     }
   }
 
-  isHovered = date =&#x3E; this.fromDate &#x26;&#x26; !this.toDate &#x26;&#x26; this.hoveredDate &#x26;&#x26; after(date, this.fromDate) &#x26;&#x26; before(date, this.hoveredDate);
-  isInside = date =&#x3E; after(date, this.fromDate) &#x26;&#x26; before(date, this.toDate);
-  isFrom = date =&#x3E; equals(date, this.fromDate);
-  isTo = date =&#x3E; equals(date, this.toDate);
+  isHovered = (date: NgbDate) =&#x3E; this.fromDate &#x26;&#x26; !this.toDate &#x26;&#x26; this.hoveredDate &#x26;&#x26; date.after(this.fromDate) &#x26;&#x26; date.before(this.hoveredDate);
+  isInside = (date: NgbDate) =&#x3E; date.after(this.fromDate) &#x26;&#x26; date.before(this.toDate);
+  isRange = (date: NgbDate) =&#x3E; date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date)
 }
 ">
     <input type="hidden" name="files[src/datepicker-range.html]" value="&#x3C;p&#x3E;Example of the range selection&#x3C;/p&#x3E;
@@ -198,7 +186,7 @@ export class NgbdDatepickerRange {
 &#x3C;ng-template #t let-date=&#x22;date&#x22; let-focused=&#x22;focused&#x22;&#x3E;
   &#x3C;span class=&#x22;custom-day&#x22;
         [class.focused]=&#x22;focused&#x22;
-        [class.range]=&#x22;isFrom(date) || isTo(date) || isInside(date) || isHovered(date)&#x22;
+        [class.range]=&#x22;isRange(date)&#x22;
         [class.faded]=&#x22;isHovered(date) || isInside(date)&#x22;
         (mouseenter)=&#x22;hoveredDate = date&#x22;
         (mouseleave)=&#x22;hoveredDate = null&#x22;&#x3E;

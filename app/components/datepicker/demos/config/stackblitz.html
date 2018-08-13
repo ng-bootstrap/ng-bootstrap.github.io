@@ -155,7 +155,7 @@ export class AppComponent {
 &#x3C;/div&#x3E;
 ">
     <input type="hidden" name="files[app/datepicker-config.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
-import {NgbDatepickerConfig, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import {NgbDatepickerConfig, NgbCalendar, NgbDate, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
 @Component({
   selector: &#x27;ngbd-datepicker-config&#x27;,
@@ -164,9 +164,9 @@ import {NgbDatepickerConfig, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstra
 })
 export class NgbdDatepickerConfig {
 
-  model;
+  model: NgbDateStruct;
 
-  constructor(config: NgbDatepickerConfig) {
+  constructor(config: NgbDatepickerConfig, calendar: NgbCalendar) {
     // customize default values of datepickers used by this component tree
     config.minDate = {year: 1900, month: 1, day: 1};
     config.maxDate = {year: 2099, month: 12, day: 31};
@@ -175,10 +175,7 @@ export class NgbdDatepickerConfig {
     config.outsideDays = &#x27;hidden&#x27;;
 
     // weekends are disabled
-    config.markDisabled = (date: NgbDateStruct) =&#x3E; {
-      const d = new Date(date.year, date.month - 1, date.day);
-      return d.getDay() === 0 || d.getDay() === 6;
-    };
+    config.markDisabled = (date: NgbDate) =&#x3E; calendar.getWeekday(date) &#x3E;= 6;
   }
 }
 ">
@@ -187,7 +184,7 @@ export class NgbdDatepickerConfig {
 &#x3C;ngb-datepicker [(ngModel)]=&#x22;model&#x22;&#x3E;&#x3C;/ngb-datepicker&#x3E;
 ">
     
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.2.2&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.1.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;3.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.5.4&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.26&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>

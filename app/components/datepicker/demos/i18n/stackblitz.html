@@ -155,7 +155,7 @@ export class AppComponent {
 &#x3C;/div&#x3E;
 ">
     <input type="hidden" name="files[app/datepicker-i18n.ts]" value="import {Component, Injectable} from &#x27;@angular/core&#x27;;
-import { NgbDatepickerI18n, NgbDateStruct } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import {NgbDatepickerI18n, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
 const I18N_VALUES = {
   &#x27;fr&#x27;: {
@@ -201,7 +201,7 @@ export class CustomDatepickerI18n extends NgbDatepickerI18n {
   providers: [I18n, {provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n}] // define custom NgbDatepickerI18n provider
 })
 export class NgbdDatepickerI18n {
-  model;
+  model: NgbDateStruct;
 }
 ">
     <input type="hidden" name="files[app/datepicker-i18n.html]" value="&#x3C;ngb-alert [dismissible]=&#x22;false&#x22;&#x3E;
@@ -218,7 +218,7 @@ export class NgbdDatepickerI18n {
 
 ">
     
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.2.2&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.1.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;3.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.5.4&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.26&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>

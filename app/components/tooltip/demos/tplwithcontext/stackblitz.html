@@ -154,49 +154,53 @@ export class AppComponent {
   &#x3C;ngbd-tooltip-tplwithcontext&#x3E;&#x3C;/ngbd-tooltip-tplwithcontext&#x3E;
 &#x3C;/div&#x3E;
 ">
-    <input type="hidden" name="files[app/tooltip-tplwithcontext.ts]" value="import {NgbTooltip} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
-import {Component, ViewChild} from &#x27;@angular/core&#x27;;
+    <input type="hidden" name="files[app/tooltip-tplwithcontext.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
 
 @Component({
   selector: &#x27;ngbd-tooltip-tplwithcontext&#x27;,
   templateUrl: &#x27;./tooltip-tplwithcontext.html&#x27;
 })
 export class NgbdTooltipTplwithcontext {
-  greeting = {};
   name = &#x27;World&#x27;;
 
-  @ViewChild(&#x27;t&#x27;) public tooltip: NgbTooltip;
-
-  public changeGreeting(greeting: any): void {
-    const isOpen = this.tooltip.isOpen();
-    this.tooltip.close();
-    if (greeting !== this.greeting || !isOpen) {
-      this.greeting = greeting;
-      this.tooltip.open(greeting);
+  toggleWithGreeting(tooltip, greeting: string) {
+    if (tooltip.isOpen()) {
+      tooltip.close();
+    } else {
+      tooltip.open({greeting});
     }
   }
 }
 ">
     <input type="hidden" name="files[app/tooltip-tplwithcontext.html]" value="&#x3C;p&#x3E;
-  You can optionally pass in a context when manually triggering a popover.
+  You can optionally pass in a context when manually triggering a tooltip.
 &#x3C;/p&#x3E;
 
 &#x3C;ng-template #tipContent let-greeting=&#x22;greeting&#x22;&#x3E;{{greeting}}, &#x3C;b&#x3E;{{name}}&#x3C;/b&#x3E;!&#x3C;/ng-template&#x3E;
-&#x3C;p&#x3E;
-  How would you like to greet &#x3C;strong [ngbTooltip]=&#x22;tipContent&#x22; #t=&#x22;ngbTooltip&#x22; triggers=&#x22;manual&#x22;&#x3E;me&#x3C;/strong&#x3E;?
-&#x3C;/p&#x3E;
-&#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22; (click)=&#x22;changeGreeting({ greeting: &#x27;Bonjour&#x27; })&#x22;&#x3E;
+&#x3C;button
+  type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22;
+  [ngbTooltip]=&#x22;tipContent&#x22;
+  triggers=&#x22;manual&#x22; #t1=&#x22;ngbTooltip&#x22; (click)=&#x22;toggleWithGreeting(t1, &#x27;Bonjour&#x27;)&#x22;
+&#x3E;
   French
 &#x3C;/button&#x3E;
-&#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22; (click)=&#x22;changeGreeting({ greeting: &#x27;Gutentag&#x27; })&#x22;&#x3E;
+&#x3C;button
+  type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22;
+  [ngbTooltip]=&#x22;tipContent&#x22;
+  triggers=&#x22;manual&#x22; #t2=&#x22;ngbTooltip&#x22; (click)=&#x22;toggleWithGreeting(t2, &#x27;Gutentag&#x27;)&#x22;
+&#x3E;
   German
 &#x3C;/button&#x3E;
-&#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22; (click)=&#x22;changeGreeting({ greeting: &#x27;Hello&#x27; })&#x22;&#x3E;
+&#x3C;button
+  type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22;
+  [ngbTooltip]=&#x22;tipContent&#x22;
+  triggers=&#x22;manual&#x22; #t3=&#x22;ngbTooltip&#x22; (click)=&#x22;toggleWithGreeting(t3, &#x27;Hello&#x27;)&#x22;
+&#x3E;
   English
 &#x3C;/button&#x3E;
 ">
     
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/http&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;2.2.2&#x22;,&#x22;core-js&#x22;:&#x22;^2.4.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.25&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.1.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;3.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.5.4&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.26&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>

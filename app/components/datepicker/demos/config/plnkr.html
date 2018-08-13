@@ -14,10 +14,10 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&#x22; /&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.25/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.25/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.5.4/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.26/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.26/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.2/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.40/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script&#x3E;
@@ -31,9 +31,9 @@
 
 &#x3C;/html&#x3E;">
     <input type="hidden" name="files[config.js]" value="var ver = {
-    ng: &#x27;6.0.0&#x27;
+    ng: &#x27;6.1.0&#x27;
   };
-  
+
   System.config({
   //use typescript for compilation
   transpiler: &#x27;typescript&#x27;,
@@ -67,7 +67,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@2.2.2/bundles/ng-bootstrap.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.0.0/bundles/ng-bootstrap.umd.js&#x27;
   },
   packages: {
     app: {
@@ -102,7 +102,7 @@ import { NgbdDatepickerConfig } from &#x27;./datepicker-config&#x27;;
   selector: &#x27;my-app&#x27;,
   template: &#x60;
     &#x3C;div class=&#x22;container-fluid&#x22;&#x3E;
-    
+
     &#x3C;hr&#x3E;
     &#x3C;p&#x3E;
       This is a demo plnkr forked from the &#x3C;strong&#x3E;ng-bootstrap&#x3C;/strong&#x3E; project: Angular powered Bootstrap.
@@ -125,7 +125,7 @@ export class App {
 export class AppModule {}
 ">
     <input type="hidden" name="files[src/datepicker-config.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
-import {NgbDatepickerConfig, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import {NgbDatepickerConfig, NgbCalendar, NgbDate, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
 @Component({
   selector: &#x27;ngbd-datepicker-config&#x27;,
@@ -134,9 +134,9 @@ import {NgbDatepickerConfig, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstra
 })
 export class NgbdDatepickerConfig {
 
-  model;
+  model: NgbDateStruct;
 
-  constructor(config: NgbDatepickerConfig) {
+  constructor(config: NgbDatepickerConfig, calendar: NgbCalendar) {
     // customize default values of datepickers used by this component tree
     config.minDate = {year: 1900, month: 1, day: 1};
     config.maxDate = {year: 2099, month: 12, day: 31};
@@ -145,10 +145,7 @@ export class NgbdDatepickerConfig {
     config.outsideDays = &#x27;hidden&#x27;;
 
     // weekends are disabled
-    config.markDisabled = (date: NgbDateStruct) =&#x3E; {
-      const d = new Date(date.year, date.month - 1, date.day);
-      return d.getDay() === 0 || d.getDay() === 6;
-    };
+    config.markDisabled = (date: NgbDate) =&#x3E; calendar.getWeekday(date) &#x3E;= 6;
   }
 }
 ">
