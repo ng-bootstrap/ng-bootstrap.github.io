@@ -121,11 +121,11 @@ import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 import { NgbModule } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 import { AppComponent } from &#x27;./app.component&#x27;;
-import { NgbdPopoverAutoclose } from &#x27;./popover-autoclose&#x27;;
+import { NgbdPopoverCustomclass } from &#x27;./popover-customclass&#x27;;
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule.forRoot()], 
-  declarations: [AppComponent, NgbdPopoverAutoclose],
+  declarations: [AppComponent, NgbdPopoverCustomclass],
   bootstrap: [AppComponent]
 }) 
 export class AppModule {}
@@ -151,60 +151,36 @@ export class AppComponent {
 
   &#x3C;hr&#x3E;
 
-  &#x3C;ngbd-popover-autoclose&#x3E;&#x3C;/ngbd-popover-autoclose&#x3E;
+  &#x3C;ngbd-popover-customclass&#x3E;&#x3C;/ngbd-popover-customclass&#x3E;
 &#x3C;/div&#x3E;
 ">
-    <input type="hidden" name="files[app/popover-autoclose.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
-
-
+    <input type="hidden" name="files[app/popover-customclass.ts]" value="import {Component, ViewEncapsulation} from &#x27;@angular/core&#x27;;
 
 @Component({
-  selector: &#x27;ngbd-popover-autoclose&#x27;,
-  templateUrl: &#x27;./popover-autoclose.html&#x27;
+  selector: &#x27;ngbd-popover-customclass&#x27;,
+  templateUrl: &#x27;./popover-customclass.html&#x27;,
+  encapsulation: ViewEncapsulation.None,
+  styles: [&#x60;
+    .my-custom-class {
+      background: aliceblue;
+      font-size: 125%;
+    }
+    .my-custom-class .arrow::after {
+      border-top-color: aliceblue;
+    }
+  &#x60;]
 })
-export class NgbdPopoverAutoclose {}
+export class NgbdPopoverCustomclass {
+}
 ">
-    <input type="hidden" name="files[app/popover-autoclose.html]" value="&#x3C;p&#x3E;As for some other popup-based widgets, you can set the popover to close automatically upon some events.&#x3C;/p&#x3E;
-&#x3C;p&#x3E;In the following examples, they will all close on &#x3C;code&#x3E;Escape&#x3C;/code&#x3E; as well as:&#x3C;/p&#x3E;
+    <input type="hidden" name="files[app/popover-customclass.html]" value="&#x3C;p&#x3E;
+  You can optionally pass in a custom class via &#x3C;code&#x3E;popoverClass&#x3C;/code&#x3E;
+&#x3C;/p&#x3E;
 
-&#x3C;ul&#x3E;
-  &#x3C;li&#x3E;
-    click inside:
-    &#x3C;button
-      type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary&#x22; popoverTitle=&#x22;Pop title&#x22;
-      [autoClose]=&#x22;&#x27;inside&#x27;&#x22; ngbPopover=&#x22;Click inside or press Escape to close&#x22;
-    &#x3E;
-        Click to toggle
-    &#x3C;/button&#x3E;
-  &#x3C;/li&#x3E;
-
-  &#x3C;li&#x3E;
-    click outside:
-    &#x3C;button
-      type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary&#x22; popoverTitle=&#x22;Pop title&#x22;
-      [autoClose]=&#x22;&#x27;outside&#x27;&#x22; ngbPopover=&#x22;Click outside or press Escape to close&#x22;
-    &#x3E;
-      Click to toggle
-    &#x3C;/button&#x3E;
-  &#x3C;/li&#x3E;
-
-  &#x3C;li&#x3E;
-      all clicks:
-      &#x3C;button
-        type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary&#x22; popoverTitle=&#x22;Pop title&#x22;
-        [autoClose]=&#x22;true&#x22; ngbPopover=&#x22;Click anywhere or press Escape to close (try the toggling element too)&#x22;
-        #popover3=&#x22;ngbPopover&#x22;
-      &#x3E;
-          Click to toggle
-      &#x3C;/button&#x3E;
-
-      &#x26;nbsp;
-
-      &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22; (click)=&#x22;popover3.toggle()&#x22;&#x3E;
-        Click to toggle the external popover
-      &#x3C;/button&#x3E;
-    &#x3C;/li&#x3E;
-&#x3C;/ul&#x3E;
+&#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary&#x22; ngbPopover=&#x22;Nice class!&#x22;
+  popoverClass=&#x22;my-custom-class&#x22;&#x3E;
+  Popover with custom class
+&#x3C;/button&#x3E;
 ">
     
     <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.1.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;3.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.5.4&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.26&#x22;}">
