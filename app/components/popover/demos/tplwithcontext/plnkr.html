@@ -14,6 +14,7 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;styles.css&#x22; /&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.5.4/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.26/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.26/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -30,6 +31,14 @@
   &#x3C;/body&#x3E;
 
 &#x3C;/html&#x3E;">
+    <input type="hidden" name="files[styles.css]" value="button.calendar, button.calendar:active {
+  width: 2.75rem;
+  background-image: url(&#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=&#x27;) !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
+}
+">
     <input type="hidden" name="files[config.js]" value="var ver = {
     ng: &#x27;6.1.0&#x27;
   };
@@ -67,7 +76,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.0.0/bundles/ng-bootstrap.umd.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.1.0/bundles/ng-bootstrap.umd.js&#x27;
   },
   packages: {
     app: {
@@ -133,11 +142,11 @@ export class AppModule {}
 export class NgbdPopoverTplwithcontext {
   name = &#x27;World&#x27;;
 
-  toggleWithGreeting(popover, greeting: string) {
+  toggleWithGreeting(popover, greeting: string, language: string) {
     if (popover.isOpen()) {
       popover.close();
     } else {
-      popover.open({greeting});
+      popover.open({greeting, language});
     }
   }
 }
@@ -147,24 +156,25 @@ export class NgbdPopoverTplwithcontext {
 &#x3C;/p&#x3E;
 
 &#x3C;ng-template #popContent let-greeting=&#x22;greeting&#x22;&#x3E;{{greeting}}, &#x3C;b&#x3E;{{name}}&#x3C;/b&#x3E;!&#x3C;/ng-template&#x3E;
+&#x3C;ng-template #popTitle let-language=&#x22;language&#x22;&#x3E;Greeting in {{language}}&#x3C;/ng-template&#x3E;
 &#x3C;button
   type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22;
-  [ngbPopover]=&#x22;popContent&#x22; popoverTitle=&#x22;Greeting&#x22;
-  triggers=&#x22;manual&#x22; #p1=&#x22;ngbPopover&#x22; (click)=&#x22;toggleWithGreeting(p1, &#x27;Bonjour&#x27;)&#x22;
+  [ngbPopover]=&#x22;popContent&#x22; [popoverTitle]=&#x22;popTitle&#x22;
+  triggers=&#x22;manual&#x22; #p1=&#x22;ngbPopover&#x22; (click)=&#x22;toggleWithGreeting(p1, &#x27;Bonjour&#x27;, &#x27;French&#x27;)&#x22;
 &#x3E;
   French
 &#x3C;/button&#x3E;
 &#x3C;button
   type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22;
-  [ngbPopover]=&#x22;popContent&#x22; popoverTitle=&#x22;Greeting&#x22;
-  triggers=&#x22;manual&#x22; #p2=&#x22;ngbPopover&#x22; (click)=&#x22;toggleWithGreeting(p2, &#x27;Gutentag&#x27;)&#x22;
+  [ngbPopover]=&#x22;popContent&#x22; [popoverTitle]=&#x22;popTitle&#x22;
+  triggers=&#x22;manual&#x22; #p2=&#x22;ngbPopover&#x22; (click)=&#x22;toggleWithGreeting(p2, &#x27;Gutentag&#x27;, &#x27;German&#x27;)&#x22;
 &#x3E;
   German
 &#x3C;/button&#x3E;
 &#x3C;button
   type=&#x22;button&#x22; class=&#x22;btn btn-outline-secondary mr-2&#x22;
-  [ngbPopover]=&#x22;popContent&#x22; popoverTitle=&#x22;Greeting&#x22;
-  triggers=&#x22;manual&#x22; #p3=&#x22;ngbPopover&#x22; (click)=&#x22;toggleWithGreeting(p3, &#x27;Hello&#x27;)&#x22;
+  [ngbPopover]=&#x22;popContent&#x22; [popoverTitle]=&#x22;popTitle&#x22;
+  triggers=&#x22;manual&#x22; #p3=&#x22;ngbPopover&#x22; (click)=&#x22;toggleWithGreeting(p3, &#x27;Hello&#x27;, &#x27;English&#x27;)&#x22;
 &#x3E;
   English
 &#x3C;/button&#x3E;

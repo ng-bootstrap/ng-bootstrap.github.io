@@ -14,6 +14,7 @@
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;styles.css&#x22; /&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.5.4/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.26/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.26/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -30,6 +31,14 @@
   &#x3C;/body&#x3E;
 
 &#x3C;/html&#x3E;">
+    <input type="hidden" name="files[styles.css]" value="button.calendar, button.calendar:active {
+  width: 2.75rem;
+  background-image: url(&#x27;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=&#x27;) !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
+}
+">
     <input type="hidden" name="files[config.js]" value="var ver = {
     ng: &#x27;6.1.0&#x27;
   };
@@ -67,7 +76,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.0.0/bundles/ng-bootstrap.umd.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.1.0/bundles/ng-bootstrap.umd.js&#x27;
   },
   packages: {
     app: {
@@ -124,38 +133,23 @@ export class App {
 })
 export class AppModule {}
 ">
-    <input type="hidden" name="files[src/carousel-config.ts]" value="import {Component, OnInit} from &#x27;@angular/core&#x27;;
-import {NgbCarouselConfig} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
-import {map} from &#x27;rxjs/operators&#x27;;
-import {HttpClient} from &#x27;@angular/common/http&#x27;;
+    <input type="hidden" name="files[src/carousel-config.ts]" value="import { Component } from &#x27;@angular/core&#x27;;
+import { NgbCarouselConfig } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
 @Component({
   selector: &#x27;ngbd-carousel-config&#x27;,
   templateUrl: &#x27;src/carousel-config.html&#x27;,
   providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
 })
-export class NgbdCarouselConfig implements OnInit {
-  images: Array&#x3C;string&#x3E;;
+export class NgbdCarouselConfig {
+  images = [1, 2, 3, 4].map(() =&#x3E; &#x60;https://picsum.photos/900/500?random&#x26;t=${Math.random()}&#x60;);
 
-  constructor(config: NgbCarouselConfig, private _http: HttpClient) {
+  constructor(config: NgbCarouselConfig) {
     // customize default values of carousels used by this component tree
     config.interval = 10000;
     config.wrap = false;
     config.keyboard = false;
     config.pauseOnHover = false;
-  }
-
-  ngOnInit() {
-    this._http.get(&#x27;https://picsum.photos/list&#x27;)
-        .pipe(map((images: Array&#x3C;{id: number}&#x3E;) =&#x3E; this._randomImageUrls(images)))
-        .subscribe(images =&#x3E; this.images = images);
-  }
-
-  private _randomImageUrls(images: Array&#x3C;{id: number}&#x3E;): Array&#x3C;string&#x3E; {
-    return [1, 2, 3, 4].map(() =&#x3E; {
-      const randomId = images[Math.floor(Math.random() * images.length)].id;
-      return &#x60;https://picsum.photos/900/500?image=${randomId}&#x60;;
-    });
   }
 }
 ">
