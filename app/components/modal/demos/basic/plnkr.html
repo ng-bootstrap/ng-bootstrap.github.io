@@ -76,7 +76,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.1.0/bundles/ng-bootstrap.umd.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.2.0/bundles/ng-bootstrap.umd.js&#x27;
   },
   packages: {
     app: {
@@ -165,10 +165,10 @@ export class NgbdModalBasic {
   }
 }
 ">
-    <input type="hidden" name="files[src/modal-basic.html]" value="&#x3C;ng-template #content let-c=&#x22;close&#x22; let-d=&#x22;dismiss&#x22;&#x3E;
+    <input type="hidden" name="files[src/modal-basic.html]" value="&#x3C;ng-template #content let-modal&#x3E;
   &#x3C;div class=&#x22;modal-header&#x22;&#x3E;
     &#x3C;h4 class=&#x22;modal-title&#x22; id=&#x22;modal-basic-title&#x22;&#x3E;Profile update&#x3C;/h4&#x3E;
-    &#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; aria-label=&#x22;Close&#x22; (click)=&#x22;d(&#x27;Cross click&#x27;)&#x22;&#x3E;
+    &#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; aria-label=&#x22;Close&#x22; (click)=&#x22;modal.dismiss(&#x27;Cross click&#x27;)&#x22;&#x3E;
       &#x3C;span aria-hidden=&#x22;true&#x22;&#x3E;&#x26;times;&#x3C;/span&#x3E;
     &#x3C;/button&#x3E;
   &#x3C;/div&#x3E;
@@ -179,16 +179,14 @@ export class NgbdModalBasic {
         &#x3C;div class=&#x22;input-group&#x22;&#x3E;
           &#x3C;input id=&#x22;dateOfBirth&#x22; class=&#x22;form-control&#x22; placeholder=&#x22;yyyy-mm-dd&#x22; name=&#x22;dp&#x22; ngbDatepicker #dp=&#x22;ngbDatepicker&#x22;&#x3E;
           &#x3C;div class=&#x22;input-group-append&#x22;&#x3E;
-            &#x3C;button class=&#x22;btn btn-outline-secondary&#x22; (click)=&#x22;dp.toggle()&#x22; type=&#x22;button&#x22;&#x3E;
-              &#x3C;img src=&#x22;img/calendar-icon.svg&#x22; style=&#x22;width: 1.2rem; height: 1rem; cursor: pointer;&#x22;/&#x3E;
-            &#x3C;/button&#x3E;
+            &#x3C;button class=&#x22;btn btn-outline-secondary calendar&#x22; (click)=&#x22;dp.toggle()&#x22; type=&#x22;button&#x22;&#x3E;&#x3C;/button&#x3E;
           &#x3C;/div&#x3E;
         &#x3C;/div&#x3E;
       &#x3C;/div&#x3E;
     &#x3C;/form&#x3E;
   &#x3C;/div&#x3E;
   &#x3C;div class=&#x22;modal-footer&#x22;&#x3E;
-    &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-dark&#x22; (click)=&#x22;c(&#x27;Save click&#x27;)&#x22;&#x3E;Save&#x3C;/button&#x3E;
+    &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-outline-dark&#x22; (click)=&#x22;modal.close(&#x27;Save click&#x27;)&#x22;&#x3E;Save&#x3C;/button&#x3E;
   &#x3C;/div&#x3E;
 &#x3C;/ng-template&#x3E;
 

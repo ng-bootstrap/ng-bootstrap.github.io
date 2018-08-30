@@ -76,7 +76,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.1.0/bundles/ng-bootstrap.umd.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.2.0/bundles/ng-bootstrap.umd.js&#x27;
   },
   packages: {
     app: {
@@ -160,7 +160,7 @@ export class NgbdTypeaheadBasic {
       distinctUntilChanged(),
       map(term =&#x3E; term.length &#x3C; 2 ? []
         : states.filter(v =&#x3E; v.toLowerCase().indexOf(term.toLowerCase()) &#x3E; -1).slice(0, 10))
-    );
+    )
 
 }
 ">

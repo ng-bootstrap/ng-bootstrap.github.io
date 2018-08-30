@@ -76,7 +76,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.1.0/bundles/ng-bootstrap.umd.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.2.0/bundles/ng-bootstrap.umd.js&#x27;
   },
   packages: {
     app: {
@@ -133,9 +133,8 @@ export class App {
 })
 export class AppModule {}
 ">
-    <input type="hidden" name="files[src/modal-options.ts]" value="import {Component, ViewEncapsulation} from &#x27;@angular/core&#x27;;
-
-import {NgbModal, ModalDismissReasons} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+    <input type="hidden" name="files[src/modal-options.ts]" value="import { Component, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
 @Component({
   selector: &#x27;ngbd-modal-options&#x27;,
@@ -178,13 +177,12 @@ export class NgbdModalOptions {
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
   }
-
 }
 ">
-    <input type="hidden" name="files[src/modal-options.html]" value="&#x3C;ng-template #content let-c=&#x22;close&#x22; let-d=&#x22;dismiss&#x22;&#x3E;
+    <input type="hidden" name="files[src/modal-options.html]" value="&#x3C;ng-template #content let-modal&#x3E;
   &#x3C;div class=&#x22;modal-header&#x22;&#x3E;
     &#x3C;h4 class=&#x22;modal-title&#x22;&#x3E;Modal title&#x3C;/h4&#x3E;
-    &#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; aria-label=&#x22;Close&#x22; (click)=&#x22;d(&#x27;Cross click&#x27;)&#x22;&#x3E;
+    &#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; aria-label=&#x22;Close&#x22; (click)=&#x22;modal.dismiss(&#x27;Cross click&#x27;)&#x22;&#x3E;
       &#x3C;span aria-hidden=&#x22;true&#x22;&#x3E;&#x26;times;&#x3C;/span&#x3E;
     &#x3C;/button&#x3E;
   &#x3C;/div&#x3E;
@@ -192,7 +190,7 @@ export class NgbdModalOptions {
     &#x3C;p&#x3E;One fine body&#x26;hellip;&#x3C;/p&#x3E;
   &#x3C;/div&#x3E;
   &#x3C;div class=&#x22;modal-footer&#x22;&#x3E;
-    &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-light&#x22; (click)=&#x22;c(&#x27;Close click&#x27;)&#x22;&#x3E;Close&#x3C;/button&#x3E;
+    &#x3C;button type=&#x22;button&#x22; class=&#x22;btn btn-light&#x22; (click)=&#x22;modal.close(&#x27;Close click&#x27;)&#x22;&#x3E;Close&#x3C;/button&#x3E;
   &#x3C;/div&#x3E;
 &#x3C;/ng-template&#x3E;
 

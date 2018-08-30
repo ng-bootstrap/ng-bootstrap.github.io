@@ -76,7 +76,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.1.0/bundles/ng-bootstrap.umd.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.2.0/bundles/ng-bootstrap.umd.js&#x27;
   },
   packages: {
     app: {
@@ -182,9 +182,17 @@ export class NgbdDatepickerRange {
     }
   }
 
-  isHovered = (date: NgbDate) =&#x3E; this.fromDate &#x26;&#x26; !this.toDate &#x26;&#x26; this.hoveredDate &#x26;&#x26; date.after(this.fromDate) &#x26;&#x26; date.before(this.hoveredDate);
-  isInside = (date: NgbDate) =&#x3E; date.after(this.fromDate) &#x26;&#x26; date.before(this.toDate);
-  isRange = (date: NgbDate) =&#x3E; date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date)
+  isHovered(date: NgbDate) {
+    return this.fromDate &#x26;&#x26; !this.toDate &#x26;&#x26; this.hoveredDate &#x26;&#x26; date.after(this.fromDate) &#x26;&#x26; date.before(this.hoveredDate);
+  }
+
+  isInside(date: NgbDate) {
+    return date.after(this.fromDate) &#x26;&#x26; date.before(this.toDate);
+  }
+
+  isRange(date: NgbDate) {
+    return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
+  }
 }
 ">
     <input type="hidden" name="files[src/datepicker-range.html]" value="&#x3C;p&#x3E;Example of the range selection&#x3C;/p&#x3E;

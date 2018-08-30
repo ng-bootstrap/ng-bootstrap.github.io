@@ -76,7 +76,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.1.0/bundles/ng-bootstrap.umd.js&#x27;
+    &#x27;@ng-bootstrap/ng-bootstrap&#x27;: &#x27;npm:@ng-bootstrap/ng-bootstrap@3.2.0/bundles/ng-bootstrap.umd.js&#x27;
   },
   packages: {
     app: {
@@ -167,7 +167,7 @@ export class NgbdTypeaheadConfig {
       distinctUntilChanged(),
       map(term =&#x3E; term.length &#x3C; 2 ? []
         : states.filter(v =&#x3E; v.toLowerCase().startsWith(term.toLocaleLowerCase())).splice(0, 10))
-    );
+    )
 }
 ">
     <input type="hidden" name="files[src/typeahead-config.html]" value="&#x3C;p&#x3E;This typeahead shows a hint when the input matches because the default values have been customized.&#x3C;/p&#x3E;
