@@ -6,7 +6,7 @@
     <input type="hidden" name="tags[0]" value="Angular">
     <input type="hidden" name="tags[1]" value="Bootstrap">
     <input type="hidden" name="tags[2]" value="ng-bootstrap">
-    <input type="hidden" name="tags[3]" value="Popover">  
+    <input type="hidden" name="tags[3]" value="Popover">
 
     <input type="hidden" name="files[.angular-cli.json]" value="{
   &#x22;apps&#x22;: [{
@@ -22,12 +22,13 @@
   &#x3C;head&#x3E;
     &#x3C;title&#x3E;ng-bootstrap demo&#x3C;/title&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.css&#x22; /&#x3E;
   &#x3C;/head&#x3E;
 
   &#x3C;body&#x3E;
     &#x3C;my-app&#x3E;loading...&#x3C;/my-app&#x3E;
   &#x3C;/body&#x3E;
-  
+
 &#x3C;/html&#x3E;">
     <input type="hidden" name="files[main.ts]" value="import &#x27;./polyfills&#x27;;
 
@@ -130,10 +131,10 @@ import { AppComponent } from &#x27;./app.component&#x27;;
 import { NgbdPopoverVisibility } from &#x27;./popover-visibility&#x27;;
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule.forRoot()], 
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule],
   declarations: [AppComponent, NgbdPopoverVisibility],
   bootstrap: [AppComponent]
-}) 
+})
 export class AppModule {}
 ">
     <input type="hidden" name="files[app/app.component.ts]" value="import { Component } from &#x27;@angular/core&#x27;;
@@ -147,7 +148,7 @@ export class AppComponent {
 ">
     <input type="hidden" name="files[app/app.component.html]" value="
 &#x3C;div class=&#x22;container-fluid&#x22;&#x3E;
-    
+
   &#x3C;hr&#x3E;
 
   &#x3C;p&#x3E;
@@ -193,8 +194,8 @@ export class NgbdPopoverVisibility {
   &#x3C;li&#x3E;Last hidden at: &#x3C;code&#x3E;{{lastHidden | date:&#x27;h:mm:ss&#x27;}}&#x3C;/code&#x3E;&#x3C;/li&#x3E;
 &#x3C;/ul&#x3E;
 ">
-    
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.1.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;3.2.2&#x22;,&#x22;core-js&#x22;:&#x22;^2.5.4&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.26&#x22;}">
+
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.1.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;3.3.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.5.4&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.26&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>

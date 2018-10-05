@@ -2,11 +2,11 @@
 <html lang="en">
 <body>
   <form id="mainForm" method="post" action="https://run.stackblitz.com/api/angular/v1/">
-    <input type="hidden" name="description" value="Example usage of the progressbar widget from https://ng-bootstrap.github.io">
+    <input type="hidden" name="description" value="Example usage of the datepicker widget from https://ng-bootstrap.github.io">
     <input type="hidden" name="tags[0]" value="Angular">
     <input type="hidden" name="tags[1]" value="Bootstrap">
     <input type="hidden" name="tags[2]" value="ng-bootstrap">
-    <input type="hidden" name="tags[3]" value="Progressbar">
+    <input type="hidden" name="tags[3]" value="Datepicker">
 
     <input type="hidden" name="files[.angular-cli.json]" value="{
   &#x22;apps&#x22;: [{
@@ -128,11 +128,11 @@ import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 import { NgbModule } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 import { AppComponent } from &#x27;./app.component&#x27;;
-import { NgbdProgressbarStriped } from &#x27;./progressbar-striped&#x27;;
+import { NgbdDatepickerFootertemplate } from &#x27;./datepicker-footertemplate&#x27;;
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule],
-  declarations: [AppComponent, NgbdProgressbarStriped],
+  declarations: [AppComponent, NgbdDatepickerFootertemplate],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
@@ -158,22 +158,42 @@ export class AppComponent {
 
   &#x3C;hr&#x3E;
 
-  &#x3C;ngbd-progressbar-striped&#x3E;&#x3C;/ngbd-progressbar-striped&#x3E;
+  &#x3C;ngbd-datepicker-footertemplate&#x3E;&#x3C;/ngbd-datepicker-footertemplate&#x3E;
 &#x3C;/div&#x3E;
 ">
-    <input type="hidden" name="files[app/progressbar-striped.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
+    <input type="hidden" name="files[app/datepicker-footertemplate.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
+import {NgbCalendar, NgbDateStruct} from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 
 @Component({
-  selector: &#x27;ngbd-progressbar-striped&#x27;,
-  templateUrl: &#x27;./progressbar-striped.html&#x27;
+  selector: &#x27;ngbd-datepicker-footertemplate&#x27;,
+  templateUrl: &#x27;./datepicker-footertemplate.html&#x27;,
 })
-export class NgbdProgressbarStriped {
+export class NgbdDatepickerFootertemplate {
+  model: NgbDateStruct;
+  today = this.calendar.getToday();
+
+  constructor(private calendar: NgbCalendar) {}
 }
 ">
-    <input type="hidden" name="files[app/progressbar-striped.html]" value="&#x3C;p&#x3E;&#x3C;ngb-progressbar type=&#x22;success&#x22; [value]=&#x22;25&#x22; [striped]=&#x22;true&#x22;&#x3E;&#x3C;/ngb-progressbar&#x3E;&#x3C;/p&#x3E;
-&#x3C;p&#x3E;&#x3C;ngb-progressbar type=&#x22;info&#x22; [value]=&#x22;50&#x22; [striped]=&#x22;true&#x22;&#x3E;&#x3C;/ngb-progressbar&#x3E;&#x3C;/p&#x3E;
-&#x3C;p&#x3E;&#x3C;ngb-progressbar type=&#x22;warning&#x22; [value]=&#x22;75&#x22; [striped]=&#x22;true&#x22;&#x3E;&#x3C;/ngb-progressbar&#x3E;&#x3C;/p&#x3E;
-&#x3C;p&#x3E;&#x3C;ngb-progressbar type=&#x22;danger&#x22; [value]=&#x22;100&#x22; [striped]=&#x22;true&#x22;&#x3E;&#x3C;/ngb-progressbar&#x3E;&#x3C;/p&#x3E;
+    <input type="hidden" name="files[app/datepicker-footertemplate.html]" value="&#x3C;p&#x3E;This datepicker uses a footer template which is presented inside datepicker. Today and close buttons used as an example.&#x3C;/p&#x3E;
+
+&#x3C;form class=&#x22;form-inline&#x22;&#x3E;
+  &#x3C;div class=&#x22;form-group&#x22;&#x3E;
+    &#x3C;div class=&#x22;input-group&#x22;&#x3E;
+      &#x3C;input class=&#x22;form-control&#x22; placeholder=&#x22;yyyy-mm-dd&#x22;
+             name=&#x22;dp&#x22; [(ngModel)]=&#x22;model&#x22; ngbDatepicker [footerTemplate]=&#x22;footerTemplate&#x22; #d=&#x22;ngbDatepicker&#x22;&#x3E;
+      &#x3C;div class=&#x22;input-group-append&#x22;&#x3E;
+        &#x3C;button class=&#x22;btn btn-outline-secondary calendar&#x22; (click)=&#x22;d.toggle()&#x22; type=&#x22;button&#x22;&#x3E;&#x3C;/button&#x3E;
+      &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/form&#x3E;
+
+&#x3C;ng-template #footerTemplate&#x3E;
+  &#x3C;hr class=&#x22;my-0&#x22;&#x3E;
+  &#x3C;button class=&#x22;btn btn-primary btn-sm m-2 float-left&#x22; (click)=&#x22;model = today; d.close()&#x22;&#x3E;Today&#x3C;/button&#x3E;
+  &#x3C;button class=&#x22;btn btn-secondary btn-sm m-2 float-right&#x22; (click)=&#x22;d.close()&#x22;&#x3E;Close&#x3C;/button&#x3E;
+&#x3C;/ng-template&#x3E;
 ">
 
     <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.1.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;3.3.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.5.4&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.26&#x22;}">
