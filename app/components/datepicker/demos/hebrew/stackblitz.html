@@ -164,7 +164,7 @@ export class AppComponent {
     <input type="hidden" name="files[app/datepicker-hebrew.ts]" value="import {Component} from &#x27;@angular/core&#x27;;
 import {
   NgbCalendar,
-  NgbCalendarHebrew,
+  NgbCalendarHebrew, NgbDate,
   NgbDatepickerI18n,
   NgbDatepickerI18nHebrew,
   NgbDateStruct
@@ -173,6 +173,30 @@ import {
 @Component({
   selector: &#x27;ngbd-datepicker-hebrew&#x27;,
   templateUrl: &#x27;./datepicker-hebrew.html&#x27;,
+  styles: [&#x60;
+    .hebrew-day {
+      text-align: right;
+      padding: 0.25rem 0.65rem 0.25rem 0.25rem;
+      border-radius: 0.25rem;
+      display: inline-block;
+      height: 2.75rem;
+      width: 2.75rem;
+    }
+    .hebrew-day:hover, .hebrew-day.focused {
+      background-color: #e6e6e6;
+    }
+    .hebrew-day.selected {
+      background-color: #007bff;
+      color: white;
+    }
+    .outside {
+      color: lightgray;
+    }
+    .gregorian-num {
+      font-size: 0.5rem;
+      direction: ltr;
+    }
+  &#x60;],
   providers: [
     {provide: NgbCalendar, useClass: NgbCalendarHebrew},
     {provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nHebrew}
@@ -182,7 +206,15 @@ export class NgbdDatepickerHebrew {
 
   model: NgbDateStruct;
 
-  constructor(private calendar: NgbCalendar) {}
+  constructor(private calendar: NgbCalendar, public i18n: NgbDatepickerI18n) {
+    this.dayTemplateData = this.dayTemplateData.bind(this);
+  }
+
+  dayTemplateData(date: NgbDate) {
+    return {
+      gregorian: (this.calendar as NgbCalendarHebrew).toGregorian(date)
+    };
+  }
 
   selectToday() {
     this.model = this.calendar.getToday();
@@ -194,8 +226,16 @@ export class NgbdDatepickerHebrew {
   In Israel it is used for religious purposes and frequently as an official calendar for civil purposes.
 &#x3C;/p&#x3E;
 
-&#x3C;ngb-datepicker class=&#x22;rtl&#x22; #dp [(ngModel)]=&#x22;model&#x22; [displayMonths]=&#x22;2&#x22; [firstDayOfWeek]=&#x22;7&#x22;&#x3E;
+&#x3C;ngb-datepicker class=&#x22;hebrew rtl&#x22; #dp [(ngModel)]=&#x22;model&#x22; [displayMonths]=&#x22;1&#x22; [firstDayOfWeek]=&#x22;7&#x22; [dayTemplate]=&#x22;dt&#x22;
+[dayTemplateData]=&#x22;dayTemplateData&#x22;&#x3E;
 &#x3C;/ngb-datepicker&#x3E;
+
+&#x3C;ng-template #dt let-date let-data=&#x22;data&#x22; let-selected=&#x22;selected&#x22; let-currentMonth=&#x22;currentMonth&#x22;&#x3E;
+  &#x3C;div class=&#x22;hebrew-day&#x22; [class.outside]=&#x22;date.month !== currentMonth&#x22; [class.selected]=&#x22;selected&#x22;&#x3E;
+    &#x3C;div class=&#x22;gregorian-num&#x22;&#x3E;{{ data.gregorian.day + &#x27;/&#x27; + (data.gregorian.month) }}&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;hebrew-num&#x22;&#x3E;{{ i18n.getDayNumerals(date) }}&#x3C;/div&#x3E;
+  &#x3C;/div&#x3E;
+&#x3C;/ng-template&#x3E;
 
 &#x3C;hr/&#x3E;
 
@@ -207,7 +247,7 @@ export class NgbdDatepickerHebrew {
 &#x3C;pre&#x3E;Model: {{ model | json }}&#x3C;/pre&#x3E;
 ">
 
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/common&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/router&#x22;:&#x22;6.1.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;6.1.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;3.3.1&#x22;,&#x22;core-js&#x22;:&#x22;^2.5.4&#x22;,&#x22;rxjs&#x22;:&#x22;6.0.0&#x22;,&#x22;zone.js&#x22;:&#x22;^0.8.26&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;7.0.0&#x22;,&#x22;@ng-bootstrap/ng-bootstrap&#x22;:&#x22;4.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.5.4&#x22;,&#x22;rxjs&#x22;:&#x22;6.3.0&#x22;,&#x22;zone.js&#x22;:&#x22;~0.8.26&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>
