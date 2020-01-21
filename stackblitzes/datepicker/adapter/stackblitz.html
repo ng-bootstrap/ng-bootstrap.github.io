@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap - Datepicker - Adapter">
     <input type="hidden" name="project[description]"
       value="Example usage of the datepicker widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;8.2.4&#34;,&#34;@angular/common&#34;:&#34;8.2.4&#34;,&#34;@angular/compiler&#34;:&#34;8.2.4&#34;,&#34;@angular/platform-browser&#34;:&#34;8.2.4&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;8.2.4&#34;,&#34;@angular/router&#34;:&#34;8.2.4&#34;,&#34;@angular/forms&#34;:&#34;8.2.4&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;5.1.5&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;6.4.0&#34;,&#34;zone.js&#34;:&#34;~0.9.1&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;8.2.4&#34;,&#34;@angular/common&#34;:&#34;8.2.4&#34;,&#34;@angular/compiler&#34;:&#34;8.2.4&#34;,&#34;@angular/platform-browser&#34;:&#34;8.2.4&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;8.2.4&#34;,&#34;@angular/router&#34;:&#34;8.2.4&#34;,&#34;@angular/forms&#34;:&#34;8.2.4&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;5.2.0&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;6.4.0&#34;,&#34;zone.js&#34;:&#34;~0.9.1&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -227,9 +227,13 @@ platformBrowserDynamic()
     .catch(err =&gt; console.error(err));
 ">
     
-    <input type="hidden" name="project[files][app/datepicker-adapter.html]" value="&lt;p&gt;These datepickers use custom Date adapter that lets you use your own model implementation.
-In this example we are converting from and to a JS native Date object&lt;/p&gt;
-
+    <input type="hidden" name="project[files][app/datepicker-adapter.html]" value="&lt;p&gt;These datepickers use custom date adapter and formatter.
+  The custom &lt;code&gt;NgbDateAdapter&lt;/code&gt; lets you use your own model i.e. the structure of ngModel.
+  The custom &lt;code&gt;NgbDateParserFormatter&lt;/code&gt; lets you use your own formatter or parser i.e. the date format in input field.
+&lt;br/&gt;
+&lt;br/&gt;
+  Notice that there are &lt;strong&gt;two&lt;/strong&gt; different services: the &lt;code&gt;NgbDateAdapter&lt;/code&gt; and the &lt;code&gt;NgbDateParserFormatter&lt;/code&gt;.&lt;/p&gt;
+&lt;br/&gt;
 &lt;div class=&#34;row&#34;&gt;
   &lt;div class=&#34;col-6&#34;&gt;
     &lt;ngb-datepicker #d1 [(ngModel)]=&#34;model1&#34; #c1=&#34;ngModel&#34;&gt;&lt;/ngb-datepicker&gt;
@@ -246,7 +250,7 @@ In this example we are converting from and to a JS native Date object&lt;/p&gt;
     &lt;form class=&#34;form-inline&#34;&gt;
       &lt;div class=&#34;form-group&#34;&gt;
         &lt;div class=&#34;input-group&#34;&gt;
-          &lt;input class=&#34;form-control&#34; placeholder=&#34;yyyy-mm-dd&#34;
+          &lt;input class=&#34;form-control&#34; placeholder=&#34;dd/mm/yyyy&#34;
                  name=&#34;d2&#34; #c2=&#34;ngModel&#34; [(ngModel)]=&#34;model2&#34; ngbDatepicker #d2=&#34;ngbDatepicker&#34;&gt;
           &lt;div class=&#34;input-group-append&#34;&gt;
             &lt;button class=&#34;btn btn-outline-secondary calendar&#34; (click)=&#34;d2.toggle()&#34; type=&#34;button&#34;&gt;&lt;/button&gt;
@@ -268,7 +272,72 @@ In this example we are converting from and to a JS native Date object&lt;/p&gt;
 ">
     
     <input type="hidden" name="project[files][app/datepicker-adapter.ts]" value="import {Component, Injectable} from &#39;@angular/core&#39;;
-import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from &#39;@ng-bootstrap/ng-bootstrap&#39;;
+import {
+  NgbCalendar,
+  NgbDateAdapter,
+  NgbDateStruct,
+  NgbDateParserFormatter
+} from &#39;@ng-bootstrap/ng-bootstrap&#39;;
+
+/**
+ * This Service handles how the date is represented in scripts i.e. ngModel.
+ */
+@Injectable()
+export class CustomAdapter extends NgbDateAdapter&lt;string&gt; {
+
+  readonly DELIMITER = &#39;-&#39;;
+
+  fromModel(value: string): NgbDateStruct {
+    let result: NgbDateStruct = null;
+    if (value) {
+      let date = value.split(this.DELIMITER);
+      result = {
+        day : parseInt(date[0], 10),
+        month : parseInt(date[1], 10),
+        year : parseInt(date[2], 10)
+      };
+    }
+    return result;
+  }
+
+  toModel(date: NgbDateStruct): string {
+    let result: string = null;
+    if (date) {
+      result = date.day + this.DELIMITER + date.month + this.DELIMITER + date.year;
+    }
+    return result;
+  }
+}
+
+/**
+ * This Service handles how the date is rendered and parsed from keyboard i.e. in the bound input field.
+ */
+@Injectable()
+export class CustomDateParserFormatter extends NgbDateParserFormatter {
+
+  readonly DELIMITER = &#39;/&#39;;
+
+  parse(value: string): NgbDateStruct {
+    let result: NgbDateStruct = null;
+    if (value) {
+      let date = value.split(this.DELIMITER);
+      result = {
+        day : parseInt(date[0], 10),
+        month : parseInt(date[1], 10),
+        year : parseInt(date[2], 10)
+      };
+    }
+    return result;
+  }
+
+  format(date: NgbDateStruct): string {
+    let result: string = null;
+    if (date) {
+      result = date.day + this.DELIMITER + date.month + this.DELIMITER + date.year;
+    }
+    return result;
+  }
+}
 
 @Component({
   selector: &#39;ngbd-datepicker-adapter&#39;,
@@ -276,15 +345,20 @@ import {NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter} from &#39;@ng-boots
 
   // NOTE: For this example we are only providing current component, but probably
   // NOTE: you will want to provide your main App Module
-  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
+  providers: [
+    {provide: NgbDateAdapter, useClass: CustomAdapter},
+    {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
+  ]
 })
 export class NgbdDatepickerAdapter {
 
-  model1: Date;
-  model2: Date;
+  model1: string;
+  model2: string;
+
+  constructor(private ngbCalendar: NgbCalendar, private dateAdapter: NgbDateAdapter&lt;string&gt;) {}
 
   get today() {
-    return new Date();
+    return this.dateAdapter.toModel(this.ngbCalendar.getToday());
   }
 }
 ">
