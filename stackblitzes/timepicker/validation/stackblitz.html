@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap - Timepicker - Validation">
     <input type="hidden" name="project[description]"
       value="Example usage of the timepicker widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;~9.0.0&#34;,&#34;@angular/common&#34;:&#34;~9.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~9.0.0&#34;,&#34;@angular/router&#34;:&#34;~9.0.0&#34;,&#34;@angular/forms&#34;:&#34;~9.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;6.0.0&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;~6.5.4&#34;,&#34;zone.js&#34;:&#34;~0.10.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;~9.0.0&#34;,&#34;@angular/common&#34;:&#34;~9.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~9.0.0&#34;,&#34;@angular/router&#34;:&#34;~9.0.0&#34;,&#34;@angular/forms&#34;:&#34;~9.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;6.0.1&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;~6.5.4&#34;,&#34;zone.js&#34;:&#34;~0.10.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -232,7 +232,7 @@ platformBrowserDynamic()
 &lt;div class=&#34;form-group&#34;&gt;
   &lt;ngb-timepicker [formControl]=&#34;ctrl&#34; required&gt;&lt;/ngb-timepicker&gt;
   &lt;div *ngIf=&#34;ctrl.valid&#34; class=&#34;small form-text text-success&#34;&gt;Great choice&lt;/div&gt;
-  &lt;div class=&#34;small form-text text-danger&#34; *ngIf=&#34;!ctrl.valid&#34;&gt;
+  &lt;div *ngIf=&#34;ctrl.errors&#34; class=&#34;small form-text text-danger&#34;&gt;
     &lt;div *ngIf=&#34;ctrl.errors[&#39;required&#39;]&#34;&gt;Select some time during lunchtime&lt;/div&gt;
     &lt;div *ngIf=&#34;ctrl.errors[&#39;tooLate&#39;]&#34;&gt;Oh no, it&#39;s way too late&lt;/div&gt;
     &lt;div *ngIf=&#34;ctrl.errors[&#39;tooEarly&#39;]&#34;&gt;It&#39;s a bit too early&lt;/div&gt;

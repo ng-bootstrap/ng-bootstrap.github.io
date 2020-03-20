@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap - Datepicker - Range-popup">
     <input type="hidden" name="project[description]"
       value="Example usage of the datepicker widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;~9.0.0&#34;,&#34;@angular/common&#34;:&#34;~9.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~9.0.0&#34;,&#34;@angular/router&#34;:&#34;~9.0.0&#34;,&#34;@angular/forms&#34;:&#34;~9.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;6.0.0&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;~6.5.4&#34;,&#34;zone.js&#34;:&#34;~0.10.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;~9.0.0&#34;,&#34;@angular/common&#34;:&#34;~9.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~9.0.0&#34;,&#34;@angular/router&#34;:&#34;~9.0.0&#34;,&#34;@angular/forms&#34;:&#34;~9.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;6.0.1&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;~6.5.4&#34;,&#34;zone.js&#34;:&#34;~0.10.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -239,7 +239,7 @@ platformBrowserDynamic()
              [displayMonths]=&#34;2&#34;
              [dayTemplate]=&#34;t&#34;
              outsideDays=&#34;hidden&#34;
-             [startDate]=&#34;fromDate&#34;&gt;
+             [startDate]=&#34;fromDate!&#34;&gt;
       &lt;ng-template #t let-date let-focused=&#34;focused&#34;&gt;
         &lt;span class=&#34;custom-day&#34;
               [class.focused]=&#34;focused&#34;
@@ -333,10 +333,10 @@ import {NgbDate, NgbCalendar, NgbDateParserFormatter} from &#39;@ng-bootstrap/ng
 })
 export class NgbdDatepickerRangePopup {
 
-  hoveredDate: NgbDate;
+  hoveredDate: NgbDate | null = null;
 
-  fromDate: NgbDate;
-  toDate: NgbDate;
+  fromDate: NgbDate | null;
+  toDate: NgbDate | null;
 
   constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
@@ -346,7 +346,7 @@ export class NgbdDatepickerRangePopup {
   onDateSelection(date: NgbDate) {
     if (!this.fromDate &amp;&amp; !this.toDate) {
       this.fromDate = date;
-    } else if (this.fromDate &amp;&amp; !this.toDate &amp;&amp; date.after(this.fromDate)) {
+    } else if (this.fromDate &amp;&amp; !this.toDate &amp;&amp; date &amp;&amp; date.after(this.fromDate)) {
       this.toDate = date;
     } else {
       this.toDate = null;
@@ -359,14 +359,14 @@ export class NgbdDatepickerRangePopup {
   }
 
   isInside(date: NgbDate) {
-    return date.after(this.fromDate) &amp;&amp; date.before(this.toDate);
+    return this.toDate &amp;&amp; date.after(this.fromDate) &amp;&amp; date.before(this.toDate);
   }
 
   isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
+    return date.equals(this.fromDate) || (this.toDate &amp;&amp; date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
   }
 
-  validateInput(currentValue: NgbDate, input: string): NgbDate {
+  validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
     const parsed = this.formatter.parse(input);
     return parsed &amp;&amp; this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }

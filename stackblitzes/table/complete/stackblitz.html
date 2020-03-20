@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap - Table - Complete">
     <input type="hidden" name="project[description]"
       value="Example usage of the table widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;~9.0.0&#34;,&#34;@angular/common&#34;:&#34;~9.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~9.0.0&#34;,&#34;@angular/router&#34;:&#34;~9.0.0&#34;,&#34;@angular/forms&#34;:&#34;~9.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;6.0.0&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;~6.5.4&#34;,&#34;zone.js&#34;:&#34;~0.10.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;~9.0.0&#34;,&#34;@angular/common&#34;:&#34;~9.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~9.0.0&#34;,&#34;@angular/router&#34;:&#34;~9.0.0&#34;,&#34;@angular/forms&#34;:&#34;~9.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;6.0.1&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;~6.5.4&#34;,&#34;zone.js&#34;:&#34;~0.10.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -332,7 +332,7 @@ import {Country} from &#39;./country&#39;;
 import {COUNTRIES} from &#39;./countries&#39;;
 import {DecimalPipe} from &#39;@angular/common&#39;;
 import {debounceTime, delay, switchMap, tap} from &#39;rxjs/operators&#39;;
-import {SortDirection} from &#39;./sortable.directive&#39;;
+import {SortColumn, SortDirection} from &#39;./sortable.directive&#39;;
 
 interface SearchResult {
   countries: Country[];
@@ -343,20 +343,18 @@ interface State {
   page: number;
   pageSize: number;
   searchTerm: string;
-  sortColumn: string;
+  sortColumn: SortColumn;
   sortDirection: SortDirection;
 }
 
-function compare(v1, v2) {
-  return v1 &lt; v2 ? -1 : v1 &gt; v2 ? 1 : 0;
-}
+const compare = (v1: string, v2: string) =&gt; v1 &lt; v2 ? -1 : v1 &gt; v2 ? 1 : 0;
 
-function sort(countries: Country[], column: string, direction: string): Country[] {
-  if (direction === &#39;&#39;) {
+function sort(countries: Country[], column: SortColumn, direction: string): Country[] {
+  if (direction === &#39;&#39; || column === &#39;&#39;) {
     return countries;
   } else {
     return [...countries].sort((a, b) =&gt; {
-      const res = compare(a[column], b[column]);
+      const res = compare(`${a[column]}`, `${b[column]}`);
       return direction === &#39;asc&#39; ? res : -res;
     });
   }
@@ -408,7 +406,7 @@ export class CountryService {
   set page(page: number) { this._set({page}); }
   set pageSize(pageSize: number) { this._set({pageSize}); }
   set searchTerm(searchTerm: string) { this._set({searchTerm}); }
-  set sortColumn(sortColumn: string) { this._set({sortColumn}); }
+  set sortColumn(sortColumn: SortColumn) { this._set({sortColumn}); }
   set sortDirection(sortDirection: SortDirection) { this._set({sortDirection}); }
 
   private _set(patch: Partial&lt;State&gt;) {
@@ -443,12 +441,14 @@ export class CountryService {
 ">
     
     <input type="hidden" name="project[files][app/sortable.directive.ts]" value="import {Directive, EventEmitter, Input, Output} from &#39;@angular/core&#39;;
+import {Country} from &#39;./country&#39;;
 
+export type SortColumn = keyof Country | &#39;&#39;;
 export type SortDirection = &#39;asc&#39; | &#39;desc&#39; | &#39;&#39;;
 const rotate: {[key: string]: SortDirection} = { &#39;asc&#39;: &#39;desc&#39;, &#39;desc&#39;: &#39;&#39;, &#39;&#39;: &#39;asc&#39; };
 
 export interface SortEvent {
-  column: string;
+  column: SortColumn;
   direction: SortDirection;
 }
 
@@ -462,7 +462,7 @@ export interface SortEvent {
 })
 export class NgbdSortableHeader {
 
-  @Input() sortable: string;
+  @Input() sortable: SortColumn = &#39;&#39;;
   @Input() direction: SortDirection = &#39;&#39;;
   @Output() sort = new EventEmitter&lt;SortEvent&gt;();
 
@@ -512,7 +512,7 @@ export class NgbdSortableHeader {
 
   &lt;div class=&#34;d-flex justify-content-between p-2&#34;&gt;
     &lt;ngb-pagination
-      [collectionSize]=&#34;total$ | async&#34; [(page)]=&#34;service.page&#34; [pageSize]=&#34;service.pageSize&#34;&gt;
+      [collectionSize]=&#34;(total$ | async)!&#34; [(page)]=&#34;service.page&#34; [pageSize]=&#34;service.pageSize&#34;&gt;
     &lt;/ngb-pagination&gt;
 
     &lt;select class=&#34;custom-select&#34; style=&#34;width: auto&#34; name=&#34;pageSize&#34; [(ngModel)]=&#34;service.pageSize&#34;&gt;
