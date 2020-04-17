@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap - Datepicker - Disabled">
     <input type="hidden" name="project[description]"
       value="Example usage of the datepicker widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;~9.0.0&#34;,&#34;@angular/common&#34;:&#34;~9.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~9.0.0&#34;,&#34;@angular/router&#34;:&#34;~9.0.0&#34;,&#34;@angular/forms&#34;:&#34;~9.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;6.0.2&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;~6.5.4&#34;,&#34;zone.js&#34;:&#34;~0.10.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/core&#34;:&#34;~9.0.0&#34;,&#34;@angular/common&#34;:&#34;~9.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~9.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~9.0.0&#34;,&#34;@angular/router&#34;:&#34;~9.0.0&#34;,&#34;@angular/forms&#34;:&#34;~9.0.0&#34;,&#34;@angular/localize&#34;:&#34;~9.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;6.0.3&#34;,&#34;core-js&#34;:&#34;^2&#34;,&#34;rxjs&#34;:&#34;~6.5.4&#34;,&#34;zone.js&#34;:&#34;~0.10.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -50,7 +50,7 @@
     <input type="hidden" name="project[tags][]" value="datepicker">
     
     
-    <input type="hidden" name="project[files][polyfills.ts]" value="/**
+    <input type="hidden" name="project[files][src/polyfills.ts]" value="/**
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.
  *
@@ -116,9 +116,136 @@ import &#39;zone.js/dist/zone&#39;;  // Included with Angular CLI.
  * Date, currency, decimal and percent pipes.
  * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
  */
-// import &#39;intl&#39;;  // Run `npm install --save intl`.">
+// import &#39;intl&#39;;  // Run `npm install --save intl`.
+
+
+/**
+ * Angular localization polyfill
+ */
+import &#39;@angular/localize/init&#39;;
+">
     
-    <input type="hidden" name="project[files][index.html]" value="&lt;!DOCTYPE html&gt;
+    <input type="hidden" name="project[files][tsconfig.json]" value="{
+  &#34;compileOnSave&#34;: false,
+  &#34;compilerOptions&#34;: {
+    &#34;baseUrl&#34;: &#34;./&#34;,
+    &#34;outDir&#34;: &#34;./dist/out-tsc&#34;,
+    &#34;sourceMap&#34;: true,
+    &#34;declaration&#34;: false,
+    &#34;downlevelIteration&#34;: true,
+    &#34;experimentalDecorators&#34;: true,
+    &#34;module&#34;: &#34;esnext&#34;,
+    &#34;moduleResolution&#34;: &#34;node&#34;,
+    &#34;importHelpers&#34;: true,
+    &#34;target&#34;: &#34;es2015&#34;,
+    &#34;typeRoots&#34;: [
+      &#34;node_modules/@types&#34;
+    ],
+    &#34;lib&#34;: [
+      &#34;es2018&#34;,
+      &#34;dom&#34;
+    ]
+  },
+  &#34;angularCompilerOptions&#34;: {
+    &#34;enableIvy&#34;: true,
+    &#34;fullTemplateTypeCheck&#34;: true,
+    &#34;stricTemplates&#34;: true,
+    &#34;strictInjectionParameters&#34;: true
+  }
+}
+">
+    
+    <input type="hidden" name="project[files][angular.json]" value="{
+  &#34;version&#34;: 1,
+  &#34;newProjectRoot&#34;: &#34;projects&#34;,
+  &#34;projects&#34;: {
+    &#34;demo&#34;: {
+      &#34;root&#34;: &#34;&#34;,
+      &#34;sourceRoot&#34;: &#34;src&#34;,
+      &#34;projectType&#34;: &#34;application&#34;,
+      &#34;prefix&#34;: &#34;app&#34;,
+      &#34;schematics&#34;: {},
+      &#34;architect&#34;: {
+        &#34;build&#34;: {
+          &#34;builder&#34;: &#34;@angular-devkit/build-angular:browser&#34;,
+          &#34;options&#34;: {
+            &#34;outputPath&#34;: &#34;dist/demo&#34;,
+            &#34;index&#34;: &#34;src/index.html&#34;,
+            &#34;main&#34;: &#34;src/main.ts&#34;,
+            &#34;polyfills&#34;: &#34;src/polyfills.ts&#34;,
+            &#34;tsConfig&#34;: &#34;tsconfig.json&#34;,
+            &#34;assets&#34;: [
+            ],
+            &#34;styles&#34;: [
+            ],
+            &#34;scripts&#34;: []
+          },
+          &#34;configurations&#34;: {
+            &#34;production&#34;: {
+              &#34;fileReplacements&#34;: [
+                {
+                }
+              ],
+              &#34;optimization&#34;: true,
+              &#34;outputHashing&#34;: &#34;all&#34;,
+              &#34;sourceMap&#34;: false,
+              &#34;extractCss&#34;: true,
+              &#34;namedChunks&#34;: false,
+              &#34;aot&#34;: true,
+              &#34;extractLicenses&#34;: true,
+              &#34;vendorChunk&#34;: false,
+              &#34;buildOptimizer&#34;: true
+            }
+          }
+        },
+        &#34;serve&#34;: {
+          &#34;builder&#34;: &#34;@angular-devkit/build-angular:dev-server&#34;,
+          &#34;options&#34;: {
+            &#34;browserTarget&#34;: &#34;demo:build&#34;
+          },
+          &#34;configurations&#34;: {
+            &#34;production&#34;: {
+              &#34;browserTarget&#34;: &#34;demo:build:production&#34;
+            }
+          }
+        },
+        &#34;extract-i18n&#34;: {
+          &#34;builder&#34;: &#34;@angular-devkit/build-angular:extract-i18n&#34;,
+          &#34;options&#34;: {
+            &#34;browserTarget&#34;: &#34;demo:build&#34;
+          }
+        },
+        &#34;test&#34;: {
+          &#34;builder&#34;: &#34;@angular-devkit/build-angular:karma&#34;,
+          &#34;options&#34;: {
+            &#34;polyfills&#34;: &#34;src/polyfills.ts&#34;,
+            &#34;tsConfig&#34;: &#34;tsconfig.json&#34;,
+            &#34;styles&#34;: [
+            ],
+            &#34;scripts&#34;: [],
+            &#34;assets&#34;: [
+            ]
+          }
+        },
+        &#34;lint&#34;: {
+          &#34;builder&#34;: &#34;@angular-devkit/build-angular:tslint&#34;,
+          &#34;options&#34;: {
+            &#34;tsConfig&#34;: [
+              &#34;tsconfig.json&#34;
+            ],
+            &#34;exclude&#34;: [
+              &#34;**/node_modules/**&#34;
+            ]
+          }
+        }
+      }
+    }
+  },
+  &#34;defaultProject&#34;: &#34;demo&#34;
+}
+">
+    
+    <input type="hidden" name="project[files][src/index.html]" value="&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 
 &lt;head&gt;
@@ -207,7 +334,7 @@ ngb-carousel .picsum-img-wrapper&gt;img {
 &lt;/html&gt;
 ">
     
-    <input type="hidden" name="project[files][main.ts]" value="import &#39;./polyfills&#39;;
+    <input type="hidden" name="project[files][src/main.ts]" value="import &#39;./polyfills&#39;;
 
 import {platformBrowserDynamic} from &#39;@angular/platform-browser-dynamic&#39;;
 
@@ -227,7 +354,7 @@ platformBrowserDynamic()
     .catch(err =&gt; console.error(err));
 ">
     
-    <input type="hidden" name="project[files][app/datepicker-disabled.html]" value="&lt;p&gt;Disabled datepicker&lt;/p&gt;
+    <input type="hidden" name="project[files][src/app/datepicker-disabled.html]" value="&lt;p&gt;Disabled datepicker&lt;/p&gt;
 
 &lt;ngb-datepicker [(ngModel)]=&#34;model&#34; [disabled]=&#34;disabled&#34;&gt;&lt;/ngb-datepicker&gt;
 
@@ -238,7 +365,7 @@ platformBrowserDynamic()
 &lt;/button&gt;
 ">
     
-    <input type="hidden" name="project[files][app/datepicker-disabled.module.ts]" value="import { NgModule } from &#39;@angular/core&#39;;
+    <input type="hidden" name="project[files][src/app/datepicker-disabled.module.ts]" value="import { NgModule } from &#39;@angular/core&#39;;
 import { FormsModule } from &#39;@angular/forms&#39;;
 import { BrowserModule } from &#39;@angular/platform-browser&#39;;
 import { NgbModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
@@ -254,7 +381,7 @@ import { NgbdDatepickerDisabled } from &#39;./datepicker-disabled&#39;;
 export class NgbdDatepickerDisabledModule {}
 ">
     
-    <input type="hidden" name="project[files][app/datepicker-disabled.ts]" value="import {Component} from &#39;@angular/core&#39;;
+    <input type="hidden" name="project[files][src/app/datepicker-disabled.ts]" value="import {Component} from &#39;@angular/core&#39;;
 import {NgbCalendar, NgbDateStruct} from &#39;@ng-bootstrap/ng-bootstrap&#39;;
 
 @Component({
