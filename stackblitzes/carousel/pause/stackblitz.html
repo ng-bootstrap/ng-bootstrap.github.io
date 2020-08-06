@@ -354,7 +354,7 @@ platformBrowserDynamic()
     .catch(err =&gt; console.error(err));
 ">
     
-    <input type="hidden" name="project[files][src/app/carousel-pause.html]" value="&lt;ngb-carousel #carousel [interval]=&#34;1000&#34; [pauseOnHover]=&#34;pauseOnHover&#34; (slide)=&#34;onSlide($event)&#34;&gt;
+    <input type="hidden" name="project[files][src/app/carousel-pause.html]" value="&lt;ngb-carousel #carousel [interval]=&#34;1000&#34; [pauseOnHover]=&#34;pauseOnHover&#34; [pauseOnFocus]=&#34;pauseOnFocus&#34; (slide)=&#34;onSlide($event)&#34;&gt;
   &lt;ng-template ngbSlide *ngFor=&#34;let img of images; index as i&#34;&gt;
     &lt;div class=&#34;carousel-caption&#34;&gt;
       &lt;h3&gt;My slide {{i + 1}} title&lt;/h3&gt;
@@ -372,6 +372,10 @@ platformBrowserDynamic()
 &lt;div class=&#34;form-check&#34;&gt;
   &lt;input type=&#34;checkbox&#34; class=&#34;form-check-input&#34; id=&#34;pauseOnHover&#34; [(ngModel)]=&#34;pauseOnHover&#34;&gt;
   &lt;label class=&#34;form-check-label&#34; for=&#34;pauseOnHover&#34;&gt;Pause on hover&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&#34;form-check&#34;&gt;
+  &lt;input type=&#34;checkbox&#34; class=&#34;form-check-input&#34; id=&#34;pauseOnFocus&#34; [(ngModel)]=&#34;pauseOnFocus&#34;&gt;
+  &lt;label class=&#34;form-check-label&#34; for=&#34;pauseOnFocus&#34;&gt;Pause on focus&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&#34;form-check&#34;&gt;
   &lt;input type=&#34;checkbox&#34; class=&#34;form-check-input&#34; id=&#34;unpauseOnArrow&#34; [(ngModel)]=&#34;unpauseOnArrow&#34;&gt;
@@ -414,6 +418,7 @@ export class NgbdCarouselPause {
   unpauseOnArrow = false;
   pauseOnIndicator = false;
   pauseOnHover = true;
+  pauseOnFocus = true;
 
   @ViewChild(&#39;carousel&#39;, {static : true}) carousel: NgbCarousel;
 
