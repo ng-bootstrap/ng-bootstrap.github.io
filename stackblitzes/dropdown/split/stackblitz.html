@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap - Dropdown - Split">
     <input type="hidden" name="project[description]"
       value="Example usage of the dropdown widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~13.0.1&#34;,&#34;@angular/core&#34;:&#34;~13.0.1&#34;,&#34;@angular/common&#34;:&#34;~13.0.1&#34;,&#34;@angular/compiler&#34;:&#34;~13.0.1&#34;,&#34;@angular/compiler-cli&#34;:&#34;~13.0.1&#34;,&#34;@angular/platform-browser&#34;:&#34;~13.0.1&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~13.0.1&#34;,&#34;@angular/router&#34;:&#34;~13.0.1&#34;,&#34;@angular/forms&#34;:&#34;~13.0.1&#34;,&#34;@angular/localize&#34;:&#34;~13.0.1&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;12.0.1&#34;,&#34;@popperjs/core&#34;:&#34;^2.10.2&#34;,&#34;rxjs&#34;:&#34;~7.4.0&#34;,&#34;typescript&#34;:&#34;~4.4.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~13.0.1&#34;,&#34;@angular/core&#34;:&#34;~13.0.1&#34;,&#34;@angular/common&#34;:&#34;~13.0.1&#34;,&#34;@angular/compiler&#34;:&#34;~13.0.1&#34;,&#34;@angular/compiler-cli&#34;:&#34;~13.0.1&#34;,&#34;@angular/platform-browser&#34;:&#34;~13.0.1&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~13.0.1&#34;,&#34;@angular/router&#34;:&#34;~13.0.1&#34;,&#34;@angular/forms&#34;:&#34;~13.0.1&#34;,&#34;@angular/localize&#34;:&#34;~13.0.1&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;12.0.2&#34;,&#34;@popperjs/core&#34;:&#34;^2.10.2&#34;,&#34;rxjs&#34;:&#34;~7.4.0&#34;,&#34;typescript&#34;:&#34;~4.4.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -314,7 +314,7 @@ platformBrowserDynamic()
 &lt;div class=&#34;btn-group me-3&#34;&gt;
   &lt;button type=&#34;button&#34; class=&#34;btn btn-outline-success&#34;&gt;Plain ol&#39; button&lt;/button&gt;
   &lt;div class=&#34;btn-group&#34; ngbDropdown role=&#34;group&#34; aria-label=&#34;Button group with nested dropdown&#34;&gt;
-    &lt;button class=&#34;btn btn-outline-primary&#34; ngbDropdownToggle&gt;Drop me&lt;/button&gt;
+    &lt;button type=&#34;button&#34; class=&#34;btn btn-outline-primary&#34; ngbDropdownToggle&gt;Drop me&lt;/button&gt;
     &lt;div class=&#34;dropdown-menu&#34; ngbDropdownMenu&gt;
       &lt;button ngbDropdownItem&gt;One&lt;/button&gt;
       &lt;button ngbDropdownItem&gt;Two&lt;/button&gt;
@@ -326,7 +326,7 @@ platformBrowserDynamic()
 &lt;div class=&#34;btn-group me-3&#34;&gt;
   &lt;button type=&#34;button&#34; class=&#34;btn btn-primary&#34;&gt;Split me&lt;/button&gt;
   &lt;div class=&#34;btn-group&#34; ngbDropdown role=&#34;group&#34; aria-label=&#34;Button group with nested dropdown&#34;&gt;
-    &lt;button class=&#34;btn btn-primary dropdown-toggle-split&#34; ngbDropdownToggle&gt;&lt;/button&gt;
+    &lt;button type=&#34;button&#34; class=&#34;btn btn-primary dropdown-toggle-split&#34; ngbDropdownToggle&gt;&lt;/button&gt;
     &lt;div class=&#34;dropdown-menu&#34; ngbDropdownMenu&gt;
       &lt;button ngbDropdownItem&gt;One&lt;/button&gt;
       &lt;button ngbDropdownItem&gt;Two&lt;/button&gt;
@@ -337,7 +337,7 @@ platformBrowserDynamic()
 
 &lt;div class=&#34;btn-group me-3&#34;&gt;
   &lt;div class=&#34;btn-group&#34; ngbDropdown role=&#34;group&#34; aria-label=&#34;Button group with nested dropdown&#34;&gt;
-    &lt;button class=&#34;btn btn-outline-danger&#34; ngbDropdownToggle&gt;Select me&lt;/button&gt;
+    &lt;button type=&#34;button&#34; class=&#34;btn btn-outline-danger&#34; ngbDropdownToggle&gt;Select me&lt;/button&gt;
     &lt;div class=&#34;dropdown-menu&#34; ngbDropdownMenu&gt;
       &lt;button ngbDropdownItem&gt;One&lt;/button&gt;
       &lt;button ngbDropdownItem&gt;Two&lt;/button&gt;
@@ -345,7 +345,7 @@ platformBrowserDynamic()
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&#34;btn-group&#34; ngbDropdown role=&#34;group&#34; aria-label=&#34;Button group with nested dropdown&#34;&gt;
-    &lt;button class=&#34;btn btn-outline-success&#34; ngbDropdownToggle&gt;Or me&lt;/button&gt;
+    &lt;button type=&#34;button&#34; class=&#34;btn btn-outline-success&#34; ngbDropdownToggle&gt;Or me&lt;/button&gt;
     &lt;div class=&#34;dropdown-menu&#34; ngbDropdownMenu&gt;
       &lt;button ngbDropdownItem&gt;One&lt;/button&gt;
       &lt;button ngbDropdownItem&gt;Two&lt;/button&gt;
