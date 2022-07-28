@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap - Toast - Howto-global">
     <input type="hidden" name="project[description]"
       value="Example usage of the toast widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~13.0.1&#34;,&#34;@angular/core&#34;:&#34;~13.0.1&#34;,&#34;@angular/common&#34;:&#34;~13.0.1&#34;,&#34;@angular/compiler&#34;:&#34;~13.0.1&#34;,&#34;@angular/compiler-cli&#34;:&#34;~13.0.1&#34;,&#34;@angular/platform-browser&#34;:&#34;~13.0.1&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~13.0.1&#34;,&#34;@angular/router&#34;:&#34;~13.0.1&#34;,&#34;@angular/forms&#34;:&#34;~13.0.1&#34;,&#34;@angular/localize&#34;:&#34;~13.0.1&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;12.1.2&#34;,&#34;@popperjs/core&#34;:&#34;^2.10.2&#34;,&#34;rxjs&#34;:&#34;~7.4.0&#34;,&#34;typescript&#34;:&#34;~4.4.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;^14.1.0&#34;,&#34;@angular/core&#34;:&#34;^14.1.0&#34;,&#34;@angular/common&#34;:&#34;^14.1.0&#34;,&#34;@angular/compiler&#34;:&#34;^14.1.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;^14.1.0&#34;,&#34;@angular/platform-browser&#34;:&#34;^14.1.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;^14.1.0&#34;,&#34;@angular/router&#34;:&#34;^14.1.0&#34;,&#34;@angular/forms&#34;:&#34;^14.1.0&#34;,&#34;@angular/localize&#34;:&#34;^14.1.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;13.0.0&#34;,&#34;@popperjs/core&#34;:&#34;^2.10.2&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~4.7.3&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -206,7 +206,7 @@ import &#39;@angular/localize/init&#39;;
 &lt;head&gt;
   &lt;title&gt;ng-bootstrap toast demo - howto-global&lt;/title&gt;
   &lt;link rel=&#34;stylesheet&#34;
-    href=&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css&#34; /&gt;
+    href=&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css&#34; /&gt;
   &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.css&#34; /&gt;
   &lt;style&gt;
     /* Datepicker popup icon */
@@ -309,15 +309,20 @@ platformBrowserDynamic()
     .catch(err =&gt; console.error(err));
 ">
     
-    <input type="hidden" name="project[files][src/app/toast-global.component.html]" value="&lt;p&gt;Please click one of the button to see a Toast being displayed in the top right corner of your screen:&lt;/p&gt;
-&lt;button class=&#34;btn btn-primary&#34; (click)=&#34;showStandard()&#34; ngbTooltip=&#34;Will disappear in 5s&#34;&gt;Standard toast&lt;/button&gt;&amp;nbsp;
-&lt;button class=&#34;btn btn-success&#34; (click)=&#34;showSuccess()&#34; ngbTooltip=&#34;Will disappear in 10s&#34;&gt;Success toast&lt;/button&gt;&amp;nbsp;
-
-&lt;ng-template #dangerTpl&gt;
+    <input type="hidden" name="project[files][src/app/toast-global.component.html]" value="&lt;ng-template #dangerTpl&gt;
   &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; fill=&#34;#fff&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path d=&#34;M10.872 6.831l1.695 3.904 3.654-1.561-1.79 3.426 3.333.954-3.417 1.338 2.231 4.196-4.773-2.582-2.869 2.287.413-3.004-3.792-.726 2.93-1.74-1.885-2.512 3.427.646.843-4.626zm-.786-6.831l-1.665 9.119-6.512-1.228 3.639 4.851-5.548 3.294 7.108 1.361-.834 6.076 5.742-4.577 9.438 5.104-4.288-8.064 6.834-2.677-6.661-1.907 3.25-6.22-6.98 2.982-3.523-8.114z&#34;/&gt;&lt;/svg&gt;
   Danger Danger !
 &lt;/ng-template&gt;
-&lt;button class=&#34;btn btn-danger&#34; (click)=&#34;showDanger(dangerTpl)&#34; ngbTooltip=&#34;Will disappear in 15s&#34;&gt;Danger toast&lt;/button&gt;&amp;nbsp;
+
+&lt;p&gt;
+  Please click one of the button to see a Toast being displayed in the top right corner of your screen:
+&lt;/p&gt;
+
+&lt;div class=&#34;buttons&#34;&gt;
+  &lt;button class=&#34;btn btn-primary&#34; (click)=&#34;showStandard()&#34; ngbTooltip=&#34;Will disappear in 5s&#34;&gt;Standard toast&lt;/button&gt;&amp;nbsp;
+  &lt;button class=&#34;btn btn-success&#34; (click)=&#34;showSuccess()&#34; ngbTooltip=&#34;Will disappear in 10s&#34;&gt;Success toast&lt;/button&gt;&amp;nbsp;
+  &lt;button class=&#34;btn btn-danger&#34; (click)=&#34;showDanger(dangerTpl)&#34; ngbTooltip=&#34;Will disappear in 15s&#34;&gt;Danger toast&lt;/button&gt;&amp;nbsp;
+&lt;/div&gt;
 
 &lt;app-toasts aria-live=&#34;polite&#34; aria-atomic=&#34;true&#34;&gt;&lt;/app-toasts&gt;
 ">
