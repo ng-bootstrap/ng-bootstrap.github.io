@@ -36,10 +36,10 @@
   </div>
   <form id="mainForm" method="post" action="https://stackblitz.com/run?file=app/rating-template.ts" target="_self">
     <input type="hidden" name="project[template]" value="angular-cli">
-    <input type="hidden" name="project[title]" value="ng-bootstrap - Rating - Template">
+    <input type="hidden" name="project[title]" value="ng-bootstrap demo - Rating - Template">
     <input type="hidden" name="project[description]"
       value="Example usage of the rating widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;^14.1.0&#34;,&#34;@angular/core&#34;:&#34;^14.1.0&#34;,&#34;@angular/common&#34;:&#34;^14.1.0&#34;,&#34;@angular/compiler&#34;:&#34;^14.1.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;^14.1.0&#34;,&#34;@angular/platform-browser&#34;:&#34;^14.1.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;^14.1.0&#34;,&#34;@angular/router&#34;:&#34;^14.1.0&#34;,&#34;@angular/forms&#34;:&#34;^14.1.0&#34;,&#34;@angular/localize&#34;:&#34;^14.1.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;13.1.1&#34;,&#34;@popperjs/core&#34;:&#34;^2.10.2&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~4.7.3&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;^15.0.0&#34;,&#34;@angular/core&#34;:&#34;^15.0.0&#34;,&#34;@angular/common&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;^15.0.0&#34;,&#34;@angular/router&#34;:&#34;^15.0.0&#34;,&#34;@angular/forms&#34;:&#34;^15.0.0&#34;,&#34;@angular/localize&#34;:&#34;^15.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;14.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.6&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~4.8.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -86,12 +86,12 @@ import &#39;@angular/localize/init&#39;;
 		&#34;declaration&#34;: false,
 		&#34;downlevelIteration&#34;: true,
 		&#34;experimentalDecorators&#34;: true,
-		&#34;module&#34;: &#34;esnext&#34;,
 		&#34;moduleResolution&#34;: &#34;node&#34;,
 		&#34;importHelpers&#34;: true,
-		&#34;target&#34;: &#34;es2015&#34;,
+		&#34;target&#34;: &#34;es2020&#34;,
+		&#34;module&#34;: &#34;es2020&#34;,
 		&#34;typeRoots&#34;: [&#34;node_modules/@types&#34;],
-		&#34;lib&#34;: [&#34;es2018&#34;, &#34;dom&#34;]
+		&#34;lib&#34;: [&#34;es2020&#34;, &#34;dom&#34;]
 	},
 	&#34;angularCompilerOptions&#34;: {
 		&#34;enableIvy&#34;: true,
@@ -185,8 +185,8 @@ import &#39;@angular/localize/init&#39;;
 &lt;html&gt;
 
 &lt;head&gt;
-  &lt;title&gt;ng-bootstrap rating demo - template&lt;/title&gt;
-  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css&#34; /&gt;
+  &lt;title&gt;ng-bootstrap demo - Rating - Template&lt;/title&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css&#34; /&gt;
   &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css&#34; /&gt;
   &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.css&#34; /&gt;
   &lt;style&gt;
@@ -263,23 +263,20 @@ ngb-carousel .picsum-img-wrapper &gt; img {
 ">
     
     <input type="hidden" name="project[files][src/main.ts]" value="import &#39;./polyfills&#39;;
+import {bootstrapApplication} from &#39;@angular/platform-browser&#39;;
+import {NgbdRatingTemplate} from &#39;./app/rating-template&#39;;
 
-import {platformBrowserDynamic} from &#39;@angular/platform-browser-dynamic&#39;;
+bootstrapApplication(NgbdRatingTemplate)
+.then(ref =&gt; {
+  // Ensure Angular destroys itself on hot reloads.
+  if (window[&#39;ngRef&#39;]) {
+    window[&#39;ngRef&#39;].destroy();
+  }
+  window[&#39;ngRef&#39;] = ref;
 
-import {NgbdRatingTemplateModule} from &#39;./app/rating-template.module&#39;;
-
-platformBrowserDynamic()
-    .bootstrapModule(NgbdRatingTemplateModule)
-    .then(ref =&gt; {
-      // Ensure Angular destroys itself on hot reloads.
-      if (window[&#39;ngRef&#39;]) {
-        window[&#39;ngRef&#39;].destroy();
-      }
-      window[&#39;ngRef&#39;] = ref;
-
-      // Otherwise, log the boot error
-    })
-    .catch(err =&gt; console.error(err));
+  // Otherwise, log the boot error
+})
+.catch(err =&gt; console.error(err));
 ">
     
     <input type="hidden" name="project[files][src/app/rating-template.html]" value="&lt;p&gt;Custom rating template provided as child element&lt;/p&gt;
@@ -295,25 +292,13 @@ platformBrowserDynamic()
 &lt;pre&gt;Rate: &lt;b&gt;{{currentRate}}&lt;/b&gt;&lt;/pre&gt;
 ">
     
-    <input type="hidden" name="project[files][src/app/rating-template.module.ts]" value="import { NgModule } from &#39;@angular/core&#39;;
-import { BrowserModule } from &#39;@angular/platform-browser&#39;;
-import { NgbModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
-
-import { NgbdRatingTemplate } from &#39;./rating-template&#39;;
-
-@NgModule({
-	imports: [BrowserModule, NgbModule],
-	declarations: [NgbdRatingTemplate],
-	exports: [NgbdRatingTemplate],
-	bootstrap: [NgbdRatingTemplate],
-})
-export class NgbdRatingTemplateModule {}
-">
-    
     <input type="hidden" name="project[files][src/app/rating-template.ts]" value="import { Component } from &#39;@angular/core&#39;;
+import { NgbRatingModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
 
 @Component({
 	selector: &#39;ngbd-rating-template&#39;,
+	standalone: true,
+	imports: [NgbRatingModule],
 	templateUrl: &#39;./rating-template.html&#39;,
 	styles: [
 		`
