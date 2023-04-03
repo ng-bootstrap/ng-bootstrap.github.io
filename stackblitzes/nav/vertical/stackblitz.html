@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Nav - Vertical">
     <input type="hidden" name="project[description]"
       value="Example usage of the nav widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;^15.0.0&#34;,&#34;@angular/core&#34;:&#34;^15.0.0&#34;,&#34;@angular/common&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;^15.0.0&#34;,&#34;@angular/router&#34;:&#34;^15.0.0&#34;,&#34;@angular/forms&#34;:&#34;^15.0.0&#34;,&#34;@angular/localize&#34;:&#34;^15.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;14.0.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.6&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~4.8.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;^15.0.0&#34;,&#34;@angular/core&#34;:&#34;^15.0.0&#34;,&#34;@angular/common&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;^15.0.0&#34;,&#34;@angular/router&#34;:&#34;^15.0.0&#34;,&#34;@angular/forms&#34;:&#34;^15.0.0&#34;,&#34;@angular/localize&#34;:&#34;^15.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;14.1.0&#34;,&#34;@popperjs/core&#34;:&#34;2.11.6&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~4.8.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -285,9 +285,9 @@ bootstrapApplication(NgbdNavVertical)
 &lt;/p&gt;
 
 &lt;div class=&#34;d-flex&#34;&gt;
-	&lt;ul ngbNav #nav=&#34;ngbNav&#34; [(activeId)]=&#34;active&#34; class=&#34;nav-pills&#34; orientation=&#34;vertical&#34;&gt;
-		&lt;li ngbNavItem=&#34;top&#34;&gt;
-			&lt;a ngbNavLink&gt;Top&lt;/a&gt;
+	&lt;div ngbNav #nav=&#34;ngbNav&#34; [(activeId)]=&#34;active&#34; class=&#34;nav-pills flex-column&#34; orientation=&#34;vertical&#34;&gt;
+		&lt;ng-container ngbNavItem=&#34;top&#34;&gt;
+			&lt;button ngbNavLink&gt;Top&lt;/button&gt;
 			&lt;ng-template ngbNavContent&gt;
 				&lt;p&gt;
 					Raw denim you probably haven&#39;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
@@ -296,9 +296,9 @@ bootstrapApplication(NgbdNavVertical)
 					salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
 				&lt;/p&gt;
 			&lt;/ng-template&gt;
-		&lt;/li&gt;
-		&lt;li ngbNavItem=&#34;middle&#34;&gt;
-			&lt;a ngbNavLink&gt;Middle&lt;/a&gt;
+		&lt;/ng-container&gt;
+		&lt;ng-container ngbNavItem=&#34;middle&#34;&gt;
+			&lt;button ngbNavLink&gt;Middle&lt;/button&gt;
 			&lt;ng-template ngbNavContent&gt;
 				&lt;p&gt;
 					Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
@@ -309,9 +309,9 @@ bootstrapApplication(NgbdNavVertical)
 					stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
 				&lt;/p&gt;
 			&lt;/ng-template&gt;
-		&lt;/li&gt;
-		&lt;li ngbNavItem=&#34;bottom&#34;&gt;
-			&lt;a ngbNavLink&gt;Bottom&lt;/a&gt;
+		&lt;/ng-container&gt;
+		&lt;ng-container ngbNavItem=&#34;bottom&#34;&gt;
+			&lt;button ngbNavLink&gt;Bottom&lt;/button&gt;
 			&lt;ng-template ngbNavContent&gt;
 				&lt;p&gt;
 					Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla
@@ -323,8 +323,8 @@ bootstrapApplication(NgbdNavVertical)
 					aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.
 				&lt;/p&gt;
 			&lt;/ng-template&gt;
-		&lt;/li&gt;
-	&lt;/ul&gt;
+		&lt;/ng-container&gt;
+	&lt;/div&gt;
 
 	&lt;div [ngbNavOutlet]=&#34;nav&#34; class=&#34;ms-4&#34;&gt;&lt;/div&gt;
 &lt;/div&gt;

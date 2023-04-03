@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Nav - Custom-style">
     <input type="hidden" name="project[description]"
       value="Example usage of the nav widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;^15.0.0&#34;,&#34;@angular/core&#34;:&#34;^15.0.0&#34;,&#34;@angular/common&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;^15.0.0&#34;,&#34;@angular/router&#34;:&#34;^15.0.0&#34;,&#34;@angular/forms&#34;:&#34;^15.0.0&#34;,&#34;@angular/localize&#34;:&#34;^15.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;14.0.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.6&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~4.8.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;^15.0.0&#34;,&#34;@angular/core&#34;:&#34;^15.0.0&#34;,&#34;@angular/common&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;^15.0.0&#34;,&#34;@angular/router&#34;:&#34;^15.0.0&#34;,&#34;@angular/forms&#34;:&#34;^15.0.0&#34;,&#34;@angular/localize&#34;:&#34;^15.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;14.1.0&#34;,&#34;@popperjs/core&#34;:&#34;2.11.6&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~4.8.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -281,7 +281,7 @@ bootstrapApplication(NgbdNavCustomStyle)
     
     <input type="hidden" name="project[files][src/app/nav-custom-style.html]" value="&lt;ul ngbNav #nav=&#34;ngbNav&#34; [activeId]=&#34;2&#34; class=&#34;nav-tabs justify-content-center&#34;&gt;
 	&lt;li [ngbNavItem]=&#34;1&#34;&gt;
-		&lt;a ngbNavLink&gt;Simple&lt;/a&gt;
+		&lt;button ngbNavLink&gt;Simple&lt;/button&gt;
 		&lt;ng-template ngbNavContent&gt;
 			&lt;p&gt;
 				Raw denim you probably haven&#39;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
@@ -292,7 +292,7 @@ bootstrapApplication(NgbdNavCustomStyle)
 		&lt;/ng-template&gt;
 	&lt;/li&gt;
 	&lt;li [ngbNavItem]=&#34;2&#34;&gt;
-		&lt;a ngbNavLink&gt;&lt;b&gt;Fancy&lt;/b&gt; title&lt;/a&gt;
+		&lt;button ngbNavLink&gt;&lt;b&gt;Fancy&lt;/b&gt; title&lt;/button&gt;
 		&lt;ng-template ngbNavContent&gt;
 			&lt;p&gt;
 				Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
@@ -304,8 +304,8 @@ bootstrapApplication(NgbdNavCustomStyle)
 			&lt;/p&gt;
 		&lt;/ng-template&gt;
 	&lt;/li&gt;
-	&lt;li ngbDropdown class=&#34;nav-item&#34;&gt;
-		&lt;a href (click)=&#34;false&#34; class=&#34;nav-link&#34; ngbDropdownToggle&gt;Dropdown&lt;/a&gt;
+	&lt;li ngbDropdown class=&#34;nav-item&#34; role=&#34;presentation&#34;&gt;
+		&lt;button type=&#34;button&#34; class=&#34;nav-link&#34; ngbDropdownToggle&gt;Dropdown&lt;/button&gt;
 		&lt;div ngbDropdownMenu&gt;
 			&lt;button ngbDropdownItem&gt;Action&lt;/button&gt;
 			&lt;button ngbDropdownItem&gt;Another action&lt;/button&gt;
@@ -315,7 +315,7 @@ bootstrapApplication(NgbdNavCustomStyle)
 		&lt;/div&gt;
 	&lt;/li&gt;
 	&lt;li ngbNavItem [disabled]=&#34;true&#34; class=&#34;ms-auto&#34;&gt;
-		&lt;a ngbNavLink&gt;Disabled&lt;/a&gt;
+		&lt;button ngbNavLink&gt;Disabled&lt;/button&gt;
 		&lt;ng-template ngbNavContent&gt;
 			&lt;p&gt;
 				Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.

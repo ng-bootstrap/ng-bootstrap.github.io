@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Nav - Markup">
     <input type="hidden" name="project[description]"
       value="Example usage of the nav widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;^15.0.0&#34;,&#34;@angular/core&#34;:&#34;^15.0.0&#34;,&#34;@angular/common&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;^15.0.0&#34;,&#34;@angular/router&#34;:&#34;^15.0.0&#34;,&#34;@angular/forms&#34;:&#34;^15.0.0&#34;,&#34;@angular/localize&#34;:&#34;^15.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;14.0.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.6&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~4.8.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;^15.0.0&#34;,&#34;@angular/core&#34;:&#34;^15.0.0&#34;,&#34;@angular/common&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler&#34;:&#34;^15.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;^15.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;^15.0.0&#34;,&#34;@angular/router&#34;:&#34;^15.0.0&#34;,&#34;@angular/forms&#34;:&#34;^15.0.0&#34;,&#34;@angular/localize&#34;:&#34;^15.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;14.1.0&#34;,&#34;@popperjs/core&#34;:&#34;2.11.6&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~4.8.4&#34;,&#34;zone.js&#34;:&#34;~0.11.4&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -279,11 +279,14 @@ bootstrapApplication(NgbdNavMarkup)
 .catch(err =&gt; console.error(err));
 ">
     
-    <input type="hidden" name="project[files][src/app/nav-markup.html]" value="&lt;p&gt;You can use alternative markup without &lt;code&gt;ul li&lt;/code&gt; elements&lt;/p&gt;
+    <input type="hidden" name="project[files][src/app/nav-markup.html]" value="&lt;p&gt;
+	You can use alternative markup without &lt;code&gt;&amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;&lt;/code&gt; elements. You can also interchange
+	&lt;code&gt;&amp;lt;button&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; elements for links.
+&lt;/p&gt;
 
 &lt;nav ngbNav #nav=&#34;ngbNav&#34; class=&#34;nav-tabs&#34;&gt;
 	&lt;ng-container ngbNavItem&gt;
-		&lt;a ngbNavLink&gt;One&lt;/a&gt;
+		&lt;button ngbNavLink&gt;Button&lt;/button&gt;
 		&lt;ng-template ngbNavContent&gt;
 			&lt;p&gt;
 				Raw denim you probably haven&#39;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
@@ -294,7 +297,7 @@ bootstrapApplication(NgbdNavMarkup)
 		&lt;/ng-template&gt;
 	&lt;/ng-container&gt;
 	&lt;ng-container ngbNavItem&gt;
-		&lt;a ngbNavLink&gt;Two&lt;/a&gt;
+		&lt;a ngbNavLink&gt;I&#39;m a link&lt;/a&gt;
 		&lt;ng-template ngbNavContent&gt;
 			&lt;p&gt;
 				Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
@@ -306,8 +309,22 @@ bootstrapApplication(NgbdNavMarkup)
 			&lt;/p&gt;
 		&lt;/ng-template&gt;
 	&lt;/ng-container&gt;
-	&lt;ng-container ngbNavItem&gt;
-		&lt;a ngbNavLink&gt;Three&lt;/a&gt;
+	&lt;ng-container ngbNavItem [disabled]=&#34;true&#34;&gt;
+		&lt;button ngbNavLink&gt;I&#39;m a disabled button&lt;/button&gt;
+		&lt;ng-template ngbNavContent&gt;
+			&lt;p&gt;
+				Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
+				Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
+				Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
+				egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
+				tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
+				magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
+				neque. Phasellus nec tortor vel tellus pulvinar feugiat.
+			&lt;/p&gt;
+		&lt;/ng-template&gt;
+	&lt;/ng-container&gt;
+	&lt;ng-container ngbNavItem [disabled]=&#34;true&#34;&gt;
+		&lt;a ngbNavLink&gt;I&#39;m a disabled link&lt;/a&gt;
 		&lt;ng-template ngbNavContent&gt;
 			&lt;p&gt;
 				Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
