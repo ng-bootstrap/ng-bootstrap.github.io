@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Offcanvas - Component">
     <input type="hidden" name="project[description]"
       value="Example usage of the offcanvas widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~16.0.0&#34;,&#34;@angular/core&#34;:&#34;~16.0.0&#34;,&#34;@angular/common&#34;:&#34;~16.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~16.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~16.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~16.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~16.0.0&#34;,&#34;@angular/router&#34;:&#34;~16.0.0&#34;,&#34;@angular/forms&#34;:&#34;~16.0.0&#34;,&#34;@angular/localize&#34;:&#34;~16.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;15.1.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.6&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.0.4&#34;,&#34;zone.js&#34;:&#34;~0.13.0&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.0&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -186,9 +186,9 @@ import &#39;@angular/localize/init&#39;;
 
 &lt;head&gt;
   &lt;title&gt;ng-bootstrap demo - Offcanvas - Component&lt;/title&gt;
-  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css&#34; /&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css&#34; /&gt;
   &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css&#34; /&gt;
-  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/themes/prism.css&#34; /&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css&#34; /&gt;
   &lt;style&gt;
     /* Sortable table demo */
 
@@ -286,6 +286,11 @@ bootstrapApplication(NgbdOffcanvasComponent, {
     
     <input type="hidden" name="project[files][src/app/offcanvas-component.html]" value="&lt;p&gt;You can pass an existing component as content of the offcanvas panel.&lt;/p&gt;
 
+&lt;p&gt;
+	Note that when using a component as content, the additional node introduced in the markup requires the component to
+	have additional CSS styles to be applied if you want the content to be scrollable. See the code sample for details.
+&lt;/p&gt;
+
 &lt;button class=&#34;btn btn-lg btn-outline-primary&#34; (click)=&#34;open()&#34;&gt;Launch demo offcanvas&lt;/button&gt;
 ">
     
@@ -310,6 +315,16 @@ import { NgbActiveOffcanvas, NgbOffcanvas } from &#39;@ng-bootstrap/ng-bootstrap
 			&lt;button type=&#34;button&#34; class=&#34;btn btn-outline-dark&#34; (click)=&#34;activeOffcanvas.close(&#39;Close click&#39;)&#34;&gt;Close&lt;/button&gt;
 		&lt;/div&gt;
 	`,
+	styles: [
+		`
+			/* Opening offcanvas as a component requires this style in order to scroll */
+			:host {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+		`,
+	],
 })
 export class NgbdOffcanvasContent {
 	@Input() name;
