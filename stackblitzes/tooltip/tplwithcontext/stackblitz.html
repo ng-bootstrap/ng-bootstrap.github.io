@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Tooltip - Tplwithcontext">
     <input type="hidden" name="project[description]"
       value="Example usage of the tooltip widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.0&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -286,7 +286,10 @@ bootstrapApplication(NgbdTooltipTplwithcontext, {
     
     <input type="hidden" name="project[files][src/app/tooltip-tplwithcontext.html]" value="&lt;p&gt;You can optionally pass in a context when manually triggering a tooltip.&lt;/p&gt;
 
-&lt;ng-template #tipContent let-greeting=&#34;greeting&#34;&gt;{{greeting}}, &lt;b&gt;{{name}}&lt;/b&gt;!&lt;/ng-template&gt;
+&lt;ng-template #tipContent let-greeting=&#34;greeting&#34;
+	&gt;{{ greeting }}, &lt;b&gt;{{ name }}&lt;/b
+	&gt;!&lt;/ng-template
+&gt;
 
 &lt;div class=&#34;buttons&#34;&gt;
 	&lt;button
@@ -329,7 +332,7 @@ bootstrapApplication(NgbdTooltipTplwithcontext, {
 		type=&#34;button&#34;
 		class=&#34;btn btn-outline-secondary me-2&#34;
 		[ngbTooltip]=&#34;tipContent&#34;
-		[tooltipContext]=&#34;{greeting: &#39;你好&#39;}&#34;
+		[tooltipContext]=&#34;{ greeting: &#39;你好&#39; }&#34;
 	&gt;
 		French
 	&lt;/button&gt;
