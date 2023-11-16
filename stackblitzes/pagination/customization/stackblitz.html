@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Pagination - Customization">
     <input type="hidden" name="project[description]"
       value="Example usage of the pagination widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -295,26 +295,28 @@ bootstrapApplication(NgbdPaginationCustomization, {
 &lt;p&gt;A pagination with customized pages:&lt;/p&gt;
 &lt;ngb-pagination [collectionSize]=&#34;70&#34; [(page)]=&#34;page&#34; [boundaryLinks]=&#34;true&#34;&gt;
 	&lt;ng-template ngbPaginationPages let-page let-pages=&#34;pages&#34;&gt;
-		&lt;li class=&#34;ngb-custom-pages-item&#34; *ngIf=&#34;pages.length &gt; 0&#34;&gt;
-			&lt;div class=&#34;mb-3 d-flex flex-nowrap px-2&#34;&gt;
-				&lt;label id=&#34;paginationInputLabel&#34; for=&#34;paginationInput&#34; class=&#34;col-form-label me-2 ms-1&#34;&gt;Page&lt;/label&gt;
-				&lt;input
-					#i
-					type=&#34;text&#34;
-					inputmode=&#34;numeric&#34;
-					pattern=&#34;[0-9]*&#34;
-					class=&#34;form-control custom-pages-input&#34;
-					id=&#34;paginationInput&#34;
-					[value]=&#34;page&#34;
-					(keyup.enter)=&#34;selectPage(i.value)&#34;
-					(blur)=&#34;selectPage(i.value)&#34;
-					(input)=&#34;formatInput($any($event).target)&#34;
-					aria-labelledby=&#34;paginationInputLabel paginationDescription&#34;
-					style=&#34;width: 2.5rem&#34;
-				/&gt;
-				&lt;span id=&#34;paginationDescription&#34; class=&#34;col-form-label text-nowrap px-2&#34;&gt; of {{ pages.length }}&lt;/span&gt;
-			&lt;/div&gt;
-		&lt;/li&gt;
+		@if (pages.length &gt; 0) {
+			&lt;li class=&#34;ngb-custom-pages-item&#34;&gt;
+				&lt;div class=&#34;mb-3 d-flex flex-nowrap px-2&#34;&gt;
+					&lt;label id=&#34;paginationInputLabel&#34; for=&#34;paginationInput&#34; class=&#34;col-form-label me-2 ms-1&#34;&gt;Page&lt;/label&gt;
+					&lt;input
+						#i
+						type=&#34;text&#34;
+						inputmode=&#34;numeric&#34;
+						pattern=&#34;[0-9]*&#34;
+						class=&#34;form-control custom-pages-input&#34;
+						id=&#34;paginationInput&#34;
+						[value]=&#34;page&#34;
+						(keyup.enter)=&#34;selectPage(i.value)&#34;
+						(blur)=&#34;selectPage(i.value)&#34;
+						(input)=&#34;formatInput($any($event).target)&#34;
+						aria-labelledby=&#34;paginationInputLabel paginationDescription&#34;
+						style=&#34;width: 2.5rem&#34;
+					/&gt;
+					&lt;span id=&#34;paginationDescription&#34; class=&#34;col-form-label text-nowrap px-2&#34;&gt; of {{ pages.length }}&lt;/span&gt;
+				&lt;/div&gt;
+			&lt;/li&gt;
+		}
 	&lt;/ng-template&gt;
 &lt;/ngb-pagination&gt;
 &lt;hr /&gt;
@@ -324,14 +326,13 @@ bootstrapApplication(NgbdPaginationCustomization, {
     
     <input type="hidden" name="project[files][src/app/pagination-customization.ts]" value="import { Component } from &#39;@angular/core&#39;;
 import { NgbPaginationModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
-import { NgIf } from &#39;@angular/common&#39;;
 
 const FILTER_PAG_REGEX = /[^0-9]/g;
 
 @Component({
 	selector: &#39;ngbd-pagination-customization&#39;,
 	standalone: true,
-	imports: [NgbPaginationModule, NgIf],
+	imports: [NgbPaginationModule],
 	templateUrl: &#39;./pagination-customization.html&#39;,
 })
 export class NgbdPaginationCustomization {

@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Modal - Options">
     <input type="hidden" name="project[description]"
       value="Example usage of the modal widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -402,7 +402,7 @@ bootstrapApplication(NgbdModalOptions, {
 &lt;/button&gt;
 ">
     
-    <input type="hidden" name="project[files][src/app/modal-options.ts]" value="import { Component, ViewEncapsulation } from &#39;@angular/core&#39;;
+    <input type="hidden" name="project[files][src/app/modal-options.ts]" value="import { Component, inject, TemplateRef, ViewEncapsulation } from &#39;@angular/core&#39;;
 import { NgbModal } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
 
 @Component({
@@ -426,35 +426,33 @@ import { NgbModal } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
 	],
 })
 export class NgbdModalOptions {
-	closeResult: string;
+	private modalService = inject(NgbModal);
 
-	constructor(private modalService: NgbModal) {}
-
-	openBackDropCustomClass(content) {
+	openBackDropCustomClass(content: TemplateRef&lt;any&gt;) {
 		this.modalService.open(content, { backdropClass: &#39;light-blue-backdrop&#39; });
 	}
 
-	openWindowCustomClass(content) {
+	openWindowCustomClass(content: TemplateRef&lt;any&gt;) {
 		this.modalService.open(content, { windowClass: &#39;dark-modal&#39; });
 	}
 
-	openSm(content) {
+	openSm(content: TemplateRef&lt;any&gt;) {
 		this.modalService.open(content, { size: &#39;sm&#39; });
 	}
 
-	openLg(content) {
+	openLg(content: TemplateRef&lt;any&gt;) {
 		this.modalService.open(content, { size: &#39;lg&#39; });
 	}
 
-	openXl(content) {
+	openXl(content: TemplateRef&lt;any&gt;) {
 		this.modalService.open(content, { size: &#39;xl&#39; });
 	}
 
-	openFullscreen(content) {
+	openFullscreen(content: TemplateRef&lt;any&gt;) {
 		this.modalService.open(content, { fullscreen: true });
 	}
 
-	openVerticallyCentered(content) {
+	openVerticallyCentered(content: TemplateRef&lt;any&gt;) {
 		this.modalService.open(content, { centered: true });
 	}
 
@@ -462,7 +460,7 @@ export class NgbdModalOptions {
 		this.modalService.open(longContent, { scrollable: true });
 	}
 
-	openModalDialogCustomClass(content) {
+	openModalDialogCustomClass(content: TemplateRef&lt;any&gt;) {
 		this.modalService.open(content, { modalDialogClass: &#39;dark-modal&#39; });
 	}
 }

@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Datepicker - Basic">
     <input type="hidden" name="project[description]"
       value="Example usage of the datepicker widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -286,11 +286,11 @@ bootstrapApplication(NgbdDatepickerBasic, {
     
     <input type="hidden" name="project[files][src/app/datepicker-basic.html]" value="&lt;p&gt;Simple datepicker&lt;/p&gt;
 
-&lt;ngb-datepicker #dp [(ngModel)]=&#34;model&#34; (navigate)=&#34;date = $event.next&#34;&gt;&lt;/ngb-datepicker&gt;
+&lt;ngb-datepicker #dp [(ngModel)]=&#34;model&#34; (navigate)=&#34;date = $event.next&#34; /&gt;
 
 &lt;hr /&gt;
 
-&lt;button class=&#34;btn btn-sm btn-outline-primary me-2&#34; (click)=&#34;selectToday()&#34;&gt;Select Today&lt;/button&gt;
+&lt;button class=&#34;btn btn-sm btn-outline-primary me-2&#34; (click)=&#34;model = today&#34;&gt;Select Today&lt;/button&gt;
 &lt;button class=&#34;btn btn-sm btn-outline-primary me-2&#34; (click)=&#34;dp.navigateTo()&#34;&gt;To current month&lt;/button&gt;
 &lt;button class=&#34;btn btn-sm btn-outline-primary me-2&#34; (click)=&#34;dp.navigateTo({ year: 2013, month: 2 })&#34;
 	&gt;To Feb 2013&lt;/button
@@ -302,8 +302,8 @@ bootstrapApplication(NgbdDatepickerBasic, {
 &lt;pre&gt;Model: {{ model | json }}&lt;/pre&gt;
 ">
     
-    <input type="hidden" name="project[files][src/app/datepicker-basic.ts]" value="import { Component } from &#39;@angular/core&#39;;
-import { NgbDateStruct, NgbCalendar, NgbDatepickerModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
+    <input type="hidden" name="project[files][src/app/datepicker-basic.ts]" value="import { Component, inject } from &#39;@angular/core&#39;;
+import { NgbCalendar, NgbDatepickerModule, NgbDateStruct } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
 import { FormsModule } from &#39;@angular/forms&#39;;
 import { JsonPipe } from &#39;@angular/common&#39;;
 
@@ -314,14 +314,10 @@ import { JsonPipe } from &#39;@angular/common&#39;;
 	templateUrl: &#39;./datepicker-basic.html&#39;,
 })
 export class NgbdDatepickerBasic {
+	today = inject(NgbCalendar).getToday();
+
 	model: NgbDateStruct;
 	date: { year: number; month: number };
-
-	constructor(private calendar: NgbCalendar) {}
-
-	selectToday() {
-		this.model = this.calendar.getToday();
-	}
 }
 ">
     

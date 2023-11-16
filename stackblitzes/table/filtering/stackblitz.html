@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Table - Filtering">
     <input type="hidden" name="project[description]"
       value="Example usage of the table widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -308,31 +308,37 @@ bootstrapApplication(NgbdTableFiltering, {
 		&lt;/tr&gt;
 	&lt;/thead&gt;
 	&lt;tbody&gt;
-		&lt;tr *ngFor=&#34;let country of countries$ | async; index as i&#34;&gt;
-			&lt;th scope=&#34;row&#34;&gt;{{ i + 1 }}&lt;/th&gt;
-			&lt;td&gt;
-				&lt;img
-					[src]=&#34;&#39;https://upload.wikimedia.org/wikipedia/commons/&#39; + country.flag&#34;
-					[alt]=&#34;&#39;The flag of &#39; + country.name&#34;
-					class=&#34;me-2&#34;
-					style=&#34;width: 20px&#34;
-				/&gt;
-				&lt;ngb-highlight [result]=&#34;country.name&#34; [term]=&#34;filter.value&#34;&gt;&lt;/ngb-highlight&gt;
-			&lt;/td&gt;
-			&lt;td&gt;&lt;ngb-highlight [result]=&#34;country.area | number&#34; [term]=&#34;filter.value&#34;&gt;&lt;/ngb-highlight&gt;&lt;/td&gt;
-			&lt;td&gt;&lt;ngb-highlight [result]=&#34;country.population | number&#34; [term]=&#34;filter.value&#34;&gt;&lt;/ngb-highlight&gt;&lt;/td&gt;
-		&lt;/tr&gt;
+		@for (country of countries$ | async; track country.name; let i = $index) {
+			&lt;tr&gt;
+				&lt;th scope=&#34;row&#34;&gt;{{ i + 1 }}&lt;/th&gt;
+				&lt;td&gt;
+					&lt;img
+						[src]=&#34;&#39;https://upload.wikimedia.org/wikipedia/commons/&#39; + country.flag&#34;
+						[alt]=&#34;&#39;The flag of &#39; + country.name&#34;
+						class=&#34;me-2&#34;
+						style=&#34;width: 20px&#34;
+					/&gt;
+					&lt;ngb-highlight [result]=&#34;country.name&#34; [term]=&#34;filter.value&#34; /&gt;
+				&lt;/td&gt;
+				&lt;td&gt;&lt;ngb-highlight [result]=&#34;country.area | number&#34; [term]=&#34;filter.value&#34; /&gt;&lt;/td&gt;
+				&lt;td&gt;&lt;ngb-highlight [result]=&#34;country.population | number&#34; [term]=&#34;filter.value&#34; /&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+		} @empty {
+			&lt;tr&gt;
+				&lt;td colspan=&#34;4&#34; style=&#34;text-align: center&#34;&gt;No countries found&lt;/td&gt;
+			&lt;/tr&gt;
+		}
 	&lt;/tbody&gt;
 &lt;/table&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/table-filtering.ts]" value="import { Component, PipeTransform } from &#39;@angular/core&#39;;
-import { AsyncPipe, DecimalPipe, NgFor } from &#39;@angular/common&#39;;
+import { AsyncPipe, DecimalPipe } from &#39;@angular/common&#39;;
 import { FormControl, ReactiveFormsModule } from &#39;@angular/forms&#39;;
 
 import { Observable } from &#39;rxjs&#39;;
 import { map, startWith } from &#39;rxjs/operators&#39;;
-import { NgbTypeaheadModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
+import { NgbHighlight } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
 
 interface Country {
 	name: string;
@@ -382,7 +388,7 @@ function search(text: string, pipe: PipeTransform): Country[] {
 @Component({
 	selector: &#39;ngbd-table-filtering&#39;,
 	standalone: true,
-	imports: [DecimalPipe, NgFor, AsyncPipe, ReactiveFormsModule, NgbTypeaheadModule],
+	imports: [DecimalPipe, AsyncPipe, ReactiveFormsModule, NgbHighlight],
 	templateUrl: &#39;./table-filtering.html&#39;,
 	providers: [DecimalPipe],
 })

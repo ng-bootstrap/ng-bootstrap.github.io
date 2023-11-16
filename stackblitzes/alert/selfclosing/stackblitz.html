@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Alert - Selfclosing">
     <input type="hidden" name="project[description]"
       value="Example usage of the alert widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -285,35 +285,36 @@ bootstrapApplication(NgbdAlertSelfclosing, {
 ">
     
     <input type="hidden" name="project[files][src/app/alert-selfclosing.html]" value="&lt;p&gt;Static self-closing alert that disappears after 20 seconds (refresh the page if it has already disappeared)&lt;/p&gt;
-&lt;ngb-alert #staticAlert *ngIf=&#34;!staticAlertClosed&#34; (closed)=&#34;staticAlertClosed = true&#34;
-	&gt;Check out our awesome new features!&lt;/ngb-alert
-&gt;
+
+@if (!staticAlertClosed) {
+	&lt;ngb-alert #staticAlert (closed)=&#34;staticAlertClosed = true&#34;&gt;Check out our awesome new features!&lt;/ngb-alert&gt;
+}
 
 &lt;hr /&gt;
 
 &lt;p&gt;Show a self-closing success message that disappears after 5 seconds.&lt;/p&gt;
-&lt;ngb-alert #selfClosingAlert *ngIf=&#34;successMessage&#34; type=&#34;success&#34; (closed)=&#34;successMessage = &#39;&#39;&#34;
-	&gt;{{ successMessage }}
-&lt;/ngb-alert&gt;
-&lt;p&gt;
-	&lt;button class=&#34;btn btn-primary&#34; (click)=&#34;changeSuccessMessage()&#34;&gt;Change message&lt;/button&gt;
-&lt;/p&gt;
+
+@if (successMessage) {
+	&lt;ngb-alert #selfClosingAlert type=&#34;success&#34; (closed)=&#34;successMessage = &#39;&#39;&#34;&gt;{{ successMessage }}&lt;/ngb-alert&gt;
+}
+
+&lt;button class=&#34;btn btn-primary&#34; (click)=&#34;changeSuccessMessage()&#34;&gt;Change message&lt;/button&gt;
 ">
     
-    <input type="hidden" name="project[files][src/app/alert-selfclosing.ts]" value="import { Component, OnInit, ViewChild } from &#39;@angular/core&#39;;
+    <input type="hidden" name="project[files][src/app/alert-selfclosing.ts]" value="import { Component, ViewChild } from &#39;@angular/core&#39;;
 import { Subject } from &#39;rxjs&#39;;
-import { debounceTime } from &#39;rxjs/operators&#39;;
+import { debounceTime, tap } from &#39;rxjs/operators&#39;;
 import { NgbAlert, NgbAlertModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
-import { NgIf } from &#39;@angular/common&#39;;
+import { takeUntilDestroyed } from &#39;@angular/core/rxjs-interop&#39;;
 
 @Component({
 	selector: &#39;ngbd-alert-selfclosing&#39;,
 	standalone: true,
-	imports: [NgIf, NgbAlertModule],
+	imports: [NgbAlertModule],
 	templateUrl: &#39;./alert-selfclosing.html&#39;,
 })
-export class NgbdAlertSelfclosing implements OnInit {
-	private _success = new Subject&lt;string&gt;();
+export class NgbdAlertSelfclosing {
+	private _message$ = new Subject&lt;string&gt;();
 
 	staticAlertClosed = false;
 	successMessage = &#39;&#39;;
@@ -321,19 +322,20 @@ export class NgbdAlertSelfclosing implements OnInit {
 	@ViewChild(&#39;staticAlert&#39;, { static: false }) staticAlert: NgbAlert;
 	@ViewChild(&#39;selfClosingAlert&#39;, { static: false }) selfClosingAlert: NgbAlert;
 
-	ngOnInit(): void {
+	constructor() {
 		setTimeout(() =&gt; this.staticAlert.close(), 20000);
 
-		this._success.subscribe((message) =&gt; (this.successMessage = message));
-		this._success.pipe(debounceTime(5000)).subscribe(() =&gt; {
-			if (this.selfClosingAlert) {
-				this.selfClosingAlert.close();
-			}
-		});
+		this._message$
+			.pipe(
+				takeUntilDestroyed(),
+				tap((message) =&gt; (this.successMessage = message)),
+				debounceTime(5000),
+			)
+			.subscribe(() =&gt; this.selfClosingAlert?.close());
 	}
 
 	public changeSuccessMessage() {
-		this._success.next(`${new Date()} - Message successfully changed.`);
+		this._message$.next(`${new Date()} - Message successfully changed.`);
 	}
 }
 ">

@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Toast - Custom-header">
     <input type="hidden" name="project[description]"
       value="Example usage of the toast widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -284,19 +284,21 @@ bootstrapApplication(NgbdToastCustomHeader, {
 .catch(err =&gt; console.error(err));
 ">
     
-    <input type="hidden" name="project[files][src/app/toast-custom-header.html]" value="&lt;ngb-toast *ngIf=&#34;show&#34; [autohide]=&#34;false&#34; (hidden)=&#34;show = false&#34;&gt;
-	&lt;ng-template ngbToastHeader&gt;
-		&lt;div class=&#34;me-auto&#34;&gt;
-			&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;16&#34; height=&#34;16&#34; viewBox=&#34;0 0 24 24&#34;&gt;
-				&lt;path
-					d=&#34;M16.896 10l-4.896-8-4.896 8-7.104-4 3 11v5h18v-5l3-11-7.104 4zm-11.896 10v-2h14v2h-14zm14.2-4h-14.4l-1.612-5.909 4.615 2.598 4.197-6.857 4.197 6.857 4.615-2.598-1.612 5.909z&#34;
-				/&gt;
-			&lt;/svg&gt;
-			&lt;strong class=&#34;mx-1&#34;&gt;Fancy&lt;/strong&gt;header here
-		&lt;/div&gt;
-	&lt;/ng-template&gt;
-	Hello, I am toast. Have you noticed my header has been generated from a Template?
-&lt;/ngb-toast&gt;
+    <input type="hidden" name="project[files][src/app/toast-custom-header.html]" value="@if (show) {
+	&lt;ngb-toast [autohide]=&#34;false&#34; (hidden)=&#34;show = false&#34;&gt;
+		&lt;ng-template ngbToastHeader&gt;
+			&lt;div class=&#34;me-auto&#34;&gt;
+				&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;16&#34; height=&#34;16&#34; viewBox=&#34;0 0 24 24&#34;&gt;
+					&lt;path
+						d=&#34;M16.896 10l-4.896-8-4.896 8-7.104-4 3 11v5h18v-5l3-11-7.104 4zm-11.896 10v-2h14v2h-14zm14.2-4h-14.4l-1.612-5.909 4.615 2.598 4.197-6.857 4.197 6.857 4.615-2.598-1.612 5.909z&#34;
+					/&gt;
+				&lt;/svg&gt;
+				&lt;strong class=&#34;mx-1&#34;&gt;Fancy&lt;/strong&gt;header here
+			&lt;/div&gt;
+		&lt;/ng-template&gt;
+		Hello, I am toast. Have you noticed my header has been generated from a Template?
+	&lt;/ngb-toast&gt;
+}
 ">
     
     <input type="hidden" name="project[files][src/app/toast-custom-header.ts]" value="import { Component } from &#39;@angular/core&#39;;

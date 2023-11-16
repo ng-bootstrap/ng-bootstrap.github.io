@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Accordion - Header">
     <input type="hidden" name="project[description]"
       value="Example usage of the accordion widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -334,7 +334,9 @@ bootstrapApplication(NgbdAccordionHeader, {
 			&lt;button ngbAccordionToggle [disabled]=&#34;third.disabled&#34; class=&#34;p-0 btn btn-link container-fluid text-start ps-0&#34;&gt;
 				Third panel
 			&lt;/button&gt;
-			&lt;p *ngIf=&#34;third.disabled&#34; class=&#34;text-muted m-0 small&#34;&gt;[I&#39;m&amp;nbsp;disabled]&lt;/p&gt;
+			@if (third.disabled) {
+				&lt;p class=&#34;text-muted m-0 small&#34;&gt;[I&#39;m&amp;nbsp;disabled]&lt;/p&gt;
+			}
 		&lt;/div&gt;
 		&lt;div ngbAccordionCollapse&gt;
 			&lt;div ngbAccordionBody&gt;
@@ -354,21 +356,18 @@ bootstrapApplication(NgbdAccordionHeader, {
     
     <input type="hidden" name="project[files][src/app/accordion-header.ts]" value="import { Component, ViewEncapsulation } from &#39;@angular/core&#39;;
 import { NgbAccordionModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
-import { NgIf } from &#39;@angular/common&#39;;
 
 @Component({
 	selector: &#39;ngbd-accordion-header&#39;,
 	standalone: true,
-	imports: [NgbAccordionModule, NgIf],
+	imports: [NgbAccordionModule],
 	templateUrl: &#39;./accordion-header.html&#39;,
 	encapsulation: ViewEncapsulation.None,
-	styles: [
-		`
-			.custom-header::after {
-				content: none;
-			}
-		`,
-	],
+	styles: `
+		.custom-header::after {
+			content: none;
+		}
+	`,
 })
 export class NgbdAccordionHeader {}
 ">

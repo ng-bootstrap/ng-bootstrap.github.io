@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Typeahead - Http">
     <input type="hidden" name="project[description]"
       value="Example usage of the typeahead widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -307,22 +307,27 @@ bootstrapApplication(NgbdTypeaheadHttp, {
 				[ngbTypeahead]=&#34;search&#34;
 				placeholder=&#34;Wikipedia search&#34;
 			/&gt;
-			&lt;small *ngIf=&#34;searching&#34; class=&#34;form-text text-muted&#34;&gt;searching...&lt;/small&gt;
-			&lt;div class=&#34;invalid-feedback&#34; *ngIf=&#34;searchFailed&#34;&gt;Sorry, suggestions could not be loaded.&lt;/div&gt;
+			@if (searching) {
+				&lt;small class=&#34;form-text text-muted&#34;&gt;searching...&lt;/small&gt;
+			}
+			@if (searchFailed) {
+				&lt;div class=&#34;invalid-feedback&#34;&gt;Sorry, suggestions could not be loaded.&lt;/div&gt;
+			}
 		&lt;/div&gt;
 	&lt;/div&gt;
 &lt;/fieldset&gt;
+
 &lt;hr /&gt;
 &lt;pre&gt;Model: {{ model | json }}&lt;/pre&gt;
 ">
     
-    <input type="hidden" name="project[files][src/app/typeahead-http.ts]" value="import { Component, Injectable } from &#39;@angular/core&#39;;
+    <input type="hidden" name="project[files][src/app/typeahead-http.ts]" value="import { Component, inject, Injectable } from &#39;@angular/core&#39;;
 import { HttpClient, HttpParams } from &#39;@angular/common/http&#39;;
 import { Observable, of, OperatorFunction } from &#39;rxjs&#39;;
-import { catchError, debounceTime, distinctUntilChanged, map, tap, switchMap } from &#39;rxjs/operators&#39;;
+import { catchError, debounceTime, distinctUntilChanged, map, switchMap, tap } from &#39;rxjs/operators&#39;;
 import { NgbTypeaheadModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
 import { FormsModule } from &#39;@angular/forms&#39;;
-import { JsonPipe, NgIf } from &#39;@angular/common&#39;;
+import { JsonPipe } from &#39;@angular/common&#39;;
 
 const WIKI_URL = &#39;https://en.wikipedia.org/w/api.php&#39;;
 const PARAMS = new HttpParams({
@@ -335,7 +340,7 @@ const PARAMS = new HttpParams({
 
 @Injectable()
 export class WikipediaService {
-	constructor(private http: HttpClient) {}
+	private http = inject(HttpClient);
 
 	search(term: string) {
 		if (term === &#39;&#39;) {
@@ -351,23 +356,17 @@ export class WikipediaService {
 @Component({
 	selector: &#39;ngbd-typeahead-http&#39;,
 	standalone: true,
-	imports: [NgbTypeaheadModule, FormsModule, NgIf, JsonPipe],
+	imports: [NgbTypeaheadModule, FormsModule, JsonPipe],
 	templateUrl: &#39;./typeahead-http.html&#39;,
 	providers: [WikipediaService],
-	styles: [
-		`
-			.form-control {
-				width: 300px;
-			}
-		`,
-	],
+	styles: `.form-control { width: 300px; }`,
 })
 export class NgbdTypeaheadHttp {
+	private service = inject(WikipediaService);
+
 	model: any;
 	searching = false;
 	searchFailed = false;
-
-	constructor(private _service: WikipediaService) {}
 
 	search: OperatorFunction&lt;string, readonly string[]&gt; = (text$: Observable&lt;string&gt;) =&gt;
 		text$.pipe(
@@ -375,7 +374,7 @@ export class NgbdTypeaheadHttp {
 			distinctUntilChanged(),
 			tap(() =&gt; (this.searching = true)),
 			switchMap((term) =&gt;
-				this._service.search(term).pipe(
+				this.service.search(term).pipe(
 					tap(() =&gt; (this.searchFailed = false)),
 					catchError(() =&gt; {
 						this.searchFailed = true;

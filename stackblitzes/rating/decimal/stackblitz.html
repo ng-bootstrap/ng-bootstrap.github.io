@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Rating - Decimal">
     <input type="hidden" name="project[description]"
       value="Example usage of the rating widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -290,35 +290,29 @@ bootstrapApplication(NgbdRatingDecimal, {
 
 &lt;ng-template #t let-fill=&#34;fill&#34;&gt;
 	&lt;i class=&#34;bi-heart-fill&#34;&gt;
-		&lt;i *ngIf=&#34;fill &gt; 0&#34; class=&#34;bi-heart-fill filled&#34; [style.width.%]=&#34;fill&#34;&gt;&lt;/i&gt;
+		@if (fill &gt; 0) {
+			&lt;i class=&#34;bi-heart-fill filled&#34; [style.width.%]=&#34;fill&#34;&gt;&lt;/i&gt;
+		}
 	&lt;/i&gt;
 &lt;/ng-template&gt;
 
-&lt;ngb-rating
-	[(rate)]=&#34;currentRate&#34;
-	[starTemplate]=&#34;t&#34;
-	[readonly]=&#34;true&#34;
-	[max]=&#34;5&#34;
-	[ariaValueText]=&#34;ariaValueText&#34;
-&gt;&lt;/ngb-rating&gt;
+&lt;ngb-rating [(rate)]=&#34;rating&#34; [starTemplate]=&#34;t&#34; [readonly]=&#34;true&#34; [max]=&#34;5&#34; [ariaValueText]=&#34;ariaValueText&#34; /&gt;
 
 &lt;hr /&gt;
-&lt;pre&gt;Rate: &lt;b&gt;{{currentRate}}&lt;/b&gt;&lt;/pre&gt;
-&lt;button class=&#34;btn btn-sm btn-outline-primary me-2&#34; (click)=&#34;currentRate = 1.35&#34;&gt;1.35&lt;/button&gt;
-&lt;button class=&#34;btn btn-sm btn-outline-primary me-2&#34; (click)=&#34;currentRate = 4.72&#34;&gt;4.72&lt;/button&gt;
+&lt;pre&gt;Rate: &lt;b&gt;{{ rating }}&lt;/b&gt;&lt;/pre&gt;
+&lt;button class=&#34;btn btn-sm btn-outline-primary me-2&#34; (click)=&#34;rating = 1.35&#34;&gt;1.35&lt;/button&gt;
+&lt;button class=&#34;btn btn-sm btn-outline-primary me-2&#34; (click)=&#34;rating = 4.72&#34;&gt;4.72&lt;/button&gt;
 ">
     
     <input type="hidden" name="project[files][src/app/rating-decimal.ts]" value="import { Component } from &#39;@angular/core&#39;;
-import { NgIf } from &#39;@angular/common&#39;;
 import { NgbRatingModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
 
 @Component({
 	selector: &#39;ngbd-rating-decimal&#39;,
 	standalone: true,
-	imports: [NgbRatingModule, NgIf],
+	imports: [NgbRatingModule],
 	templateUrl: &#39;./rating-decimal.html&#39;,
-	styles: [
-		`
+	styles: `
 			i {
 				position: relative;
 				display: inline-block;
@@ -335,10 +329,9 @@ import { NgbRatingModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
 				left: 0;
 			}
 		`,
-	],
 })
 export class NgbdRatingDecimal {
-	currentRate = 3.14;
+	rating = 3.14;
 
 	ariaValueText(current: number, max: number) {
 		return `${current} out of ${max} hearts`;

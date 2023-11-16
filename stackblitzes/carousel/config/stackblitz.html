@@ -39,7 +39,7 @@
     <input type="hidden" name="project[title]" value="ng-bootstrap demo - Carousel - Config">
     <input type="hidden" name="project[description]"
       value="Example usage of the carousel widget from https://ng-bootstrap.github.io">
-    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.1&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
+    <input type="hidden" name="project[dependencies]" value="{&#34;@angular/animations&#34;:&#34;~17.0.0&#34;,&#34;@angular/core&#34;:&#34;~17.0.0&#34;,&#34;@angular/common&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler&#34;:&#34;~17.0.0&#34;,&#34;@angular/compiler-cli&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser&#34;:&#34;~17.0.0&#34;,&#34;@angular/platform-browser-dynamic&#34;:&#34;~17.0.0&#34;,&#34;@angular/router&#34;:&#34;~17.0.0&#34;,&#34;@angular/forms&#34;:&#34;~17.0.0&#34;,&#34;@angular/localize&#34;:&#34;~17.0.0&#34;,&#34;@ng-bootstrap/ng-bootstrap&#34;:&#34;16.0.0-rc.2&#34;,&#34;@popperjs/core&#34;:&#34;2.11.8&#34;,&#34;rxjs&#34;:&#34;~7.5.5&#34;,&#34;typescript&#34;:&#34;~5.2.2&#34;,&#34;zone.js&#34;:&#34;~0.14.2&#34;}">
     
     <input type="hidden" name="project[tags][]" value="angular">
     
@@ -284,54 +284,55 @@ bootstrapApplication(NgbdCarouselConfig, {
 .catch(err =&gt; console.error(err));
 ">
     
-    <input type="hidden" name="project[files][src/app/carousel-config.html]" value="&lt;ngb-carousel *ngIf=&#34;images&#34;&gt;
-	&lt;ng-template ngbSlide&gt;
-		&lt;div class=&#34;picsum-img-wrapper&#34;&gt;
-			&lt;img [src]=&#34;images[0]&#34; alt=&#34;Random first slide&#34; /&gt;
-		&lt;/div&gt;
-		&lt;div class=&#34;carousel-caption&#34;&gt;
-			&lt;h3&gt;10 seconds between slides...&lt;/h3&gt;
-			&lt;p&gt;This carousel uses customized default values.&lt;/p&gt;
-		&lt;/div&gt;
-	&lt;/ng-template&gt;
-	&lt;ng-template ngbSlide&gt;
-		&lt;div class=&#34;picsum-img-wrapper&#34;&gt;
-			&lt;img [src]=&#34;images[1]&#34; alt=&#34;Random second slide&#34; /&gt;
-		&lt;/div&gt;
-		&lt;div class=&#34;carousel-caption&#34;&gt;
-			&lt;h3&gt;No mouse events...&lt;/h3&gt;
-			&lt;p&gt;This carousel doesn&#39;t pause or resume on mouse events&lt;/p&gt;
-		&lt;/div&gt;
-	&lt;/ng-template&gt;
-	&lt;ng-template ngbSlide&gt;
-		&lt;div class=&#34;picsum-img-wrapper&#34;&gt;
-			&lt;img [src]=&#34;images[2]&#34; alt=&#34;Random third slide&#34; /&gt;
-		&lt;/div&gt;
-		&lt;div class=&#34;carousel-caption&#34;&gt;
-			&lt;h3&gt;No keyboard...&lt;/h3&gt;
-			&lt;p&gt;This carousel uses customized default values.&lt;/p&gt;
-		&lt;/div&gt;
-	&lt;/ng-template&gt;
-	&lt;ng-template ngbSlide&gt;
-		&lt;div class=&#34;picsum-img-wrapper&#34;&gt;
-			&lt;img [src]=&#34;images[3]&#34; alt=&#34;Random fourth slide&#34; /&gt;
-		&lt;/div&gt;
-		&lt;div class=&#34;carousel-caption&#34;&gt;
-			&lt;h3&gt;And no wrap after last slide.&lt;/h3&gt;
-			&lt;p&gt;This carousel uses customized default values.&lt;/p&gt;
-		&lt;/div&gt;
-	&lt;/ng-template&gt;
-&lt;/ngb-carousel&gt;
+    <input type="hidden" name="project[files][src/app/carousel-config.html]" value="@if (images) {
+	&lt;ngb-carousel&gt;
+		&lt;ng-template ngbSlide&gt;
+			&lt;div class=&#34;picsum-img-wrapper&#34;&gt;
+				&lt;img [src]=&#34;images[0]&#34; alt=&#34;Random first slide&#34; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&#34;carousel-caption&#34;&gt;
+				&lt;h3&gt;10 seconds between slides...&lt;/h3&gt;
+				&lt;p&gt;This carousel uses customized default values.&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/ng-template&gt;
+		&lt;ng-template ngbSlide&gt;
+			&lt;div class=&#34;picsum-img-wrapper&#34;&gt;
+				&lt;img [src]=&#34;images[1]&#34; alt=&#34;Random second slide&#34; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&#34;carousel-caption&#34;&gt;
+				&lt;h3&gt;No mouse events...&lt;/h3&gt;
+				&lt;p&gt;This carousel doesn&#39;t pause or resume on mouse events&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/ng-template&gt;
+		&lt;ng-template ngbSlide&gt;
+			&lt;div class=&#34;picsum-img-wrapper&#34;&gt;
+				&lt;img [src]=&#34;images[2]&#34; alt=&#34;Random third slide&#34; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&#34;carousel-caption&#34;&gt;
+				&lt;h3&gt;No keyboard...&lt;/h3&gt;
+				&lt;p&gt;This carousel uses customized default values.&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/ng-template&gt;
+		&lt;ng-template ngbSlide&gt;
+			&lt;div class=&#34;picsum-img-wrapper&#34;&gt;
+				&lt;img [src]=&#34;images[3]&#34; alt=&#34;Random fourth slide&#34; /&gt;
+			&lt;/div&gt;
+			&lt;div class=&#34;carousel-caption&#34;&gt;
+				&lt;h3&gt;And no wrap after last slide.&lt;/h3&gt;
+				&lt;p&gt;This carousel uses customized default values.&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/ng-template&gt;
+	&lt;/ngb-carousel&gt;
+}
 ">
     
     <input type="hidden" name="project[files][src/app/carousel-config.ts]" value="import { Component } from &#39;@angular/core&#39;;
 import { NgbCarouselConfig, NgbCarouselModule } from &#39;@ng-bootstrap/ng-bootstrap&#39;;
-import { NgIf } from &#39;@angular/common&#39;;
 
 @Component({
 	selector: &#39;ngbd-carousel-config&#39;,
 	standalone: true,
-	imports: [NgbCarouselModule, NgIf],
+	imports: [NgbCarouselModule],
 	templateUrl: &#39;./carousel-config.html&#39;,
 	providers: [NgbCarouselConfig], // add NgbCarouselConfig to the component providers
 })
