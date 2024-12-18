@@ -1,7 +1,11 @@
 [
-	{
-		"text": "v17.0.0",
+  {
+		"text": "v18.x",
 		"url": "/"
+	},
+	{
+		"text": "v17.x",
+		"url": "/releases/17.x/"
 	},
 	{
 		"text": "v16.x",
